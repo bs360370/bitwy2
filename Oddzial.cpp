@@ -5,6 +5,31 @@
 #include "Oddzial.h"
 #include <cstdio>
 
-void Oddzial::wypisz() {
-    printf("wypisuje rzeczy\n");
+
+int Oddzial::policz_atak() {
+    return 0;
+}
+
+void Oddzial::resetuj_modifiery() {
+
+}
+
+void Oddzial::otrzymaj_wsparcie() {
+
+}
+
+void Oddzial::aktualizuj_liczebnosc() {
+
+}
+
+void Oddzial::aktualizuj_wspolrzedne() {
+
+}
+
+void Oddzial::aktualizuj_morale() {
+
+}
+
+bool Oddzial::czy_martwy() {
+    return false;
 }
