@@ -5,9 +5,23 @@
 #include "Kusznik.h"
 
 void Kusznik::policz_modifier() {
-    Oddzial::policz_modifier();
+
 }
 
 char Kusznik::podaj_typ() {
-    return Oddzial::podaj_typ();
+    return 'q';
 }
+
+void Kusznik::wspieraj() {
+
+}
+
+Wspolrzedne Kusznik::szukaj_celu() {
+    Wspolrzedne x;
+    return x;
+}
+
+int Kusznik::atakuj() {
+    return 0;
+}
+

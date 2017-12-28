@@ -5,9 +5,23 @@
 #include "Miecznik.h"
 
 void Miecznik::policz_modifier() {
-    Oddzial::policz_modifier();
+
 }
 
 char Miecznik::podaj_typ() {
-    return Oddzial::podaj_typ();
+    return 'm';
 }
+
+void Miecznik::wspieraj() {
+
+}
+
+Wspolrzedne Miecznik::szukaj_celu() {
+    Wspolrzedne x;
+    return x;
+}
+
+int Miecznik::atakuj() {
+    return 0;
+}
+

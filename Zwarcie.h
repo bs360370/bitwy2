@@ -11,22 +11,15 @@
 class Zwarcie : public Oddzial{
 protected:
 
-    void policz_modifier();
-    // modifiery odpowiednie dla zwarcia
+    void policz_modifier() override;
 
 public:
 
-    // konstruktory:
-    // Zwarcie(int sila, int...): Oddzial (sila, ...){}
-    Wspolrzedne szukaj_celu();
-    // dla Wsparcia szukanie celu jest inne
-    // (szuka celu w swojej armii)
-    void wspieraj();
-    // w Zwarciu nie robi nic
-    // robi coś tylko we Wsparciu
-    int atakuj();
-    // we Wsparciu nie robi nic
-    // w pozostałych liczy modifier i atak
+    Zwarcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
+
+    Wspolrzedne szukaj_celu() override;
+    void wspieraj() override;
+    int atakuj() override;
 };
 
 

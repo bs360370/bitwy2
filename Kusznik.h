@@ -9,16 +9,25 @@
 #include "Zasieg.h"
 
 class Kusznik : public Zasieg{
+
+    const int sila_ataku;
+    const int obrona;
+    const int wytrzymalosc;
+    const int zasieg;
+    int liczebnosc;
+    int morale;
+
 protected:
-    void policz_modifier();
+    void policz_modifier() override;
 // modifiery zależne od przeciwnika
 // (np. bonus za atakowanie konkretnego typu)
 
 
 public:
-    char podaj_typ();
-// konstruktory:
-// Miecznik(): Zwarcie(30,20,50,...){}
+    char podaj_typ() override;
+    void wspieraj() override;
+    Wspolrzedne szukaj_celu() override;
+    int atakuj() override;
 };
 
 

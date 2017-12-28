@@ -6,17 +6,17 @@
 #define BITWY2_ROZGRYWKA_H
 
 
-#include "Oddzial.h"
+class Oddzial;
 
 class Rozgrywka {
-private:
+
 // klasa Rozgrywka zarządza przebiegiem rozgrywki
 // i wypisywaniem wyniku
-
+public:
     Oddzial* pole;    // macierz 7 na 2N
     int rozmiar;               // 2N
     int limit_tur;              // T
-
+private:
     void resetuj_oddzialy();
     // resetuje modifiery z poprzedniej tury
     void policz_cele();

@@ -5,9 +5,27 @@
 #include "Halabardzista.h"
 
 void Halabardzista::policz_modifier() {
-    Zwarcie::policz_modifier();
+
 }
 
 char Halabardzista::podaj_typ() {
-    return Oddzial::podaj_typ();
+    return 'h';
+
+}
+
+Halabardzista::Halabardzista(): Zwarcie(40,20,40,2,150,0) {
+
+}
+
+void Halabardzista::wspieraj() {
+
+}
+
+Wspolrzedne Halabardzista::szukaj_celu() {
+    Wspolrzedne x;
+    return x;
+}
+
+int Halabardzista::atakuj() {
+    return 0;
 }

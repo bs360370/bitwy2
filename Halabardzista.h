@@ -9,16 +9,24 @@
 #include "Zwarcie.h"
 
 class Halabardzista : public Zwarcie{
+
+
+
 protected:
-    void policz_modifier();
+    void policz_modifier() override;
 // modifiery zależne od przeciwnika
 // (np. bonus za atakowanie konkretnego typu)
 
 
 public:
-    char podaj_typ();
-// konstruktory:
-// Miecznik(): Zwarcie(30,20,50,...){}
+    char podaj_typ() override;
+    void wspieraj() override;
+    Wspolrzedne szukaj_celu() override;
+    int atakuj() override;
+
+Halabardzista();
+
+
 };
 
 

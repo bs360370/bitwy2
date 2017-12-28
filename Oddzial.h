@@ -7,16 +7,17 @@
 
 
 #include "Wspolrzedne.h"
-#include "Rozgrywka.h"
 #include <string.h>
+
+class Rozgrywka;
 
 class Oddzial {
 protected:
-    const int sila_ataku;
-    const int obrona;
-    const int wytrzymalosc;
-    const int zasieg;
-    int liczebmosc;
+    int sila_ataku;
+    int obrona;
+    int wytrzymalosc;
+    int zasieg;
+    int liczebnosc;
     int morale;
 
     Rozgrywka* wskaznik_na_Rozgrywke;
@@ -30,7 +31,7 @@ protected:
     // i albo pochodzą od jednostek wsparcia
     // albo są karami
     // na początku tury mają wyjściową wartość 1.0
-    virtual void policz_modifier();
+    virtual void policz_modifier() = 0;
     // liczy modifier w zależności od pozycji
     // i rodzaju przeciwnika
     int policz_atak();
@@ -40,13 +41,13 @@ public:
 
     void resetuj_modifiery();
     //  ustawia modifiery oddziału na 1.0
-    virtual char podaj_typ();
-    virtual Wspolrzedne szukaj_celu();
+    virtual char podaj_typ() = 0;
+    virtual Wspolrzedne szukaj_celu() = 0;
     // podaje cel Oddziału wyliczony na podstawie
     // jego zasięgu i informacji z Rozgrywki o stanie gry
-    virtual void wspieraj();
+    virtual void wspieraj() = 0;
     void otrzymaj_wsparcie();
-    virtual int atakuj();
+    virtual int atakuj() = 0;
     // przekazuje Rozgrywce informację o tym
     // za ile atakowany jest cel
     void aktualizuj_liczebnosc();
@@ -59,6 +60,10 @@ public:
     // informuje Rozgrywkę o martwym oddziale
 
     // konstruktory, destruktory
+
+    Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
+
+    void wypisz_wartosci();
 };
 
 

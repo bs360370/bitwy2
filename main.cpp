@@ -1,14 +1,12 @@
 #include <iostream>
 #include "Oddzial.h"
 #include "Wsparcie.h"
+#include "Halabardzista.h"
 
 int main() {
 
-
-
-    std::cout << "Hello, World!" << std::endl;
-
-
+    Halabardzista* x = new Halabardzista();
+    x->wypisz_wartosci();
 
     return 0;
 }

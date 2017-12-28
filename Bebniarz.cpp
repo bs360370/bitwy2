@@ -5,13 +5,23 @@
 #include "Bebniarz.h"
 
 void Bebniarz::wspieraj() {
-    Oddzial::wspieraj();
+
 }
 
 char Bebniarz::podaj_typ() {
-    return Oddzial::podaj_typ();
+    return 'b';
 }
 
 void Bebniarz::policz_modifier() {
-    Oddzial::policz_modifier();
+
 }
+
+Wspolrzedne Bebniarz::szukaj_celu() {
+    Wspolrzedne x;
+    return x;
+}
+
+int Bebniarz::atakuj() {
+    return 0;
+}
+

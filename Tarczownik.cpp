@@ -5,13 +5,23 @@
 #include "Tarczownik.h"
 
 void Tarczownik::wspieraj() {
-    Oddzial::wspieraj();
+
 }
 
 void Tarczownik::policz_modifier() {
-    Oddzial::policz_modifier();
+
 }
 
 char Tarczownik::podaj_typ() {
-    return Oddzial::podaj_typ();
+    return 't';
 }
+
+Wspolrzedne Tarczownik::szukaj_celu() {
+    Wspolrzedne x;
+    return x;
+}
+
+int Tarczownik::atakuj() {
+    return 0;
+}
+
