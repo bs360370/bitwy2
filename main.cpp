@@ -1,9 +1,10 @@
 #include <iostream>
 #include "Oddzial.h"
+#include "Wsparcie.h"
 
 int main() {
 
-    Oddzial* x = new Oddzial();
+    Wsparcie* x = new Wsparcie();
 
     std::cout << "Hello, World!" << std::endl;
 
