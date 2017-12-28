@@ -3,3 +3,8 @@
 //
 
 #include "Oddzial.h"
+#include <cstdio>
+
+void Oddzial::wypisz() {
+    printf("wypisuje rzeczy\n");
+}

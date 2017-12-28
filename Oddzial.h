@@ -7,7 +7,8 @@
 
 
 class Oddzial {
-
+public:
+    void wypisz();
 };
 
 
