@@ -80,20 +80,14 @@ void get_data(){
 
     string tab[6][a];
 
-    for(int i = 0; i<6; i++){
 
-        //printf("jestem w forze 6\n");
+
+    for(int i = 0; i<6; i++){
 
         for(int j = 0; j<a; j++){
 
-            //printf("jestem w forze a\n");
-
-
             scanf("%s", &tab[i][j] );
 
-            // Rozgrywka.pole[i][j]=znak;
-
-            printf("znak = %s \n", tab[i][j]);
 
         }
 
@@ -109,6 +103,7 @@ void get_data(){
         }
         printf("\n");
 
+        //printf("stuff");
     }
 
 
@@ -122,7 +117,9 @@ int main() {
     // test();
     // test wypisuje nominalne staty
 
+
     get_data();
+
 
 
     return 0;
