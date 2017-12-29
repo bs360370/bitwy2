@@ -13,9 +13,14 @@ class Rozgrywka {
 // klasa Rozgrywka zarządza przebiegiem rozgrywki
 // i wypisywaniem wyniku
 public:
-    Oddzial* pole;    // macierz 7 na 2N
+    //Oddzial* pole;    // macierz 7 na 2N
     int rozmiar;               // 2N
     int limit_tur;              // T
+
+    Oddzial** pole;
+
+
+
 private:
     void resetuj_oddzialy();
     // resetuje modifiery z poprzedniej tury
@@ -43,6 +48,10 @@ public:
 // poza tym metody wywoływane przez Oddział
 // jeszcze nie ustalone
 // konstruktory, destruktory
+
+    Rozgrywka(int rozmiar, int limit_tur);
+    ~Rozgrywka();
+
 };
 
 
