@@ -9,17 +9,19 @@
 #include "Oddzial.h"
 
 class Wsparcie : public Oddzial {
+
 protected:
 
     void policz_modifier() override;
 
 public:
 
-    Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
-
     Wspolrzedne szukaj_celu() override;
     void wspieraj() override;
     int atakuj() override;
+
+    Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
+
 };
 
 

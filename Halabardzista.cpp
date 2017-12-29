@@ -4,16 +4,16 @@
 
 #include "Halabardzista.h"
 
+Halabardzista::Halabardzista(): Zwarcie(40,20,40,2,150,0) {
+
+}
+
 void Halabardzista::policz_modifier() {
 
 }
 
 char Halabardzista::podaj_typ() {
     return 'h';
-
-}
-
-Halabardzista::Halabardzista(): Zwarcie(40,20,40,2,150,0) {
 
 }
 

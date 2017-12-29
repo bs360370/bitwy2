@@ -4,6 +4,10 @@
 
 #include "Lucznik.h"
 
+Lucznik::Lucznik(): Zasieg(30,5,20,5,200,0) {
+
+}
+
 void Lucznik::policz_modifier() {
 
 }
@@ -24,4 +28,6 @@ Wspolrzedne Lucznik::szukaj_celu() {
 int Lucznik::atakuj() {
     return 0;
 }
+
+
 

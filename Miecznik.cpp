@@ -4,6 +4,10 @@
 
 #include "Miecznik.h"
 
+Miecznik::Miecznik(): Zwarcie(30,20,50,1,200,0) {
+
+}
+
 void Miecznik::policz_modifier() {
 
 }
@@ -24,4 +28,6 @@ Wspolrzedne Miecznik::szukaj_celu() {
 int Miecznik::atakuj() {
     return 0;
 }
+
+
 

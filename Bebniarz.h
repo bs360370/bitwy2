@@ -10,18 +10,9 @@
 
 class Bebniarz : public Wsparcie{
 
-    const int sila_ataku;
-    const int obrona;
-    const int wytrzymalosc;
-    const int zasieg;
-    int liczebnosc;
-    int morale;
-
 protected:
-    void policz_modifier() override;
-// modifiery zależne od przeciwnika
-// (np. bonus za atakowanie konkretnego typu)
 
+    void policz_modifier() override;
 
 public:
 
@@ -30,6 +21,7 @@ public:
     Wspolrzedne szukaj_celu() override;
     int atakuj() override;
 
+    Bebniarz();
 
 };
 

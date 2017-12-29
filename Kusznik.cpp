@@ -4,6 +4,10 @@
 
 #include "Kusznik.h"
 
+Kusznik::Kusznik(): Zasieg(50,8,30,3,150,0) {
+
+}
+
 void Kusznik::policz_modifier() {
 
 }
@@ -24,4 +28,6 @@ Wspolrzedne Kusznik::szukaj_celu() {
 int Kusznik::atakuj() {
     return 0;
 }
+
+
 

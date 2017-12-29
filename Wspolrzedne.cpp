@@ -3,3 +3,11 @@
 //
 
 #include "Wspolrzedne.h"
+
+int Wspolrzedne::get_x() {
+    return 0;
+}
+
+int Wspolrzedne::get_y() {
+    return 0;
+}

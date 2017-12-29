@@ -9,17 +9,19 @@
 #include "Oddzial.h"
 
 class Zasieg : public Oddzial{
+
 protected:
 
     void policz_modifier() override;
 
 public:
 
-    Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
-
     Wspolrzedne szukaj_celu() override;
     void wspieraj() override;
     int atakuj() override;
+
+    Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
+
 };
 
 

@@ -4,6 +4,10 @@
 
 #include "Konny.h"
 
+Konny::Konny(): Zwarcie(50,10,70,2,100,0) {
+
+}
+
 void Konny::policz_modifier() {
 
 }
@@ -24,4 +28,6 @@ Wspolrzedne Konny::szukaj_celu() {
 int Konny::atakuj() {
     return 0;
 }
+
+
 

@@ -4,6 +4,10 @@
 
 #include "Tarczownik.h"
 
+Tarczownik::Tarczownik(): Wsparcie(0,20,100,2,100,0) {
+
+}
+
 void Tarczownik::wspieraj() {
 
 }
@@ -24,4 +28,6 @@ Wspolrzedne Tarczownik::szukaj_celu() {
 int Tarczownik::atakuj() {
     return 0;
 }
+
+
 

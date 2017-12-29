@@ -4,6 +4,10 @@
 
 #include "Bebniarz.h"
 
+Bebniarz::Bebniarz(): Wsparcie(0,1,50,4,40,0) {
+
+}
+
 void Bebniarz::wspieraj() {
 
 }
@@ -24,4 +28,6 @@ Wspolrzedne Bebniarz::szukaj_celu() {
 int Bebniarz::atakuj() {
     return 0;
 }
+
+
 

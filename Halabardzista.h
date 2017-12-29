@@ -10,22 +10,18 @@
 
 class Halabardzista : public Zwarcie{
 
-
-
 protected:
-    void policz_modifier() override;
-// modifiery zależne od przeciwnika
-// (np. bonus za atakowanie konkretnego typu)
 
+    void policz_modifier() override;
 
 public:
+
     char podaj_typ() override;
     void wspieraj() override;
     Wspolrzedne szukaj_celu() override;
     int atakuj() override;
 
-Halabardzista();
-
+    Halabardzista();
 
 };
 
