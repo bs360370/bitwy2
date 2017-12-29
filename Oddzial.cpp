@@ -29,7 +29,7 @@ void Oddzial::wypisz_wartosci() {
 }
 
 int Oddzial::policz_atak() {
-    return 0;
+    return (1+sila_ataku)*(liczebnosc);
 }
 
 void Oddzial::resetuj_modifiery() {

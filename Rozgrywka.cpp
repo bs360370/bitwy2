@@ -37,7 +37,7 @@ void Rozgrywka::wykonaj_ture() {
 void Rozgrywka::czy_koniec_gry() {
 
 }
-
+/*
 Rozgrywka::Rozgrywka(int rozmiar, int limit_tur) {
     this->rozmiar = rozmiar;
     this->limit_tur = limit_tur;
@@ -57,5 +57,5 @@ Rozgrywka::~Rozgrywka() {
     }
     delete pole;
 }
-
+*/
 

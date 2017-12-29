@@ -49,8 +49,8 @@ public:
 // jeszcze nie ustalone
 // konstruktory, destruktory
 
-    Rozgrywka(int rozmiar, int limit_tur);
-    ~Rozgrywka();
+   // Rozgrywka(int rozmiar, int limit_tur);
+   // ~Rozgrywka();
 
 };
 

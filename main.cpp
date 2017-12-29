@@ -1,4 +1,6 @@
 #include <iostream>
+
+
 #include "Oddzial.h"
 #include "Wsparcie.h"
 #include "Halabardzista.h"
@@ -9,6 +11,7 @@
 #include "Bebniarz.h"
 #include "Tarczownik.h"
 
+using namespace std;
 
 void test() {
 
@@ -64,23 +67,49 @@ void test() {
 
 void get_data(){
 
-    int* dlugosc_linii = nullptr;
-    int* liczba_tur = nullptr;
+    int a; // dlugosc linii
+    int b; // liczba tur
 
-    scanf ("%d %d\n", dlugosc_linii, liczba_tur);
+
+    scanf("%d %d", &a, &b);
+
+    printf ("\ndane zebrano\na=%d, b=%d \n", a, b);
+    // tutaj dzieje sie konstruktor Rozgrywki
+
+    // tymczasowe:
+
+    string tab[6][a];
 
     for(int i = 0; i<6; i++){
 
-        for(int j = 0; j<dlugosc_linii; j++){
+        //printf("jestem w forze 6\n");
 
-            int znak;
-            scanf("%c", znak);
-            Rozgrywka.pole[i][j]=znak;
+        for(int j = 0; j<a; j++){
+
+            //printf("jestem w forze a\n");
+
+
+            scanf("%s", &tab[i][j] );
+
+            // Rozgrywka.pole[i][j]=znak;
+
+            printf("znak = %s \n", tab[i][j]);
 
         }
 
-    }
 
+    }
+    printf("\n tablica: \n");
+    for(int i = 0; i<6; i++){
+
+        for(int j = 0; j<a; j++){
+
+            printf("%s ", tab[i][j]);
+
+        }
+        printf("\n");
+
+    }
 
 
 
@@ -92,6 +121,8 @@ int main() {
 
     // test();
     // test wypisuje nominalne staty
+
+    get_data();
 
 
     return 0;
