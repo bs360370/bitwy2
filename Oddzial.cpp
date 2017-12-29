@@ -5,35 +5,6 @@
 #include "Oddzial.h"
 #include <cstdio>
 
-
-int Oddzial::policz_atak() {
-    return 0;
-}
-
-void Oddzial::resetuj_modifiery() {
-
-}
-
-void Oddzial::otrzymaj_wsparcie() {
-
-}
-
-void Oddzial::aktualizuj_liczebnosc() {
-
-}
-
-void Oddzial::aktualizuj_wspolrzedne() {
-
-}
-
-void Oddzial::aktualizuj_morale() {
-
-}
-
-bool Oddzial::czy_martwy() {
-    return false;
-}
-
 Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale) {
 
     this->sila_ataku = sila_ataku;
@@ -56,3 +27,35 @@ void Oddzial::wypisz_wartosci() {
            this->morale);
 
 }
+
+int Oddzial::policz_atak() {
+    return 0;
+}
+
+void Oddzial::resetuj_modifiery() {
+    modifier_atak = 1;
+    modifier_morale = 1;
+    modifier_obrona = 1;
+}
+
+void Oddzial::otrzymaj_wsparcie() {
+
+}
+
+void Oddzial::aktualizuj_liczebnosc() {
+
+}
+
+void Oddzial::aktualizuj_wspolrzedne() {
+
+}
+
+void Oddzial::aktualizuj_morale() {
+
+}
+
+bool Oddzial::czy_martwy() {
+    return liczebnosc != 0;
+}
+
+
