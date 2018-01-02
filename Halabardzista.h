@@ -21,7 +21,7 @@ public:
     Wspolrzedne szukaj_celu() override;
     int atakuj() override;
 
-    Halabardzista();
+    Halabardzista(int x, int y, Rozgrywka* rozgrywka);
 
 };
 

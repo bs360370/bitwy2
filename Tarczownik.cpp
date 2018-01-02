@@ -4,7 +4,7 @@
 
 #include "Tarczownik.h"
 
-Tarczownik::Tarczownik(): Wsparcie(0,20,100,2,100,0) {
+Tarczownik::Tarczownik(int x, int y, Rozgrywka* rozgrywka): Wsparcie(0,20,100,2,100,0, x, y, rozgrywka) {
 
 }
 

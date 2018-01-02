@@ -4,7 +4,7 @@
 
 #include "Bebniarz.h"
 
-Bebniarz::Bebniarz(): Wsparcie(0,1,50,4,40,0) {
+Bebniarz::Bebniarz(int x, int y, Rozgrywka* rozgrywka): Wsparcie(0,1,50,4,40,0, x, y, rozgrywka) {
 
 }
 

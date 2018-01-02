@@ -4,7 +4,7 @@
 
 #include "Kusznik.h"
 
-Kusznik::Kusznik(): Zasieg(50,8,30,3,150,0) {
+Kusznik::Kusznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(50,8,30,3,150,0, x, y, rozgrywka) {
 
 }
 

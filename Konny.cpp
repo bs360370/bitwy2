@@ -4,7 +4,7 @@
 
 #include "Konny.h"
 
-Konny::Konny(): Zwarcie(50,10,70,2,100,0) {
+Konny::Konny(int x, int y, Rozgrywka* rozgrywka): Zwarcie(50,10,70,2,100,0, x, y, rozgrywka) {
 
 }
 

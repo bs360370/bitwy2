@@ -21,7 +21,7 @@ public:
     Wspolrzedne szukaj_celu() override;
     int atakuj() override;
 
-    Tarczownik();
+    Tarczownik(int x, int y, Rozgrywka* rozgrywka);
 
 };
 

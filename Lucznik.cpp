@@ -4,7 +4,7 @@
 
 #include "Lucznik.h"
 
-Lucznik::Lucznik(): Zasieg(30,5,20,5,200,0) {
+Lucznik::Lucznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(30,5,20,5,200,0, x, y, rozgrywka) {
 
 }
 

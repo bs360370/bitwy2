@@ -21,7 +21,7 @@ public:
     Wspolrzedne szukaj_celu() override;
     int atakuj() override;
 
-    Bebniarz();
+    Bebniarz(int x, int y, Rozgrywka* rozgrywka);
 
 };
 

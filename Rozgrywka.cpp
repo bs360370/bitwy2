@@ -63,32 +63,25 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
         for(int j = 0; j < rozmiar; ++j)
             switch(tab[j][i]) {
                 case 'b':
-                    pole[i][j] = new Bebniarz();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Bebniarz(i, j, this);
                     break;
                 case 'h':
-                    pole[i][j] = new Halabardzista();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Halabardzista(i, j, this);
                     break;
                 case 'k':
-                    pole[i][j] = new Konny();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Konny(i, j, this);
                     break;
                 case 'q':
-                    pole[i][j] = new Kusznik();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Kusznik(i, j, this);
                     break;
                 case 'l':
-                    pole[i][j] = new Lucznik();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Lucznik(i, j, this);
                     break;
                 case 'm':
-                    pole[i][j] = new Miecznik();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Miecznik(i, j, this);
                     break;
                 case 't':
-                    pole[i][j] = new Tarczownik();
-                    pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    pole[i][j] = new Tarczownik(i, j, this);
                     break;
                 default:
                     printf("NIEOBSLUGIWANY RODZAJ JEDNOSTEK %c!\n", tab[j][i]);

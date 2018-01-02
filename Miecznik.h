@@ -21,7 +21,7 @@ public:
     Wspolrzedne szukaj_celu() override;
     int atakuj() override;
 
-    Miecznik();
+    Miecznik(int x, int y, Rozgrywka* rozgrywka);
 
 };
 

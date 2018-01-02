@@ -4,7 +4,7 @@
 
 #include "Halabardzista.h"
 
-Halabardzista::Halabardzista(): Zwarcie(40,20,40,2,150,0) {
+Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,40,2,150,0, x, y, rozgrywka) {
 
 }
 

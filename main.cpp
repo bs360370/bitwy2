@@ -13,7 +13,7 @@
 #include "Rozgrywka.h"
 
 using namespace std;
-
+/*
 void test() {
 
     printf("\n");
@@ -65,7 +65,8 @@ void test() {
     delete (t);
 
 }
-
+*/
+/*
 void get_data(){
 
     int a; // dlugosc linii
@@ -102,7 +103,7 @@ void get_data(){
 
 
 }
-
+*/
 
 
 int main() {

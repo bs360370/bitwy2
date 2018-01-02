@@ -6,7 +6,7 @@
 #include "Wspolrzedne.h"
 #include <cstdio>
 
-Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale) {
+Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr) {
 
     this->sila_ataku = sila_ataku;
     this->obrona = obrona;
@@ -14,7 +14,8 @@ Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
     this->zasieg = zasieg;
     this->liczebnosc = liczebnosc;
     this->morale = morale;
-    this->polozenie = new Wspolrzedne(0, 0);
+    this->polozenie = new Wspolrzedne(x, y);
+    this->wskaznik_na_Rozgrywke = rozgr;
 
 }
 

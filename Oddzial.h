@@ -43,7 +43,7 @@ public:
     void aktualizuj_morale();
     bool czy_martwy();
 
-    Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
+    Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr);
     ~Oddzial();
 
     void wypisz_wartosci();
