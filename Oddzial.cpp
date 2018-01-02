@@ -3,6 +3,7 @@
 //
 
 #include "Oddzial.h"
+#include "Wspolrzedne.h"
 #include <cstdio>
 
 Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale) {
@@ -13,6 +14,7 @@ Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
     this->zasieg = zasieg;
     this->liczebnosc = liczebnosc;
     this->morale = morale;
+    this->polozenie = new Wspolrzedne(0, 0);
 
 }
 
@@ -46,7 +48,9 @@ void Oddzial::aktualizuj_liczebnosc() {
 
 }
 
-void Oddzial::aktualizuj_wspolrzedne() {
+void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
+    this->polozenie->set_x(x);
+    this->polozenie->set_y(y);
 
 }
 
@@ -56,6 +60,11 @@ void Oddzial::aktualizuj_morale() {
 
 bool Oddzial::czy_martwy() {
     return liczebnosc != 0;
+}
+
+Oddzial::~Oddzial() {
+    delete (polozenie);
+
 }
 
 

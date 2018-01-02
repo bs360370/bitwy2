@@ -22,8 +22,7 @@ void Halabardzista::wspieraj() {
 }
 
 Wspolrzedne Halabardzista::szukaj_celu() {
-    Wspolrzedne x;
-    return x;
+    return *polozenie;
 }
 
 int Halabardzista::atakuj() {

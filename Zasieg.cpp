@@ -12,7 +12,7 @@ void Zasieg::policz_modifier() {
 }
 
 Wspolrzedne Zasieg::szukaj_celu() {
-    return Wspolrzedne();
+    return *polozenie;
 }
 
 void Zasieg::wspieraj() {

@@ -21,8 +21,7 @@ void Kusznik::wspieraj() {
 }
 
 Wspolrzedne Kusznik::szukaj_celu() {
-    Wspolrzedne x;
-    return x;
+    return *polozenie;
 }
 
 int Kusznik::atakuj() {

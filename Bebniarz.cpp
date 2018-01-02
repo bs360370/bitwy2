@@ -21,8 +21,7 @@ void Bebniarz::policz_modifier() {
 }
 
 Wspolrzedne Bebniarz::szukaj_celu() {
-    Wspolrzedne x;
-    return x;
+    return *polozenie;
 }
 
 int Bebniarz::atakuj() {

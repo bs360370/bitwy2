@@ -12,7 +12,7 @@ void Wsparcie::policz_modifier() {
 }
 
 Wspolrzedne Wsparcie::szukaj_celu() {
-    return Wspolrzedne();
+    return *polozenie;
 }
 
 void Wsparcie::wspieraj() {

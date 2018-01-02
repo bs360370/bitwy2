@@ -17,7 +17,7 @@ public:
     int rozmiar;               // 2N
     int limit_tur;              // T
 
-    Oddzial** pole;
+    Oddzial*** pole;
 
 
 
@@ -49,8 +49,8 @@ public:
 // jeszcze nie ustalone
 // konstruktory, destruktory
 
-   // Rozgrywka(int rozmiar, int limit_tur);
-   // ~Rozgrywka();
+    Rozgrywka(int rozmiar, int limit_tur, char tab[][6]);
+    ~Rozgrywka();
 
 };
 

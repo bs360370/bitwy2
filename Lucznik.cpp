@@ -21,8 +21,7 @@ void Lucznik::wspieraj() {
 }
 
 Wspolrzedne Lucznik::szukaj_celu() {
-    Wspolrzedne x;
-    return x;
+    return *polozenie;
 }
 
 int Lucznik::atakuj() {

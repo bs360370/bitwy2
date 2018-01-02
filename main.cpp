@@ -10,6 +10,7 @@
 #include "Konny.h"
 #include "Bebniarz.h"
 #include "Tarczownik.h"
+#include "Rozgrywka.h"
 
 using namespace std;
 
@@ -71,38 +72,30 @@ void get_data(){
     int b; // liczba tur
 
 
-    scanf("%d %d", &a, &b);
+    scanf("%d %d\n", &a, &b);
 
     printf ("\ndane zebrano\na=%d, b=%d \n", a, b);
     // tutaj dzieje sie konstruktor Rozgrywki
 
     // tymczasowe:
 
-    string tab[6][a];
+    char tab[10][10000];
 
 
 
-    for(int i = 0; i<6; i++){
-
-        for(int j = 0; j<a; j++){
-
-            scanf("%s", &tab[i][j] );
-
-
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < a; j++) {
+            //scanf("%c", &tab[i][j]);
+            cin >> tab[i][j];
         }
-
-
     }
+
     printf("\n tablica: \n");
-    for(int i = 0; i<6; i++){
-
-        for(int j = 0; j<a; j++){
-
-            printf("%s ", tab[i][j]);
-
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < a; j++){
+            printf("-> %c ", tab[i][j]);
         }
         printf("\n");
-
         //printf("stuff");
     }
 
@@ -117,9 +110,30 @@ int main() {
     // test();
     // test wypisuje nominalne staty
 
+    int dlugosc; // dlugosc linii
+    int tury; // liczba tur
 
-    get_data();
 
+    scanf("%d %d\n", &dlugosc, &tury);
+
+    printf ("\ndane zebrano\ndlugosc=%d, tury=%d \n", dlugosc, tury);
+    // tutaj dzieje sie konstruktor Rozgrywki
+
+    // tymczasowe:
+
+    char tab[10000][6];
+
+
+
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < dlugosc; j++) {
+            cin >> tab[j][i];
+        }
+    }
+
+    Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
+    r->wypisz();
+    delete(r);
 
 
     return 0;

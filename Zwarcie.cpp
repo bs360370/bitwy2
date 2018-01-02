@@ -12,7 +12,7 @@ void Zwarcie::policz_modifier() {
 }
 
 Wspolrzedne Zwarcie::szukaj_celu() {
-    return Wspolrzedne();
+    return *polozenie;
 }
 
 void Zwarcie::wspieraj() {

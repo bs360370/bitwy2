@@ -22,7 +22,7 @@ protected:
     int morale;
 
     Rozgrywka* wskaznik_na_Rozgrywke;
-    Wspolrzedne polozenie;
+    Wspolrzedne* polozenie;
 
     double modifier_atak;
     double modifier_morale;
@@ -39,11 +39,12 @@ public:
     void otrzymaj_wsparcie();
     virtual int atakuj() = 0;
     void aktualizuj_liczebnosc();
-    void aktualizuj_wspolrzedne();
+    void aktualizuj_wspolrzedne(int x, int y);
     void aktualizuj_morale();
     bool czy_martwy();
 
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale);
+    ~Oddzial();
 
     void wypisz_wartosci();
 };
