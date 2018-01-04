@@ -111,20 +111,14 @@ int main() {
     // test();
     // test wypisuje nominalne staty
 
-    int dlugosc; // dlugosc linii
-    int tury; // liczba tur
-
+    int dlugosc;                // dlugosc linii
+    int tury;                   // liczba tur
 
     scanf("%d %d\n", &dlugosc, &tury);
 
     printf ("\ndane zebrano\ndlugosc=%d, tury=%d \n", dlugosc, tury);
-    // tutaj dzieje sie konstruktor Rozgrywki
-
-    // tymczasowe:
 
     char tab[10000][6];
-
-
 
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < dlugosc; j++) {
@@ -135,7 +129,6 @@ int main() {
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
     r->wypisz();
     delete(r);
-
 
     return 0;
 }

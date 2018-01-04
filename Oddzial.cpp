@@ -1,6 +1,4 @@
-//
-// Created by Basia on 28.12.2017.
-//
+
 
 #include "Oddzial.h"
 #include "Wspolrzedne.h"
@@ -31,7 +29,7 @@ void Oddzial::wypisz_wartosci() {
 
 }
 
-int Oddzial::policz_atak() {
+double Oddzial::policz_atak() {
     return (1+sila_ataku)*(liczebnosc);
 }
 

@@ -1,6 +1,4 @@
-//
-// Created by Basia on 28.12.2017.
-//
+
 
 #ifndef BITWY2_ODDZIAL_H
 #define BITWY2_ODDZIAL_H
@@ -14,6 +12,7 @@ class Rozgrywka;
 class Oddzial {
 
 protected:
+
     int sila_ataku;
     int obrona;
     int wytrzymalosc;
@@ -28,7 +27,7 @@ protected:
     double modifier_morale;
     double modifier_obrona;
     virtual void policz_modifier() = 0;
-    int policz_atak();
+    double policz_atak();
 
 public:
 
@@ -46,7 +45,7 @@ public:
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr);
     ~Oddzial();
 
-    void wypisz_wartosci();
+    void wypisz_wartosci();                     // wypisuje staty oddzialu zawarte w tresci zadania
 };
 
 

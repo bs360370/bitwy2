@@ -1,6 +1,4 @@
-//
-// Created by Basia on 28.12.2017.
-//
+
 
 #ifndef BITWY2_HALABARDZISTA_H
 #define BITWY2_HALABARDZISTA_H
