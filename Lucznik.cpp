@@ -11,7 +11,7 @@ void Lucznik::policz_modifier() {
 }
 
 char Lucznik::podaj_typ() {
-    return 'l';
+    return 'L';
 }
 
 void Lucznik::wspieraj() {

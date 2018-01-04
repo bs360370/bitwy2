@@ -11,7 +11,7 @@ void Konny::policz_modifier() {
 }
 
 char Konny::podaj_typ() {
-    return 'k';
+    return 'K';
 }
 
 void Konny::wspieraj() {

@@ -11,7 +11,7 @@ void Kusznik::policz_modifier() {
 }
 
 char Kusznik::podaj_typ() {
-    return 'q';
+    return 'k';
 }
 
 void Kusznik::wspieraj() {

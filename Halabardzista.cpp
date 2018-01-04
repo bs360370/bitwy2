@@ -11,7 +11,7 @@ void Halabardzista::policz_modifier() {
 }
 
 char Halabardzista::podaj_typ() {
-    return 'h';
+    return 'H';
 
 }
 

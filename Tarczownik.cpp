@@ -15,7 +15,7 @@ void Tarczownik::policz_modifier() {
 }
 
 char Tarczownik::podaj_typ() {
-    return 't';
+    return 'T';
 }
 
 Wspolrzedne Tarczownik::szukaj_celu() {

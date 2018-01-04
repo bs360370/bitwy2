@@ -62,29 +62,30 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
             switch (tab[j][i]){
-                case 'b':
+                case 'B':
                     pole[i][j] = new Bebniarz(i, j, this);
                     break;
-                case 'h':
+                case 'H':
                     pole[i][j] = new Halabardzista(i, j, this);
                     break;
-                case 'k':
+                case 'K':
                     pole[i][j] = new Konny(i, j, this);
                     break;
-                case 'q':
+                case 'k':
                     pole[i][j] = new Kusznik(i, j, this);
                     break;
-                case 'l':
+                case 'L':
                     pole[i][j] = new Lucznik(i, j, this);
                     break;
-                case 'm':
+                case 'M':
                     pole[i][j] = new Miecznik(i, j, this);
                     break;
-                case 't':
+                case 'T':
                     pole[i][j] = new Tarczownik(i, j, this);
                     break;
                 default:
-                    printf("NIEOBSLUGIWANY RODZAJ JEDNOSTEK  pole[%d][%d]= %c !\n", j, i, tab[j][i]);
+                    printf("NIEPOPRAWNE WEJSCIE  pole[%d][%d]= %c !\n", j, i, tab[j][i]);
+                    printf("RODZAJ JEDNOSTKI NIEZNANY \nROZGRYWKE USUNIETO \n");
                     delete (this);
             }
         }

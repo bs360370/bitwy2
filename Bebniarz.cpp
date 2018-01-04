@@ -11,7 +11,7 @@ void Bebniarz::wspieraj() {
 }
 
 char Bebniarz::podaj_typ() {
-    return 'b';
+    return 'B';
 }
 
 void Bebniarz::policz_modifier() {

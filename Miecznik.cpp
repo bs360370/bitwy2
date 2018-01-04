@@ -9,7 +9,7 @@ void Miecznik::policz_modifier() {
 }
 
 char Miecznik::podaj_typ() {
-    return 'm';
+    return 'M';
 }
 
 void Miecznik::wspieraj() {
