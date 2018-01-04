@@ -27,7 +27,84 @@ void Rozgrywka::policz_straty() {
 
 }
 
-void Rozgrywka::poprzesuwaj() {
+void Rozgrywka::poprzesuwaj_1() {
+
+    // I faza: przesuwanie do przodu jesli cos umarlo
+
+
+    for (int j = 0; j < rozmiar; ++j){
+        for(int i = 2; i > 0; --i){
+            if (pole[i][j] == nullptr){
+                Oddzial* temp;
+                temp = pole[i][j];
+                pole[i][j] =  pole[i-1][j];
+                pole[i-1][j] = temp;
+                delete temp;
+            }
+        }
+        for(int i = 3; i < 5; ++i){
+            if (pole[i][j] == nullptr){
+                Oddzial* temp;
+                temp = pole[i][j];
+                pole[i][j] = pole[i+j][j];
+                pole[i+1][j] = temp;
+                delete temp;
+            }
+        }
+    }
+
+}
+
+void Rozgrywka::poprzesuwaj_2() {
+
+    // II faza: przesuwanie kolumn do srodka
+
+    int polowa = rozmiar/2;
+    int licznik = 0;
+    int tab[10000];
+
+    for(int j = 0; j < rozmiar + 1; ++j){
+        tab[j] = 0;
+    }
+
+    for(int j = polowa; j >= 0; --j){
+        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
+            licznik++;
+            tab[j] = licznik;
+        }
+    }
+
+    licznik = 0;
+
+    for(int j = polowa + 1; j < rozmiar; ++j){
+        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
+            licznik--;
+            tab[j] = licznik;
+        }
+    }
+
+
+    for(int j = polowa; j >= 0; --j){
+        if(tab[j] != 0){
+            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
+                for(int i = 0; i < 6; ++i){
+                    pole[i][j + tab[j]] = pole[i][j];
+                    pole[i][j] = nullptr;
+                }
+            }
+        }
+    }
+
+    for(int j = polowa + 1; j < rozmiar; ++j){
+        if(tab[j] != 0){
+            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
+                for(int i = 0; i < 6; ++i){
+                    pole[i][j + tab[j]] = pole[i][j];
+                    pole[i][j] = nullptr;
+                }
+            }
+        }
+    }
 
 }
 
@@ -135,5 +212,6 @@ Rozgrywka::~Rozgrywka() {
     }
     delete tab_atak;
 }
+
 
 

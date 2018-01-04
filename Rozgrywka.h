@@ -27,7 +27,9 @@ private:
     void policz_cele();             // każe oddziałom znaleźć cele
     void policz_wsparcie();         // każe oddziałom wykonać akcję wsparcia
     void policz_straty();           // każe oddziałom wykonać atak, liczy straty, nakłada straty na oddziały
-    void poprzesuwaj();             // pod koniec tury - sprawdza, czy coś umarło i jeśli tak to odpowiednio przestawia
+    void poprzesuwaj_1();           // przesuwa oddzialy do linii pomiedzy armiami
+    void poprzesuwaj_2();           // przesuwa kolumny do N-tej az nie bedzie dziur
+
 
 public:
 
