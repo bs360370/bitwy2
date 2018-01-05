@@ -7,7 +7,7 @@ void Wsparcie::policz_modifier() {
 
 }
 
-Wspolrzedne* Wsparcie::szukaj_celu() {
+Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p) {
     return polozenie;
 }
 

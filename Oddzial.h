@@ -33,7 +33,7 @@ public:
 
     void resetuj_modifiery();
     virtual char podaj_typ() = 0;
-    virtual Wspolrzedne* szukaj_celu() = 0;
+    virtual Wspolrzedne* szukaj_celu(Oddzial*** p) = 0;
     virtual void wspieraj() = 0;
     void otrzymaj_wsparcie();
     virtual int atakuj() = 0;
