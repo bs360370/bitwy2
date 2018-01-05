@@ -66,4 +66,40 @@ Oddzial::~Oddzial() {
 
 }
 
+Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p) {
+
+    int rzad = polozenie->get_y();
+    int pocz = rzad-zasieg+1;
+    int kon = rzad-zasieg-1;
+
+    int linia = polozenie->get_x();
+    int at; // linia atakowana
+    switch(linia){
+        case(0):
+        case(1):
+        case(2): {
+            at = 3;
+            break;
+        }
+
+
+        case(3):
+        case(4):
+        case(5): {
+            at = 2;
+            break;
+        }
+        default: {
+            printf("blad przy szukaniu celu! \n");
+        }
+    }
+
+    for(int j = pocz; j < kon; ++j){
+        if(p[at][j] != nullptr){
+            return p[at][j]->polozenie;
+        }
+    }
+    return nullptr;
+}
+
 

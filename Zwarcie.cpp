@@ -8,7 +8,7 @@ void Zwarcie::policz_modifier() {
 }
 
 Wspolrzedne* Zwarcie::szukaj_celu(Oddzial*** p) {
-
+/*
     int rzad = polozenie->get_y();
     int pocz = rzad-zasieg+1;
     int kon = rzad-zasieg-1;
@@ -33,6 +33,7 @@ Wspolrzedne* Zwarcie::szukaj_celu(Oddzial*** p) {
         }
     }
     return nullptr;
+    */
 }
 
 void Zwarcie::wspieraj() {
