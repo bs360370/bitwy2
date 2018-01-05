@@ -43,7 +43,9 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p) {
             return polozenie;
         }
     }
+
     return nullptr;
+
 }
 
 void Wsparcie::wspieraj() {

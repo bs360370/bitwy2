@@ -18,9 +18,6 @@ void Kusznik::wspieraj() {
 
 }
 
-Wspolrzedne* Kusznik::szukaj_celu() {
-    return polozenie;
-}
 
 int Kusznik::atakuj() {
     return 0;

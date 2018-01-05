@@ -81,8 +81,6 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p) {
             at = 3;
             break;
         }
-
-
         case(3):
         case(4):
         case(5): {
@@ -99,6 +97,7 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p) {
             return p[at][j]->polozenie;
         }
     }
+
     return nullptr;
 }
 

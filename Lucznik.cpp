@@ -33,8 +33,6 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
             at = 4;
             break;
         }
-
-
         case(3):
         case(4):
         case(5): {
@@ -51,13 +49,16 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
             return p[at][j]->polozenie;
         }
     }
+
     if(at==1) at = 2;
     if(at==4) at = 3;
+
     for(int j = pocz; j < kon; ++j){
         if(p[at][j] != nullptr){
             return p[at][j]->polozenie;
         }
     }
+
     return nullptr;
 }
 

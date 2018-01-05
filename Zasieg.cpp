@@ -8,9 +8,6 @@ void Zasieg::policz_modifier() {
 
 }
 
-Wspolrzedne* Zasieg::szukaj_celu(Oddzial*** p) {
-    return polozenie;
-}
 
 void Zasieg::wspieraj() {
 

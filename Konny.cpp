@@ -18,9 +18,6 @@ void Konny::wspieraj() {
 
 }
 
-Wspolrzedne* Konny::szukaj_celu() {
-    return polozenie;
-}
 
 int Konny::atakuj() {
     return 0;
