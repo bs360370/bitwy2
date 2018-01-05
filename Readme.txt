@@ -4,6 +4,8 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 
                 !!!!!!!!!!!!
 
+trzeba zmienic kolejnosc sprawdzanych rzedow w [rzecz].szukaj_celu tak, zeby odleglosc byla minimalna
+
 
 trzeba gdzies zapisywac wartosci obrazen zanim zostaną odjęte przez Rozgrywke
 -dodac modifier w klasie Oddzial?

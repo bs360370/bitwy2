@@ -70,10 +70,10 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p) {
 
     int rzad = polozenie->get_y();
     int pocz = rzad-zasieg+1;
-    int kon = rzad-zasieg-1;
+    int kon = rzad+zasieg-1;
 
     int linia = polozenie->get_x();
-    int at; // linia atakowana
+    int at = -1; // linia atakowana
     switch(linia){
         case(0):
         case(1):
@@ -93,6 +93,7 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p) {
     }
 
     for(int j = pocz; j < kon; ++j){
+        // TODO: trzeba zmienic kolejnosc
         if(p[at][j] != nullptr){
             return p[at][j]->polozenie;
         }

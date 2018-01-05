@@ -22,10 +22,10 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
 
     int rzad = polozenie->get_y();
     int pocz = rzad-zasieg+1;
-    int kon = rzad-zasieg-1;
+    int kon = rzad+zasieg-1;
 
     int linia = polozenie->get_x();
-    int at; // linia atakowana
+    int at = -1; // linia atakowana
     switch(linia){
         case(0):
         case(1):
@@ -45,6 +45,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
     }
 
     for(int j = pocz; j < kon; ++j){
+        // TODO: trzeba zmienic kolejnosc
         if(p[at][j] != nullptr){
             return p[at][j]->polozenie;
         }
@@ -54,11 +55,12 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
     if(at==4) at = 3;
 
     for(int j = pocz; j < kon; ++j){
+        // TODO: trzeba zmienic kolejnosc
         if(p[at][j] != nullptr){
             return p[at][j]->polozenie;
         }
     }
-
+    printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
 
