@@ -33,23 +33,25 @@ void Rozgrywka::poprzesuwaj_1() {
 
 
     for (int j = 0; j < rozmiar; ++j){
-        for(int i = 2; i > 0; --i){
+        for(int i = 1; i < 3; ++i){
             if (pole[i][j] == nullptr){
-                Oddzial* temp;
-                temp = pole[i][j];
                 pole[i][j] =  pole[i-1][j];
-                pole[i-1][j] = temp;
-                delete temp;
+                pole[i-1][j] = nullptr;
             }
         }
-        for(int i = 3; i < 5; ++i){
+        if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
+            pole[1][j] = pole[0][j];
+            pole[0][j] = nullptr;
+        }
+        for(int i = 4; i > 2; --i){
             if (pole[i][j] == nullptr){
-                Oddzial* temp;
-                temp = pole[i][j];
                 pole[i][j] = pole[i+j][j];
-                pole[i+1][j] = temp;
-                delete temp;
+                pole[i+1][j] = nullptr;
             }
+        }
+        if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
+            pole[4][j] = pole[5][j];
+            pole[5][j] = nullptr;
         }
     }
 
@@ -61,7 +63,7 @@ void Rozgrywka::poprzesuwaj_2() {
 
     int polowa = rozmiar/2;
     int licznik = 0;
-    int tab[10000];
+    int tab[1000000];
 
     for(int j = 0; j < rozmiar + 1; ++j){
         tab[j] = 0;
