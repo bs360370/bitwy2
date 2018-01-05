@@ -8,8 +8,8 @@ void Zasieg::policz_modifier() {
 
 }
 
-Wspolrzedne Zasieg::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Zasieg::szukaj_celu() {
+    return polozenie;
 }
 
 void Zasieg::wspieraj() {

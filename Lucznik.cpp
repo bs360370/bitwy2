@@ -18,8 +18,8 @@ void Lucznik::wspieraj() {
 
 }
 
-Wspolrzedne Lucznik::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Lucznik::szukaj_celu() {
+    return polozenie;
 }
 
 int Lucznik::atakuj() {

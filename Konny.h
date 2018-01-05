@@ -16,7 +16,7 @@ public:
 
     char podaj_typ() override;
     void wspieraj() override;
-    Wspolrzedne szukaj_celu() override;
+    Wspolrzedne* szukaj_celu() override;
     int atakuj() override;
 
     Konny(int x, int y, Rozgrywka* rozgrywka);

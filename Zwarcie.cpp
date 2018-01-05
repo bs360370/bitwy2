@@ -6,8 +6,8 @@ void Zwarcie::policz_modifier() {
 
 }
 
-Wspolrzedne Zwarcie::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Zwarcie::szukaj_celu() {
+    return polozenie;
 }
 
 void Zwarcie::wspieraj() {

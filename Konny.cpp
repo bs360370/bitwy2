@@ -18,8 +18,8 @@ void Konny::wspieraj() {
 
 }
 
-Wspolrzedne Konny::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Konny::szukaj_celu() {
+    return polozenie;
 }
 
 int Konny::atakuj() {

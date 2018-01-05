@@ -7,8 +7,8 @@ void Wsparcie::policz_modifier() {
 
 }
 
-Wspolrzedne Wsparcie::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Wsparcie::szukaj_celu() {
+    return polozenie;
 }
 
 void Wsparcie::wspieraj() {

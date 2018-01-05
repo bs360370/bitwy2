@@ -16,8 +16,8 @@ void Miecznik::wspieraj() {
 
 }
 
-Wspolrzedne Miecznik::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Miecznik::szukaj_celu() {
+    return polozenie;
 }
 
 int Miecznik::atakuj() {

@@ -18,8 +18,8 @@ char Tarczownik::podaj_typ() {
     return 'T';
 }
 
-Wspolrzedne Tarczownik::szukaj_celu() {
-    return *polozenie;
+Wspolrzedne* Tarczownik::szukaj_celu() {
+    return polozenie;
 }
 
 int Tarczownik::atakuj() {
