@@ -91,24 +91,24 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
     }
 
     for(int j = 0; j < zasieg; ++j){
-        if(rzad-j+2 > 0 && rzad+j-1 < ro){
+        if(rzad-j >= 0 && rzad+j < ro){
             if(j==0){
                 if(p[at][rzad] != nullptr){
                     return p[at][rzad]->polozenie;
                 }
             }
             else {
-                if(p[at][rzad-j+1] != nullptr){
-                    return p[at][rzad-j+1]->polozenie;
+                if(p[at][rzad-j] != nullptr){
+                    return p[at][rzad-j]->polozenie;
                 }
-                if(p[at][rzad+j-1] != nullptr){
-                    return p[at][rzad+j-1]->polozenie;
+                if(p[at][rzad+j] != nullptr){
+                    return p[at][rzad+j]->polozenie;
                 }
             }
         }
     }
 
-    printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+    printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
 
