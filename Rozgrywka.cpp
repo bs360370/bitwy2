@@ -19,7 +19,7 @@ void Rozgrywka::policz_cele() {
 
     for(int j = 0; j < rozmiar; ++j){
         for(int i = 0; i < 6; ++i){
-            tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole);
+            tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
         }
     }
 

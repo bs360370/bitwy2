@@ -7,11 +7,9 @@ void Wsparcie::policz_modifier() {
 
 }
 
-Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p) {
+Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
-    int pocz = rzad-zasieg+1;
-    int kon = rzad+zasieg-1;
 
     int linia = polozenie->get_x();
     int at = -1; // linia atakowana
@@ -33,11 +31,22 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p) {
         }
     }
 
-    for(int j = pocz; j < kon; ++j){
-        // TODO: trzeba zmienic kolejnosc
-        if(j != rzad || linia != at){
-            if(p[at][j] != nullptr){
-                return p[at][j]->polozenie;
+    for(int j = 0; j < zasieg; ++j){
+        if(rzad-j+2 > 0 && rzad+j-1 < ro){
+            if(j==0){
+                if(linia != at){
+                    if(p[at][rzad] != nullptr){
+                        return p[at][rzad]->polozenie;
+                    }
+                }
+            }
+            else {
+                if(p[at][rzad-j+1] != nullptr){
+                    return p[at][rzad-j+1]->polozenie;
+                }
+                if(p[at][rzad+j-1] != nullptr){
+                    return p[at][rzad+j-1]->polozenie;
+                }
             }
         }
     }

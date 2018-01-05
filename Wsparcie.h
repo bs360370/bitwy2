@@ -14,7 +14,7 @@ protected:
 
 public:
 
-    Wspolrzedne* szukaj_celu(Oddzial*** p) override;
+    Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) override;
     void wspieraj() override;
     int atakuj() override;
 

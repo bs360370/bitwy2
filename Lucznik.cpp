@@ -18,7 +18,7 @@ void Lucznik::wspieraj() {
 
 }
 
-Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
+Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
     int pocz = rzad-zasieg+1;
@@ -44,22 +44,45 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p) {
         }
     }
 
-    for(int j = pocz; j < kon; ++j){
-        // TODO: trzeba zmienic kolejnosc
-        if(p[at][j] != nullptr){
-            return p[at][j]->polozenie;
+    for(int j = 0; j < zasieg; ++j){
+        if(rzad-j+2 > 0 && rzad+j-1 < ro){
+            if(j==0){
+                if(p[at][rzad] != nullptr){
+                    return p[at][rzad]->polozenie;
+                }
+            }
+            else {
+                if(p[at][rzad-j+1] != nullptr){
+                    return p[at][rzad-j+1]->polozenie;
+                }
+                if(p[at][rzad+j-1] != nullptr){
+                    return p[at][rzad+j-1]->polozenie;
+                }
+            }
         }
     }
 
     if(at==1) at = 2;
     if(at==4) at = 3;
 
-    for(int j = pocz; j < kon; ++j){
-        // TODO: trzeba zmienic kolejnosc
-        if(p[at][j] != nullptr){
-            return p[at][j]->polozenie;
+    for(int j = 0; j < zasieg; ++j){
+        if(rzad-j+2 > 0 && rzad+j-1 < ro){
+            if(j==0){
+                if(p[at][rzad] != nullptr){
+                    return p[at][rzad]->polozenie;
+                }
+            }
+            else {
+                if(p[at][rzad-j+1] != nullptr){
+                    return p[at][rzad-j+1]->polozenie;
+                }
+                if(p[at][rzad+j-1] != nullptr){
+                    return p[at][rzad+j-1]->polozenie;
+                }
+            }
         }
     }
+
     printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
