@@ -1,5 +1,5 @@
 
-
+#include <cstdio>
 #include "Wspolrzedne.h"
 
 int Wspolrzedne::get_x() {

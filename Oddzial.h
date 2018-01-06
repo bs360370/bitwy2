@@ -29,8 +29,12 @@ protected:
     virtual void policz_modifier() = 0;
     double policz_atak();
 
+
+
 public:
 
+
+    Wspolrzedne* get_polozenie();
     void resetuj_modifiery();
     virtual char podaj_typ() = 0;
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);

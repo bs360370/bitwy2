@@ -36,16 +36,16 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
             if(j==0){
                 if(linia != at){
                     if(p[at][rzad] != nullptr){
-                        return p[at][rzad]->polozenie;
+                        return p[at][rzad]->get_polozenie();
                     }
                 }
             }
             else {
                 if(p[at][rzad-j] != nullptr){
-                    return p[at][rzad-j]->polozenie;
+                    return p[at][rzad-j]->get_polozenie();
                 }
                 if(p[at][rzad+j] != nullptr){
-                    return p[at][rzad+j]->polozenie;
+                    return p[at][rzad+j]->get_polozenie();
                 }
             }
         }
