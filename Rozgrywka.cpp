@@ -137,6 +137,7 @@ void Rozgrywka::wypisz() {
 void Rozgrywka::wykonaj_ture() {
 
     // TODO: uzupelnic ta funkcje
+    // TODO: dodac zeby aktualna_tura wzrastała o 1
     this->policz_cele(); // każdy oddzial liczy swoj cel i wpisuje do tab_wsp
 
 
@@ -253,15 +254,20 @@ void Rozgrywka::gra() {
 void Rozgrywka::wypisz_ture() {
 
     // TODO: poprawić alignment
+    // TODO: dodac wypisywanie tury
+
 
     printf("==================================================\n");
+
+    printf("Tura %d z %d \n", aktualna_tura, limit_tur);
     for(int i = 0; i < 3; ++i){
-        printf("          ");
+        printf("            ");
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->wypisz_status();
             }
             else printf(" X ");
+            printf ("  ");
         }
         printf("\n");
     }
@@ -269,12 +275,13 @@ void Rozgrywka::wypisz_ture() {
     printf("--------------------------------------------------\n");
 
     for(int i = 3; i < 6; ++i){
-        printf("          ");
+        printf("            ");
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->wypisz_status();
             }
             else printf(" X ");
+            printf ("  ");
         }
         printf("\n");
     }

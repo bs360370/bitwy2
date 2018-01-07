@@ -18,6 +18,8 @@ public:
     int rozmiar;                    // 2N
     int limit_tur;                  // T
 
+    int aktualna_tura = 0;          // licznik tur od 0 to T
+
     Oddzial*** pole;                // macierz polozenia oddzialow
     Wspolrzedne*** tab_wsp;         // macierz do trzymania wspolrzednych celow
     double** tab_atak;              // macierz do trzymania wartosci ataku na dany oddzial
