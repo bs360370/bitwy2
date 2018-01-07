@@ -4,6 +4,13 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 
                 !!!!!!!!!!!!
 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!PODOMNAŻAJ MODIFIERY TAM GDZIE POWINNY BYC !!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
 [zrobione] trzeba zmienic kolejnosc sprawdzanych rzedow w [rzecz].szukaj_celu tak, zeby odleglosc byla minimalna
 
 // TODO: !!! obsluzyć puste oddzialy na wejsciu

@@ -40,6 +40,7 @@ void Oddzial::resetuj_modifiery() {
     modifier_atak = 1;
     modifier_morale = 1;
     modifier_obrona = 1;
+    modifier_morale_cooldown = 1;
 }
 
 
