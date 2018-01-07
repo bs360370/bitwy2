@@ -15,7 +15,7 @@ protected:
 public:
 
     Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) override;
-    void wspieraj() override;
+    void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
     int atakuj() override;
 
     Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgrywka);

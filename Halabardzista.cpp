@@ -8,10 +8,10 @@ Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,
 
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
 
-    int a = polozenie->get_x();
-    int b = polozenie->get_y();
-    int wsp1 = tab2[a][b]->get_x();
-    int wsp2 = tab2[a][b]->get_y();
+    int a = polozenie->get_x();         // moja wspolrzedna x-owa
+    int b = polozenie->get_y();         // moja wspolrzedna y-owa
+    int wsp1 = tab2[a][b]->get_x();     // x-owa wspolrzedna celu (tab2 wywoluje sie w Rozgrywce jako tab_wsp)
+    int wsp2 = tab2[a][b]->get_y();     // y-owa wspolrzenda celu (-||-)
     if(tab1[wsp1][wsp2]->podaj_typ() == (char) "K"){
         modifier_atak = 1.5;
     }

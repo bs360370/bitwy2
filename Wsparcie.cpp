@@ -53,7 +53,7 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
     return polozenie; // nie mamy kogo wspierac -> wspieramy sami siebie
 }
 
-void Wsparcie::wspieraj() {
+void Wsparcie::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {
 
 }
 

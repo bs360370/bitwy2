@@ -28,6 +28,7 @@ protected:
     double modifier_atak;
     double modifier_morale;
     double modifier_obrona;
+    double modifier_morale_cooldown;
     virtual void policz_modifier() = 0;
     virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
 
@@ -45,7 +46,7 @@ public:
     void resetuj_modifiery();
     virtual char podaj_typ() = 0;
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);
-    virtual void wspieraj() = 0;
+    virtual void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     void otrzymaj_wsparcie();
     virtual int atakuj() = 0;
     void aktualizuj_liczebnosc();
