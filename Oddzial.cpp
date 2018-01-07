@@ -68,7 +68,7 @@ void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
 
 void Oddzial::aktualizuj_morale(int strata) {
 
-    morale = morale - (strata/liczebnosc);
+    morale = morale - (strata/liczebnosc)*modifier_morale_cooldown;
 
 }
 
@@ -179,7 +179,19 @@ int Oddzial::policz_straty(double obrazenia) {
 void Oddzial::aktualizuj_morale_2() {
 
     double maks = std::fmax(0.25, 0.25*abs(morale));
-    morale = morale - maks;
+    morale = morale - maks*modifier_morale_cooldown;
+
+}
+
+bool Oddzial::czy_konny() {
+    return false;
+}
+
+bool Oddzial::czy_zasieg() {
+    return false;
+}
+
+void Oddzial::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 

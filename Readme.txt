@@ -15,6 +15,8 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 
 // TODO: !!! obsluzyć puste oddzialy na wejsciu
 
+// TODO: USTALIC GDZIE MA BYC MODIFIER_MORALE_COOLDOWN
+
 trzeba gdzies zapisywac wartosci obrazen zanim zostaną odjęte przez Rozgrywke
 -dodac modifier w klasie Oddzial?
 -dodac atrybuty w klasie Oddzial?

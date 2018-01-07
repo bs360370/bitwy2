@@ -24,10 +24,6 @@ protected:
     Rozgrywka* wskaznik_na_Rozgrywke;
     Wspolrzedne* polozenie;
 
-    double modifier_atak;
-    double modifier_morale;
-    double modifier_obrona;
-    double modifier_morale_cooldown;
 
 
 
@@ -35,11 +31,16 @@ protected:
 
 public:
 
+
+    double modifier_atak;
+    double modifier_morale;
+    double modifier_obrona;
+    double modifier_morale_cooldown;
     int liczebnosc;
     double morale;
 
     virtual void policz_modifier() = 0;
-    virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
+    virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2);
     double policz_atak();
     int policz_straty(double obrazenia);
     void procent_zycia();
@@ -55,6 +56,9 @@ public:
     void aktualizuj_morale(int strata);
     void aktualizuj_morale_2(); // TODO: strata morale po smierci oddzialu
     bool czy_martwy(); // TODO: nie wiem czy to potrzebne teraz
+
+    virtual bool czy_konny();
+    virtual bool czy_zasieg();
 
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgr);
     ~Oddzial();

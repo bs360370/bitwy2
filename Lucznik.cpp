@@ -19,9 +19,6 @@ char Lucznik::podaj_typ() {
     return 'L';
 }
 
-void Lucznik::wspieraj() {
-
-}
 
 Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
@@ -92,6 +89,10 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
 int Lucznik::atakuj() {
     return 0;
+}
+
+void Lucznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
 }
 
 

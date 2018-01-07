@@ -18,13 +18,14 @@ char Kusznik::podaj_typ() {
     return 'k';
 }
 
-void Kusznik::wspieraj() {
-
-}
 
 
 int Kusznik::atakuj() {
     return 0;
+}
+
+void Kusznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
 }
 
 

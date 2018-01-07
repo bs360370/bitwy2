@@ -14,8 +14,9 @@ protected:
 
 public:
 
+
     char podaj_typ() override;
-    void wspieraj() override;
+    void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
     int atakuj() override;
 
     Kusznik(int x, int y, Rozgrywka* rozgrywka);

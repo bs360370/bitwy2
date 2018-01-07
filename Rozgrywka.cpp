@@ -17,7 +17,7 @@ void Rozgrywka::resetuj_oddzialy() {
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr) {
                 pole[i][j]->resetuj_modifiery();
-                // TODO: zaimplementuj resetowanie modifierow w Oddziale
+                // TODO: reset tab_wsp i tab_strat_licz
             }
         }
     }

@@ -9,9 +9,6 @@ void Zasieg::policz_modifier() {
 }
 
 
-void Zasieg::wspieraj() {
-
-}
 
 int Zasieg::atakuj() {
     return 0;
@@ -21,6 +18,14 @@ Zasieg::Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int lic
                Rozgrywka *rozgrywka) : Oddzial(sila_ataku, obrona, wytrzymalosc, zasieg, liczebnosc, morale, x, y,
                                                rozgrywka) {
 
+}
+
+void Zasieg::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
+bool Zasieg::czy_zasieg() {
+    return true;
 }
 
 

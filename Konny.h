@@ -15,8 +15,10 @@ protected:
 public:
 
     char podaj_typ() override;
-    void wspieraj() override;
     int atakuj() override;
+    void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
+
+    bool czy_konny() override;
 
     Konny(int x, int y, Rozgrywka* rozgrywka);
 

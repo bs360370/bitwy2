@@ -12,7 +12,7 @@ void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
     int b = polozenie->get_y();         // moja wspolrzedna y-owa
     int wsp1 = tab2[a][b]->get_x();     // x-owa wspolrzedna celu (tab2 wywoluje sie w Rozgrywce jako tab_wsp)
     int wsp2 = tab2[a][b]->get_y();     // y-owa wspolrzenda celu (-||-)
-    if(tab1[wsp1][wsp2]->podaj_typ() == (char) "K"){
+    if(tab1[wsp1][wsp2]->czy_konny()){
         modifier_atak = 1.5;
     }
 
@@ -25,11 +25,12 @@ char Halabardzista::podaj_typ() {
 
 }
 
-void Halabardzista::wspieraj() {
-
-}
-
 
 int Halabardzista::atakuj() {
     return 0;
 }
+
+void Halabardzista::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+

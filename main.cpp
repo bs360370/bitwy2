@@ -116,7 +116,7 @@ int main() {
 
     scanf("%d %d\n", &dlugosc, &tury);
 
-    printf ("\ndane zebrano\ndlugosc=%d, tury=%d \n", dlugosc, tury);
+    // printf ("\ndane zebrano\ndlugosc=%d, tury=%d \n", dlugosc, tury);
 
     char tab[10000][6];
 
@@ -127,7 +127,7 @@ int main() {
     }
 
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
-    r->wypisz_ture();
+    r->wykonaj_ture();
     delete(r);
 
 

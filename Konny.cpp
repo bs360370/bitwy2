@@ -10,9 +10,6 @@ char Konny::podaj_typ() {
     return 'K';
 }
 
-void Konny::wspieraj() {
-
-}
 
 
 int Konny::atakuj() {
@@ -25,12 +22,20 @@ void Konny::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
     int b = polozenie->get_y();
     int wsp1 = tab2[a][b]->get_x();
     int wsp2 = tab2[a][b]->get_y();
-    if(tab1[wsp1][wsp2]->podaj_typ() == (char) "k" || tab1[wsp1][wsp2]->podaj_typ() == (char) "L" ){
+    if(tab1[wsp1][wsp2]->czy_zasieg() ){
         modifier_atak = 1.25;
     }
 
     Zwarcie::policz_modifier();
 
+}
+
+void Konny::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
+bool Konny::czy_konny() {
+    return true;
 }
 
 
