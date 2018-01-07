@@ -27,8 +27,10 @@ public:
 
 private:
     void resetuj_oddzialy();        // resetuje modifiery z poprzedniej tury
+    void policz_modifiery();
     void policz_cele();             // każe oddziałom znaleźć cele
     void policz_wsparcie();         // każe oddziałom wykonać akcję wsparcia
+    void policz_atak();
     void policz_straty();           // każe oddziałom wykonać atak, liczy straty, nakłada straty na oddziały
     void poprzesuwaj_1();           // przesuwa oddzialy do linii pomiedzy armiami
     void poprzesuwaj_2();           // przesuwa kolumny do N-tej az nie bedzie dziur

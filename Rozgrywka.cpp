@@ -136,12 +136,18 @@ void Rozgrywka::wypisz() {
 
 void Rozgrywka::wykonaj_ture() {
 
-    // TODO: uzupelnic ta funkcje
-    // TODO: dodac zeby aktualna_tura wzrastała o 1
+    // TODO: uzupelnic ta funkcje i nie wiem czy reseyuj oddzialy w dobrym miejscy
+
+    this->resetuj_oddzialy();
     this->policz_cele(); // każdy oddzial liczy swoj cel i wpisuje do tab_wsp
-
-
-
+    this->policz_modifiery();
+    this->policz_wsparcie();
+    this->policz_atak();
+    this->policz_straty();
+    this->poprzesuwaj_1();
+    this->poprzesuwaj_2();
+    this->wypisz_ture();
+    aktualna_tura++;
 }
 
 bool Rozgrywka::czy_koniec_gry() {
@@ -242,7 +248,7 @@ void Rozgrywka::gra() {
 
         if(!this->czy_koniec_gry()){
             this->wykonaj_ture(); // TODO: powinno zmieniać czy_koniec_gry() na true jeśli pole będzie puste
-            this->wypisz_ture();
+
         }
         else {
             printf("gra skonczona przed limitem tur w turze %d.\n", i+1);
@@ -254,13 +260,11 @@ void Rozgrywka::gra() {
 void Rozgrywka::wypisz_ture() {
 
     // TODO: poprawić alignment
-    // TODO: dodac wypisywanie tury
-
 
     printf("==================================================\n");
 
     printf("Tura %d z %d \n", aktualna_tura, limit_tur);
-    for(int i = 0; i < 3; ++i){
+    for(int i = 0; i < 6; ++i){
         printf("            ");
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
@@ -270,22 +274,16 @@ void Rozgrywka::wypisz_ture() {
             printf ("  ");
         }
         printf("\n");
+        if(i == 2) printf("--------------------------------------------------\n");
     }
+}
 
-    printf("--------------------------------------------------\n");
+void Rozgrywka::policz_atak() {
 
-    for(int i = 3; i < 6; ++i){
-        printf("            ");
-        for(int j = 0; j < rozmiar; ++j){
-            if(pole[i][j] != nullptr){
-                pole[i][j]->wypisz_status();
-            }
-            else printf(" X ");
-            printf ("  ");
-        }
-        printf("\n");
-    }
-    printf("==================================================\n");
+}
+
+void Rozgrywka::policz_modifiery() {
+
 }
 
 
