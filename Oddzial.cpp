@@ -121,7 +121,7 @@ void Oddzial::wypisz_status() {
 
     char typ = this->podaj_typ();
     printf("%c:", typ);
-    this->procent_zycia;
+    this->procent_zycia();
     // TODO: rzeczy
 }
 
@@ -143,7 +143,7 @@ void Oddzial::procent_zycia() {
             printf("0%d", procent);
         }
     }
-    else {
+    else if(aktualna_liczebnosc > liczebnosc){
         printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
     }
 }

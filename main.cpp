@@ -127,7 +127,7 @@ int main() {
     }
 
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
-    r->wypisz();
+    r->wypisz_ture();
     delete(r);
 
 

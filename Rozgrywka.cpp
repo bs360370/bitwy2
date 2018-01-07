@@ -251,32 +251,34 @@ void Rozgrywka::gra() {
 }
 
 void Rozgrywka::wypisz_ture() {
-    // TODO: napisać w Oddziale funkcje ktora wypisuje np K:13 jako staty
+
     // TODO: poprawić alignment
 
-    printf("==================================================\n\n");
-    for(int j = 0; j < rozmiar; ++j){
+    printf("==================================================\n");
+    for(int i = 0; i < 3; ++i){
         printf("          ");
-        for(int i = 0; i < 3; ++i){
+        for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->wypisz_status();
             }
             else printf(" X ");
         }
+        printf("\n");
     }
 
-    printf("--------------------------------------------------\n\n");
+    printf("--------------------------------------------------\n");
 
-    for(int j = 0; j < rozmiar; ++j){
+    for(int i = 3; i < 6; ++i){
         printf("          ");
-        for(int i = 0; i < 3; ++i){
+        for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->wypisz_status();
             }
             else printf(" X ");
         }
+        printf("\n");
     }
-
+    printf("==================================================\n");
 }
 
 
