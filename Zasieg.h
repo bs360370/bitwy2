@@ -17,7 +17,7 @@ public:
     void wspieraj() override;
     int atakuj() override;
 
-    Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgrywka);
+    Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgrywka);
 
 };
 

@@ -6,7 +6,9 @@
 #include <cstdio>
 #include <cmath>
 
-Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr) {
+using namespace std;
+
+Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgr) {
 
     this->sila_ataku = sila_ataku;
     this->obrona = obrona;
@@ -22,7 +24,7 @@ Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
 
 void Oddzial::wypisz_wartosci() {
 
-    printf("sila ataku: %d\n obrona: %d\n wytrzymalosc: %d\n zasieg: %d\n liczebnosc: %d\n morale: %d\n ",
+    printf("sila ataku: %d\n obrona: %d\n wytrzymalosc: %d\n zasieg: %d\n liczebnosc: %d\n morale: %lf\n ",
            this->sila_ataku,
            this->obrona,
            this->wytrzymalosc,
@@ -44,10 +46,10 @@ void Oddzial::resetuj_modifiery() {
 }
 
 
-void Oddzial::aktualizuj_liczebnosc(int strata) {
+void Oddzial::aktualizuj_liczebnosc(int straty) {
 
-    if(strata < liczebnosc){
-        liczebnosc = liczebnosc - strata;
+    if(straty < liczebnosc){
+        liczebnosc = liczebnosc - straty;
     }
     else {
         liczebnosc = 0;
@@ -176,7 +178,8 @@ int Oddzial::policz_straty(double obrazenia) {
 
 void Oddzial::aktualizuj_morale_2() {
 
-
+    double maks = std::fmax(0.25, 0.25*abs(morale));
+    morale = morale - maks;
 
 }
 

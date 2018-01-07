@@ -151,6 +151,7 @@ void Rozgrywka::wykonaj_ture() {
     this->policz_modifiery();
     this->policz_wsparcie();
     this->policz_atak();
+    this->policz_straty_licz();
     this->poprzesuwaj_1();
     this->poprzesuwaj_2();
 
@@ -301,9 +302,10 @@ void Rozgrywka::policz_atak() {
             moj_atak = pole[i][j]->policz_atak();
             strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
 
-            // pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu);
+            // pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu); <- to nie moze byc bo morele aktualizuja sie wzgledem jednej liczebnosci w calej turze
+
+            tab_strat_licz[wsp_celu_x][wsp_celu_y] = tab_strat_licz[wsp_celu_x][wsp_celu_y] + strata_celu;
             pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
-            // TODO: tak jak wyzej jest zle bo liczebnosc moze spasc do zera zanim wykonaja sie wszystkie ataki
 
         }
     }
@@ -320,6 +322,17 @@ void Rozgrywka::policz_modifiery() {
         }
     }
 }
+
+void Rozgrywka::policz_straty_licz() {
+
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
+        }
+    }
+}
+
+
 
 
 

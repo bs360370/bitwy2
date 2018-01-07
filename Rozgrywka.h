@@ -22,7 +22,7 @@ public:
 
     Oddzial*** pole;                // macierz polozenia oddzialow
     Wspolrzedne*** tab_wsp;         // macierz do trzymania wspolrzednych celow
-    double** tab_strat_licz;              // macierz do trzymania wartosci ataku
+    double** tab_strat_licz;        // macierz do trzymania wartosci strat liczebnosci
 
 
     // TODO: dodaj reset tab_wsp i tab_strat_licz
@@ -34,6 +34,8 @@ private:
     void policz_cele();             // każe oddziałom znaleźć cele
     void policz_wsparcie();         // każe oddziałom wykonać akcję wsparcia
     void policz_atak();             // liczy obrazenia oddzialu, strate celu i zmniejsza liczebnosc celu
+    void policz_straty_licz();
+    void policz_straty_morale_2();
     void poprzesuwaj_1();           // przesuwa oddzialy do linii pomiedzy armiami
     void poprzesuwaj_2();           // przesuwa kolumny do N-tej az nie bedzie dziur
 

@@ -36,7 +36,7 @@ protected:
 public:
 
     int liczebnosc;
-    int morale;
+    double morale;
 
     virtual void policz_modifier() = 0;
     virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
@@ -50,13 +50,13 @@ public:
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);
     virtual void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     virtual int atakuj() = 0;
-    void aktualizuj_liczebnosc(int strata);
+    void aktualizuj_liczebnosc(int straty);
     void aktualizuj_wspolrzedne(int x, int y); // TODO: ...
     void aktualizuj_morale(int strata);
     void aktualizuj_morale_2(); // TODO: strata morale po smierci oddzialu
     bool czy_martwy(); // TODO: nie wiem czy to potrzebne teraz
 
-    Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr);
+    Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgr);
     ~Oddzial();
 
     void wypisz_wartosci();     // wypisuje staty
