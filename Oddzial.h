@@ -48,17 +48,16 @@ public:
     virtual char podaj_typ() = 0;
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);
     virtual void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
-    void otrzymaj_wsparcie();
     virtual int atakuj() = 0;
-    void aktualizuj_liczebnosc();
+    void aktualizuj_liczebnosc(); // TODO: niema tresci
     void aktualizuj_wspolrzedne(int x, int y);
-    void aktualizuj_morale();
+    void aktualizuj_morale(); // TODO: niema tresci
     bool czy_martwy();
 
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr);
     ~Oddzial();
 
-    void wypisz_wartosci();                     // wypisuje staty oddzialu zawarte w tresci zadania
+    void wypisz_wartosci();     // wypisuje staty
 };
 
 

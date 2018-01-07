@@ -42,9 +42,6 @@ void Oddzial::resetuj_modifiery() {
     modifier_obrona = 1;
 }
 
-void Oddzial::otrzymaj_wsparcie() {
-
-}
 
 void Oddzial::aktualizuj_liczebnosc() {
 

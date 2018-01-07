@@ -34,6 +34,14 @@ void Rozgrywka::policz_cele() {
 
 void Rozgrywka::policz_wsparcie() {
 
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+
+            pole[i][j]->wspieraj(pole, tab_wsp);
+
+        }
+    }
+
 }
 
 void Rozgrywka::policz_straty(){
