@@ -296,9 +296,12 @@ void Rozgrywka::policz_atak() {
 }
 
 void Rozgrywka::policz_modifiery() {
-// TODO: inaczej beda sie liczyc modifiery z polozenia, z celu albo ze wsparcia
+// TODO: trzeba zrobic porzadek bo teraz policz modifier bezargumentowy może wywolywac sie dwa razy, bo w halab i konnym wywoluje sie dwa razy
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
+
+            pole[i][j]->policz_modifier(pole, tab_wsp);
+            pole[i][j]->policz_modifier();
 
         }
     }

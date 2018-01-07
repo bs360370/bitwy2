@@ -29,8 +29,6 @@ protected:
     double modifier_morale;
     double modifier_obrona;
     double modifier_morale_cooldown;
-    virtual void policz_modifier() = 0;
-    virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
 
 
 
@@ -38,6 +36,9 @@ protected:
 
 public:
 
+
+    virtual void policz_modifier() = 0;
+    virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     double policz_atak();
     int policz_straty(double** tab);
     void procent_zycia();
