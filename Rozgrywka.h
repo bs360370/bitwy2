@@ -22,10 +22,10 @@ public:
 
     Oddzial*** pole;                // macierz polozenia oddzialow
     Wspolrzedne*** tab_wsp;         // macierz do trzymania wspolrzednych celow
-    double** tab_atak;              // macierz do trzymania wartosci ataku
+    double** tab_strat_licz;              // macierz do trzymania wartosci ataku
 
 
-    // TODO: dodaj reset tab_wsp i tab_atak
+    // TODO: dodaj reset tab_wsp i tab_strat_licz
 
 
 private:

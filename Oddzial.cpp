@@ -64,7 +64,9 @@ void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
 
 }
 
-void Oddzial::aktualizuj_morale() {
+void Oddzial::aktualizuj_morale(int strata) {
+
+    morale = morale - (strata/liczebnosc);
 
 }
 
@@ -170,6 +172,12 @@ int Oddzial::policz_straty(double obrazenia) {
         return a;
     }
     else return 0;
+}
+
+void Oddzial::aktualizuj_morale_2() {
+
+
+
 }
 
 

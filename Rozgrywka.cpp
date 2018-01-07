@@ -213,13 +213,13 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
         }
     }
 
-    this->tab_atak = new double* [6];
+    this->tab_strat_licz = new double* [6];
     for (int i = 0; i < 6; ++i) {
-        tab_atak[i] = new double [rozmiar];
+        tab_strat_licz[i] = new double [rozmiar];
     }
     for (int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            tab_atak[i][j] = 0;
+            tab_strat_licz[i][j] = 0;
         }
     }
 }
@@ -243,9 +243,9 @@ Rozgrywka::~Rozgrywka() {
     delete tab_wsp;
 
     for(int i = 0; i<6; i++) {
-        delete tab_atak[i];
+        delete tab_strat_licz[i];
     }
-    delete tab_atak;
+    delete tab_strat_licz;
 }
 
 void Rozgrywka::gra() {
@@ -301,7 +301,9 @@ void Rozgrywka::policz_atak() {
             moj_atak = pole[i][j]->policz_atak();
             strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
 
-            pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu);
+            // pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu);
+            pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
+            // TODO: tak jak wyzej jest zle bo liczebnosc moze spasc do zera zanim wykonaja sie wszystkie ataki
 
         }
     }

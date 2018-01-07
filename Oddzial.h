@@ -52,7 +52,8 @@ public:
     virtual int atakuj() = 0;
     void aktualizuj_liczebnosc(int strata);
     void aktualizuj_wspolrzedne(int x, int y); // TODO: ...
-    void aktualizuj_morale(); // TODO: nie wiem czy ...
+    void aktualizuj_morale(int strata);
+    void aktualizuj_morale_2(); // TODO: strata morale po smierci oddzialu
     bool czy_martwy(); // TODO: nie wiem czy to potrzebne teraz
 
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr);
