@@ -254,8 +254,7 @@ void Rozgrywka::gra() {
     for(int i = 0; i < limit_tur; ++i){
 
         if(!this->czy_koniec_gry()){
-            this->wykonaj_ture(); // TODO: powinno zmieniać czy_koniec_gry() na true jeśli pole będzie puste
-
+            this->wykonaj_ture();
         }
         else {
             printf("gra skonczona przed limitem tur w turze %d.\n", i+1);
@@ -327,10 +326,49 @@ void Rozgrywka::policz_straty_licz() {
 
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
+            if(pole[i][j] != nullptr){
+                pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
+                if(pole[i][j] == nullptr){
+                    switch(i){
+                        case(1):{
+                            if(pole[1][j-1] != nullptr) pole[1][j-1]->aktualizuj_morale_2();
+                            if(pole[1][j+1] != nullptr) pole[1][j+1]->aktualizuj_morale_2();
+                            if(pole[2][j-1] != nullptr) pole[2][j-1]->aktualizuj_morale_2();
+                            if(pole[2][j] != nullptr) pole[2][j]->aktualizuj_morale_2();
+                            if(pole[2][j+1] != nullptr) pole[2][j+1]->aktualizuj_morale_2();
+                        }
+                        case(2):{
+                            if(pole[2][j-1] != nullptr) pole[2][j-1]->aktualizuj_morale_2();
+                            if(pole[2][j+1] != nullptr) pole[2][j+1]->aktualizuj_morale_2();
+                            if(pole[1][j-1] != nullptr) pole[1][j-1]->aktualizuj_morale_2();
+                            if(pole[1][j] != nullptr) pole[1][j]->aktualizuj_morale_2();
+                            if(pole[1][j+1] != nullptr) pole[1][j+1]->aktualizuj_morale_2();
+                        }
+                        case(3):{
+                            if(pole[3][j-1] != nullptr) pole[3][j-1]->aktualizuj_morale_2();
+                            if(pole[3][j+1] != nullptr) pole[3][j+1]->aktualizuj_morale_2();
+                            if(pole[4][j-1] != nullptr) pole[4][j-1]->aktualizuj_morale_2();
+                            if(pole[4][j] != nullptr) pole[4][j]->aktualizuj_morale_2();
+                            if(pole[4][j+1] != nullptr) pole[4][j+1]->aktualizuj_morale_2();
+                        }
+                        case(4):{
+                            if(pole[4][j-1] != nullptr) pole[4][j-1]->aktualizuj_morale_2();
+                            if(pole[4][j+1] != nullptr) pole[4][j+1]->aktualizuj_morale_2();
+                            if(pole[3][j-1] != nullptr) pole[3][j-1]->aktualizuj_morale_2();
+                            if(pole[3][j] != nullptr) pole[3][j]->aktualizuj_morale_2();
+                            if(pole[3][j+1] != nullptr) pole[3][j+1]->aktualizuj_morale_2();
+                        }
+                        default:{
+                            printf("BLAD: zostal zaatakowany zly oddzial\n");
+                        }
+                    }
+                }
+            }
         }
     }
 }
+
+
 
 
 

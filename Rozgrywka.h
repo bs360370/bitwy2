@@ -33,9 +33,8 @@ private:
     void policz_modifiery();
     void policz_cele();             // każe oddziałom znaleźć cele
     void policz_wsparcie();         // każe oddziałom wykonać akcję wsparcia
-    void policz_atak();             // liczy obrazenia oddzialu, strate celu i zmniejsza liczebnosc celu
-    void policz_straty_licz();
-    void policz_straty_morale_2();
+    void policz_atak();             // liczy obrazenia oddzialu, strate celu do tab_strat_licz, pojedyncze straty morale
+    void policz_straty_licz();      // zmniejsza liczebnosci oddzialow, zmiensza morale sasiadujacych oddzialow jesli cos umarlo
     void poprzesuwaj_1();           // przesuwa oddzialy do linii pomiedzy armiami
     void poprzesuwaj_2();           // przesuwa kolumny do N-tej az nie bedzie dziur
 
