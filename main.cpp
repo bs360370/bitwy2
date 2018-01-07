@@ -130,5 +130,6 @@ int main() {
     r->wypisz();
     delete(r);
 
+
     return 0;
 }

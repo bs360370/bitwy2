@@ -3,6 +3,7 @@
 #include "Oddzial.h"
 #include "Wspolrzedne.h"
 #include <cstdio>
+#include <cmath>
 
 Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr) {
 
@@ -11,6 +12,7 @@ Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
     this->wytrzymalosc = wytrzymalosc;
     this->zasieg = zasieg;
     this->liczebnosc = liczebnosc;
+    this->aktualna_liczebnosc = liczebnosc;
     this->morale = morale;
     this->polozenie = new Wspolrzedne(x, y);
     this->wskaznik_na_Rozgrywke = rozgr;
@@ -58,12 +60,11 @@ void Oddzial::aktualizuj_morale() {
 }
 
 bool Oddzial::czy_martwy() {
-    return liczebnosc != 0;
+    return aktualna_liczebnosc == 0;
 }
 
 Oddzial::~Oddzial() {
     delete (polozenie);
-
 }
 
 Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
@@ -114,6 +115,37 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
 
 Wspolrzedne *Oddzial::get_polozenie() {
     return polozenie;
+}
+
+void Oddzial::wypisz_status() {
+
+    char typ = this->podaj_typ();
+    printf("%c:", typ);
+    this->procent_zycia;
+    // TODO: rzeczy
+}
+
+void Oddzial::procent_zycia() {
+
+    int procent;
+
+    procent = (int) floor((aktualna_liczebnosc / liczebnosc) * 100);
+    // TODO: nie wiem czy to jest dobrze ten casting
+
+    if(liczebnosc == aktualna_liczebnosc){
+        printf("00");
+    }
+    if(aktualna_liczebnosc < liczebnosc){
+        if(procent >= 10){
+            printf("%d", procent);
+        }
+        if(procent < 10){
+            printf("0%d", procent);
+        }
+    }
+    else {
+        printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
+    }
 }
 
 

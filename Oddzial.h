@@ -20,6 +20,8 @@ protected:
     int liczebnosc;
     int morale;
 
+    int aktualna_liczebnosc;
+
     Rozgrywka* wskaznik_na_Rozgrywke;
     Wspolrzedne* polozenie;
 
@@ -34,6 +36,8 @@ protected:
 public:
 
 
+    void procent_zycia();
+    void wypisz_status();
     Wspolrzedne* get_polozenie();
     void resetuj_modifiery();
     virtual char podaj_typ() = 0;

@@ -21,3 +21,5 @@ Zwarcie::Zwarcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
                                                  rozgrywka) {
 
 }
+
+

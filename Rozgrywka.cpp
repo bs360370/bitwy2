@@ -13,6 +13,14 @@
 
 void Rozgrywka::resetuj_oddzialy() {
 
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            if(pole[i][j] != nullptr) {
+                pole[i][j]->resetuj_modifiery();
+                // TODO: zaimplementuj resetowanie modifierow w Oddziale
+            }
+        }
+    }
 }
 
 void Rozgrywka::policz_cele() {
@@ -22,8 +30,6 @@ void Rozgrywka::policz_cele() {
             tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
         }
     }
-
-
 }
 
 void Rozgrywka::policz_wsparcie() {
@@ -130,10 +136,17 @@ void Rozgrywka::wypisz() {
 
 void Rozgrywka::wykonaj_ture() {
 
+    // TODO: uzupelnic ta funkcje
+    this->policz_cele(); // każdy oddzial liczy swoj cel i wpisuje do tab_wsp
+
+
+
 }
 
-void Rozgrywka::czy_koniec_gry() {
+bool Rozgrywka::czy_koniec_gry() {
 
+    int pol = rozmiar/2;
+    return pole[2][pol] == nullptr && pole[2][pol + 1] == nullptr && pole[3][pol] == nullptr && pole[3][pol + 1] == nullptr;
 }
 
 Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
@@ -221,6 +234,51 @@ Rozgrywka::~Rozgrywka() {
     }
     delete tab_atak;
 }
+
+void Rozgrywka::gra() {
+
+    for(int i = 0; i < limit_tur; ++i){
+
+        if(!this->czy_koniec_gry()){
+            this->wykonaj_ture(); // TODO: powinno zmieniać czy_koniec_gry() na true jeśli pole będzie puste
+            this->wypisz_ture();
+        }
+        else {
+            printf("gra skonczona przed limitem tur w turze %d.\n", i+1);
+            i = limit_tur;
+        }
+    }
+}
+
+void Rozgrywka::wypisz_ture() {
+    // TODO: napisać w Oddziale funkcje ktora wypisuje np K:13 jako staty
+    // TODO: poprawić alignment
+
+    printf("==================================================\n\n");
+    for(int j = 0; j < rozmiar; ++j){
+        printf("          ");
+        for(int i = 0; i < 3; ++i){
+            if(pole[i][j] != nullptr){
+                pole[i][j]->wypisz_status();
+            }
+            else printf(" X ");
+        }
+    }
+
+    printf("--------------------------------------------------\n\n");
+
+    for(int j = 0; j < rozmiar; ++j){
+        printf("          ");
+        for(int i = 0; i < 3; ++i){
+            if(pole[i][j] != nullptr){
+                pole[i][j]->wypisz_status();
+            }
+            else printf(" X ");
+        }
+    }
+
+}
+
 
 
 

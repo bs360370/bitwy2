@@ -22,3 +22,5 @@ Zasieg::Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int lic
                                                rozgrywka) {
 
 }
+
+
