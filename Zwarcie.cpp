@@ -5,6 +5,10 @@
 
 void Zwarcie::policz_modifier() {
 
+    if(polozenie->get_x() == 1 || polozenie->get_x() == 4){
+        modifier_atak = 0;
+    }
+
 }
 
 
