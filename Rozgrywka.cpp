@@ -48,7 +48,8 @@ void Rozgrywka::policz_straty(){
 
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            pole[i][j]->policz_straty(tab_atak);
+            // pole[i][j]->policz_straty(tab_atak);
+            // TODO: - tutaj jest xle
         }
     }
 
@@ -296,9 +297,24 @@ void Rozgrywka::wypisz_ture() {
 
 void Rozgrywka::policz_atak() {
 
+    int wsp_celu_x = 0;
+    int wsp_celu_y = 0;
+    double moj_atak = 0;
+    int strata_celu = 0;
+
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            tab_atak[tab_wsp[i][j]->get_x()][tab_wsp[i][j]->get_y()] = pole[i][j]->policz_atak();
+
+            wsp_celu_x = tab_wsp[i][j]->get_x();
+            wsp_celu_y = tab_wsp[i][j]->get_y();
+
+            moj_atak = pole[i][j]->policz_atak();
+
+            strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
+
+            // teraz zmniejszanie liczebnosci celu
+
+            pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu);
         }
     }
 }

@@ -44,7 +44,14 @@ void Oddzial::resetuj_modifiery() {
 }
 
 
-void Oddzial::aktualizuj_liczebnosc() {
+void Oddzial::aktualizuj_liczebnosc(int strata) {
+
+    if(strata < liczebnosc){
+        liczebnosc = liczebnosc - strata;
+    }
+    else liczebnosc = 0;
+
+    // TODO: delete (this) ???
 
 }
 
@@ -147,12 +154,13 @@ void Oddzial::procent_zycia() {
     }
 }
 
-int Oddzial::policz_straty(double** tab) {
+int Oddzial::policz_straty(double obrazenia) {
 
-    double m = 1 - (morale/(1-morale));
-    double obr = tab[polozenie->get_x()][polozenie->get_y()];
+    // TODO: to jest wogle xle
+    double m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
+    double obr = obrazenia;
     double licznik = obr*m;
-    double mianownik = wytrzymalosc*(1+obrona);
+    double mianownik = wytrzymalosc*(1+obrona*modifier_obrona);
 
     int a = (int) floor(licznik/mianownik);
     if(a > 0){
