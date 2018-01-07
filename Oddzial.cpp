@@ -35,7 +35,7 @@ void Oddzial::wypisz_wartosci() {
 }
 
 double Oddzial::policz_atak() {
-    return (1+(sila_ataku*modifier_atak))*(liczebnosc);
+    return (1+(sila_ataku*modifier_atak))*(aktualna_liczebnosc);
 }
 
 void Oddzial::resetuj_modifiery() {
@@ -48,11 +48,12 @@ void Oddzial::resetuj_modifiery() {
 
 void Oddzial::aktualizuj_liczebnosc(int straty) {
 
-    if(straty < liczebnosc){
-        liczebnosc = liczebnosc - straty;
+    if(straty < aktualna_liczebnosc){
+        aktualna_liczebnosc = aktualna_liczebnosc - straty;
     }
     else {
-        liczebnosc = 0;
+        aktualna_liczebnosc = 0;
+        // printf("usuwam oddzial!!!\n");
         delete (this);
     }
 
@@ -68,7 +69,10 @@ void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
 
 void Oddzial::aktualizuj_morale(int strata) {
 
-    morale = morale - (strata/liczebnosc)*modifier_morale_cooldown;
+    if(aktualna_liczebnosc){
+        morale = morale - (strata/aktualna_liczebnosc)*modifier_morale_cooldown;
+    }
+
 
 }
 
@@ -133,8 +137,15 @@ Wspolrzedne *Oddzial::get_polozenie() {
 void Oddzial::wypisz_status() {
 
     char typ = this->podaj_typ();
-    printf("%c:", typ);
-    this->procent_zycia();
+
+    if(aktualna_liczebnosc){
+        printf("%c: %d", typ, aktualna_liczebnosc);
+    }
+    else {
+        printf("  X  ");
+    }
+
+    // this->procent_zycia();
     // TODO: rzeczy
 }
 

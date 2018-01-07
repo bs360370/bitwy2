@@ -153,7 +153,7 @@ void Rozgrywka::wykonaj_ture() {
     this->policz_atak();
     this->policz_straty_licz();
     this->poprzesuwaj_1();
-    this->poprzesuwaj_2();
+    // this->poprzesuwaj_2();
 
 }
 
@@ -282,7 +282,6 @@ void Rozgrywka::wypisz_ture() {
         printf("\n");
         if(i == 2) printf("--------------------------------------------------\n");
     }
-    printf("==================================================\n");
 }
 
 void Rozgrywka::policz_atak() {
@@ -364,6 +363,16 @@ void Rozgrywka::policz_straty_licz() {
                     }
                 }
             }
+        }
+    }
+}
+
+void Rozgrywka::wypisz_tab_wsp() {
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+
+            printf("tab_wsp[%d][%d] = (%d, %d).\n", i, j, tab_wsp[i][j]->get_x(), tab_wsp[i][j]->get_y());
+
         }
     }
 }

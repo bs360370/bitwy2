@@ -28,7 +28,10 @@ public:
     // TODO: dodaj reset tab_wsp i tab_strat_licz
 
 
-private:
+public:
+
+    void wypisz_tab_wsp();
+
     void resetuj_oddzialy();        // resetuje modifiery z poprzedniej tury
     void policz_modifiery();
     void policz_cele();             // każe oddziałom znaleźć cele
