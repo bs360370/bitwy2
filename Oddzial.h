@@ -29,13 +29,14 @@ protected:
     double modifier_morale;
     double modifier_obrona;
     virtual void policz_modifier() = 0;
-    double policz_atak();
+
 
 
 
 
 public:
 
+    double policz_atak();
     int policz_straty(double** tab);
     void procent_zycia();
     void wypisz_status();

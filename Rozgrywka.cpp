@@ -288,10 +288,20 @@ void Rozgrywka::wypisz_ture() {
 
 void Rozgrywka::policz_atak() {
 
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            tab_atak[tab_wsp[i][j]->get_x()][tab_wsp[i][j]->get_y()] = pole[i][j]->policz_atak();
+        }
+    }
 }
 
 void Rozgrywka::policz_modifiery() {
+// TODO: inaczej beda sie liczyc modifiery z polozenia, z celu albo ze wsparcia
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
 
+        }
+    }
 }
 
 
