@@ -44,16 +44,6 @@ void Rozgrywka::policz_wsparcie() {
 
 }
 
-void Rozgrywka::policz_straty(){
-
-    for(int i = 0; i < 6; ++i){
-        for(int j = 0; j < rozmiar; ++j){
-            // pole[i][j]->policz_straty(tab_atak);
-            // TODO: - tutaj jest xle
-        }
-    }
-
-}
 
 void Rozgrywka::poprzesuwaj_1() {
 
@@ -152,15 +142,15 @@ void Rozgrywka::wypisz() {
 void Rozgrywka::wykonaj_ture() {
 
     // TODO: uzupelnic ta funkcje i nie wiem czy reseyuj oddzialy w dobrym miejscy
+
     this->wypisz_ture();
     aktualna_tura++;
 
     this->resetuj_oddzialy();
-    this->policz_cele(); // każdy oddzial liczy swoj cel i wpisuje do tab_wsp
+    this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
     this->policz_modifiery();
     this->policz_wsparcie();
     this->policz_atak();
-    this->policz_straty();
     this->poprzesuwaj_1();
     this->poprzesuwaj_2();
 
@@ -309,12 +299,10 @@ void Rozgrywka::policz_atak() {
             wsp_celu_y = tab_wsp[i][j]->get_y();
 
             moj_atak = pole[i][j]->policz_atak();
-
             strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
 
-            // teraz zmniejszanie liczebnosci celu
-
             pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu);
+
         }
     }
 }

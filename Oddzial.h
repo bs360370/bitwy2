@@ -50,10 +50,10 @@ public:
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);
     virtual void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     virtual int atakuj() = 0;
-    void aktualizuj_liczebnosc(int strata); // TODO: niema tresci
-    void aktualizuj_wspolrzedne(int x, int y);
-    void aktualizuj_morale(); // TODO: niema tresci
-    bool czy_martwy();
+    void aktualizuj_liczebnosc(int strata);
+    void aktualizuj_wspolrzedne(int x, int y); // TODO: ...
+    void aktualizuj_morale(); // TODO: nie wiem czy ...
+    bool czy_martwy(); // TODO: nie wiem czy to potrzebne teraz
 
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, int morale, int x, int y, Rozgrywka* rozgr);
     ~Oddzial();

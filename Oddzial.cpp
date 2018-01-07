@@ -49,9 +49,12 @@ void Oddzial::aktualizuj_liczebnosc(int strata) {
     if(strata < liczebnosc){
         liczebnosc = liczebnosc - strata;
     }
-    else liczebnosc = 0;
+    else {
+        liczebnosc = 0;
+        delete (this);
+    }
 
-    // TODO: delete (this) ???
+
 
 }
 
