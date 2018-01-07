@@ -2,6 +2,7 @@
 
 #include "Oddzial.h"
 #include "Wspolrzedne.h"
+#include "Rozgrywka.h"
 #include <cstdio>
 #include <cmath>
 
@@ -32,7 +33,7 @@ void Oddzial::wypisz_wartosci() {
 }
 
 double Oddzial::policz_atak() {
-    return (1+sila_ataku)*(liczebnosc);
+    return (1+(sila_ataku*modifier_atak))*(liczebnosc);
 }
 
 void Oddzial::resetuj_modifiery() {
@@ -146,6 +147,20 @@ void Oddzial::procent_zycia() {
     else if(aktualna_liczebnosc > liczebnosc){
         printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
     }
+}
+
+int Oddzial::policz_straty(double** tab) {
+
+    double m = 1 - (morale/(1-morale));
+    double obr = tab[polozenie->get_x()][polozenie->get_y()];
+    double licznik = obr*m;
+    double mianownik = wytrzymalosc*(1+obrona);
+
+    int a = (int) floor(licznik/mianownik);
+    if(a > 0){
+        return a;
+    }
+    else return 0;
 }
 
 

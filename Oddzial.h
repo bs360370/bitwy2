@@ -33,9 +33,10 @@ protected:
 
 
 
+
 public:
 
-
+    int policz_straty(double** tab);
     void procent_zycia();
     void wypisz_status();
     Wspolrzedne* get_polozenie();

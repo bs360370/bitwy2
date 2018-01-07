@@ -24,6 +24,8 @@ public:
     Wspolrzedne*** tab_wsp;         // macierz do trzymania wspolrzednych celow
     double** tab_atak;              // macierz do trzymania wartosci ataku na dany oddzial
 
+    // TODO: dodaj reset tab_wsp i tab_atak
+
 
 private:
     void resetuj_oddzialy();        // resetuje modifiery z poprzedniej tury

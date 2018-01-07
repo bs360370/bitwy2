@@ -36,7 +36,13 @@ void Rozgrywka::policz_wsparcie() {
 
 }
 
-void Rozgrywka::policz_straty() {
+void Rozgrywka::policz_straty(){
+
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            pole[i][j]->policz_straty(tab_atak);
+        }
+    }
 
 }
 
@@ -137,6 +143,8 @@ void Rozgrywka::wypisz() {
 void Rozgrywka::wykonaj_ture() {
 
     // TODO: uzupelnic ta funkcje i nie wiem czy reseyuj oddzialy w dobrym miejscy
+    this->wypisz_ture();
+    aktualna_tura++;
 
     this->resetuj_oddzialy();
     this->policz_cele(); // każdy oddzial liczy swoj cel i wpisuje do tab_wsp
@@ -146,8 +154,7 @@ void Rozgrywka::wykonaj_ture() {
     this->policz_straty();
     this->poprzesuwaj_1();
     this->poprzesuwaj_2();
-    this->wypisz_ture();
-    aktualna_tura++;
+
 }
 
 bool Rozgrywka::czy_koniec_gry() {
@@ -276,6 +283,7 @@ void Rozgrywka::wypisz_ture() {
         printf("\n");
         if(i == 2) printf("--------------------------------------------------\n");
     }
+    printf("==================================================\n");
 }
 
 void Rozgrywka::policz_atak() {
