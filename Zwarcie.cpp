@@ -5,6 +5,7 @@
 
 void Zwarcie::policz_modifier() {
 
+    printf("pol_mod() zwarcia\n");
     if(polozenie->get_x() == 1 || polozenie->get_x() == 4){
         modifier_atak = 0;
     }

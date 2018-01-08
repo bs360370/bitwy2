@@ -51,9 +51,9 @@ public:
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);
     virtual void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     virtual int atakuj() = 0;
-    void aktualizuj_liczebnosc(int straty);
+    void aktualizuj_liczebnosc(double straty);
     void aktualizuj_wspolrzedne(int x, int y); // TODO: ...
-    void aktualizuj_morale(int strata);
+    void aktualizuj_morale(double strata);
     void aktualizuj_morale_2(); // TODO: strata morale po smierci oddzialu
     bool czy_martwy(); // TODO: nie wiem czy to potrzebne teraz
 

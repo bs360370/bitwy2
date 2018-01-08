@@ -46,7 +46,7 @@ void Oddzial::resetuj_modifiery() {
 }
 
 
-void Oddzial::aktualizuj_liczebnosc(int straty) {
+void Oddzial::aktualizuj_liczebnosc(double straty) {
 
     if(straty < aktualna_liczebnosc){
         aktualna_liczebnosc = aktualna_liczebnosc - straty;
@@ -66,7 +66,7 @@ void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
 
 }
 
-void Oddzial::aktualizuj_morale(int strata) {
+void Oddzial::aktualizuj_morale(double strata) {
 
     if(aktualna_liczebnosc){
         morale = morale - (strata/aktualna_liczebnosc)*modifier_morale_cooldown;
@@ -124,7 +124,7 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
             }
         }
     }
-
+// TODO: moze powinien returnowac jakies (-1,-1), zeby rozgrywka wiedziala, że ma nie wywolywac ataku dla oddzalu ktory nic nie znajdzie
     printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
@@ -177,7 +177,7 @@ double Oddzial::policz_straty(double obrazenia) {
     if(1-morale*modifier_morale){
         m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
     }
-    else m = 1;
+    else m = 1; // TODO: roboczo
     // TODO: cos tu niedziala
     double obr = obrazenia;
     double licznik = obr*m;

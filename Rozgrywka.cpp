@@ -30,6 +30,10 @@ void Rozgrywka::policz_cele() {
             if(pole[i][j] != nullptr){
                 tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
             }
+            else {
+                tab_wsp[i][j]->set_x(-1);
+                tab_wsp[i][j]->set_y(-1);
+            }
 
         }
     }
@@ -112,6 +116,11 @@ void Rozgrywka::poprzesuwaj_2() {
             tab[j] = licznik;
         }
     }
+    for(int j = 0; j < rozmiar; ++j){
+
+            printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
+
+    }
 
 
     for(int j = polowa; j >= 0; --j){
@@ -120,7 +129,7 @@ void Rozgrywka::poprzesuwaj_2() {
                 for(int i = 0; i < 6; ++i){
                     pole[i][j + tab[j]] = pole[i][j];
                     pole[i][j] = nullptr;
-                    //printf("*pole na nullptr 1!");
+                    printf("*pole na nullptr 1!");
                 }
             }
         }
@@ -162,6 +171,7 @@ void Rozgrywka::wykonaj_ture() {
     printf("zrobilem reset\n");
     this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
     printf("policzylem cele\n");
+    this->wypisz_tab_wsp();
     this->policz_modifiery();
     printf("policzylem modifiery\n");
     this->policz_wsparcie();
@@ -317,7 +327,7 @@ void Rozgrywka::policz_atak() {
     int wsp_celu_x = 0;
     int wsp_celu_y = 0;
     double moj_atak = 0;
-    int strata_celu = 0;
+    double strata_celu = 0;
 
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
@@ -343,7 +353,7 @@ void Rozgrywka::policz_atak() {
 
 void Rozgrywka::policz_modifiery() {
 // TODO: TUTAJ SIE WYWALA PROGRAM 8 STYCZNIA 2018
-    //printf("poczatek modifierow\n");
+    printf("poczatek modifierow\n");
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
 
@@ -355,7 +365,7 @@ void Rozgrywka::policz_modifiery() {
 
         }
     }
-    //printf("koniec modifierow\n");
+    printf("koniec modifierow\n");
 }
 
 void Rozgrywka::policz_straty_licz() {
@@ -363,19 +373,21 @@ void Rozgrywka::policz_straty_licz() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
-                pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
+                pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[tab_wsp[i][j]->get_x()][tab_wsp[i][j]->get_y()]);
                 if(pole[i][j]->aktualna_liczebnosc == 0){
 
                     pole[i][j] = nullptr;
+                    printf(" *pole[%d][%d] chce byc nullpointerem* \n", i, j);
                     if (pole[i][j] == nullptr){
-                        //printf(" *pole[%d][%d] jest nullpointerem* ", i, j);
+                        printf(" *pole[%d][%d] jest nullpointerem* \n", i, j);
                     }
                     // TODO: to jest eksperyment i nie wiem czy zadziala
                 }
+                /*
                 if(pole[i][j] == nullptr){
 
                     // TODO: z funkcja aktualizuj_morale_2 cos jest nietak
-                    /*
+
                     switch(i){
                         case(1):{
                             if(pole[1][j-1] != nullptr) pole[1][j-1]->aktualizuj_morale_2();
@@ -409,10 +421,8 @@ void Rozgrywka::policz_straty_licz() {
                             printf("BLAD: zostal zaatakowany zly oddzial\n");
                         }
                     }
-
-                     */
-
                 }
+                */
             }
         }
     }

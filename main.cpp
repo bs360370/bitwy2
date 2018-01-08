@@ -127,7 +127,15 @@ int main() {
     }
 
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
-    r->gra();
+    r->poprzesuwaj_1();
+    r->poprzesuwaj_2();
+    r->wypisz_ture();
+    r->poprzesuwaj_1();
+    r->poprzesuwaj_2();
+    r->wypisz_ture();
+    r->poprzesuwaj_1();
+    r->poprzesuwaj_2();
+    r->wypisz_ture();
     delete(r);
 
 

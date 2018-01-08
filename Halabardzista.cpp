@@ -1,13 +1,14 @@
 
 
 #include "Halabardzista.h"
+#include <cstdio>
 
 Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,40,2,150,0, x, y, rozgrywka) {
 
 }
 
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
-
+    printf("pol_mod(* *) halabardzisty\n");
     int a = polozenie->get_x();         // moja wspolrzedna x-owa
     int b = polozenie->get_y();         // moja wspolrzedna y-owa
     int wsp1 = tab2[a][b]->get_x();     // x-owa wspolrzedna celu (tab2 wywoluje sie w Rozgrywce jako tab_wsp)
@@ -16,7 +17,9 @@ void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
         modifier_atak = 1.5;
     }
 
-    Zwarcie::policz_modifier();
+    //TODO: nie wiem czy ten this jest potrzebny
+    this->Zwarcie::policz_modifier();
+    // printf("tutaj\n");
 
 }
 
@@ -32,5 +35,10 @@ int Halabardzista::atakuj() {
 
 void Halabardzista::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
+}
+
+void Halabardzista::policz_modifier() {
+    printf("pol_mod() halabardzisty\n");
+    Zwarcie::policz_modifier();
 }
 
