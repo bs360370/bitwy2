@@ -11,6 +11,7 @@ class Zasieg : public Oddzial{
 protected:
 
     void policz_modifier() override;
+    void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) override;
 
 public:
 

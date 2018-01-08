@@ -19,7 +19,7 @@ protected:
     int zasieg;
 
 
-    int aktualna_liczebnosc;
+
 
     Rozgrywka* wskaznik_na_Rozgrywke;
     Wspolrzedne* polozenie;
@@ -31,7 +31,7 @@ protected:
 
 public:
 
-
+    int aktualna_liczebnosc;
     double modifier_atak;
     double modifier_morale;
     double modifier_obrona;
@@ -40,7 +40,7 @@ public:
     double morale;
 
     virtual void policz_modifier() = 0;
-    virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2);
+    virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     double policz_atak();
     int policz_straty(double obrazenia);
     void procent_zycia();

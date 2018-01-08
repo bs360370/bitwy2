@@ -95,5 +95,9 @@ void Lucznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 
+void Lucznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 
 

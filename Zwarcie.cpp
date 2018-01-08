@@ -26,4 +26,8 @@ void Zwarcie::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 
+void Zwarcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 

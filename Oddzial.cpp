@@ -54,7 +54,6 @@ void Oddzial::aktualizuj_liczebnosc(int straty) {
     else {
         aktualna_liczebnosc = 0;
         // printf("usuwam oddzial!!!\n");
-        delete (this);
     }
 
 
@@ -174,8 +173,10 @@ void Oddzial::procent_zycia() {
 
 int Oddzial::policz_straty(double obrazenia) {
 
-    // TODO: to jest wogle xle
-    double m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
+    double m;
+    if(1-morale*modifier_morale){
+        m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
+    }
     double obr = obrazenia;
     double licznik = obr*m;
     double mianownik = wytrzymalosc*(1+obrona*modifier_obrona);
@@ -202,8 +203,5 @@ bool Oddzial::czy_zasieg() {
     return false;
 }
 
-void Oddzial::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-
-}
 
 

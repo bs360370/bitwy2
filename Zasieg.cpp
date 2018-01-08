@@ -28,4 +28,8 @@ bool Zasieg::czy_zasieg() {
     return true;
 }
 
+void Zasieg::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 

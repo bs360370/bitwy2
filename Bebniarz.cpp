@@ -31,5 +31,9 @@ int Bebniarz::atakuj() {
     return 0;
 }
 
+void Bebniarz::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 
 

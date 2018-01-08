@@ -27,7 +27,10 @@ void Rozgrywka::policz_cele() {
 
     for(int j = 0; j < rozmiar; ++j){
         for(int i = 0; i < 6; ++i){
-            tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
+            if(pole[i][j] != nullptr){
+                tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
+            }
+
         }
     }
 }
@@ -37,7 +40,10 @@ void Rozgrywka::policz_wsparcie() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
 
-            pole[i][j]->wspieraj(pole, tab_wsp);
+            if(pole[i][j] != nullptr){
+                pole[i][j]->wspieraj(pole, tab_wsp);
+            }
+
 
         }
     }
@@ -79,9 +85,13 @@ void Rozgrywka::poprzesuwaj_2() {
 
     // II faza: przesuwanie kolumn do srodka
 
+    //printf("*jestemw fazie 0\n");
+
     int polowa = rozmiar/2;
     int licznik = 0;
-    int tab[1000000];
+    int tab[10000];
+
+    //printf("*jestem w fazie 1*\n");
 
     for(int j = 0; j < rozmiar + 1; ++j){
         tab[j] = 0;
@@ -110,6 +120,7 @@ void Rozgrywka::poprzesuwaj_2() {
                 for(int i = 0; i < 6; ++i){
                     pole[i][j + tab[j]] = pole[i][j];
                     pole[i][j] = nullptr;
+                    //printf("*pole na nullptr 1!");
                 }
             }
         }
@@ -121,6 +132,7 @@ void Rozgrywka::poprzesuwaj_2() {
                 for(int i = 0; i < 6; ++i){
                     pole[i][j + tab[j]] = pole[i][j];
                     pole[i][j] = nullptr;
+                    //printf("*pole na nullptr 2!");
                 }
             }
         }
@@ -147,13 +159,21 @@ void Rozgrywka::wykonaj_ture() {
     aktualna_tura++;
 
     this->resetuj_oddzialy();
+    //printf("zrobilem reset\n");
     this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
+    //printf("policzylem cele\n");
     this->policz_modifiery();
+    //printf("policzylem modifiery\n");
     this->policz_wsparcie();
+    //printf("policzylem wsparcie\n");
     this->policz_atak();
+    //printf("policzylem atak\n");
     this->policz_straty_licz();
+    //printf("policzylem straty\n");
     this->poprzesuwaj_1();
-    // this->poprzesuwaj_2();
+    //printf("check przed przesuwaniem 2\n");
+    this->poprzesuwaj_2();
+    //printf("check p0 przesuwaniu 2\n");
 
 }
 
@@ -196,6 +216,10 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
                 case 'T':
                     pole[i][j] = new Tarczownik(i, j, this);
                     break;
+                    // TODO: ponizszy case to eksperyment !
+                case 'X':
+                    pole[i][j] = nullptr;
+                    break;
                 default:
                     printf("NIEPOPRAWNE WEJSCIE  pole[%d][%d]= %c !\n", j, i, tab[j][i]);
                     printf("RODZAJ JEDNOSTKI NIEZNANY \nROZGRYWKE USUNIETO \n");
@@ -229,7 +253,9 @@ Rozgrywka::~Rozgrywka() {
 
     for(int i = 0; i<6; i++) {
         for (int j = 0; j < rozmiar; j++) {
-            delete pole[i][j];
+
+                delete pole[i][j];
+
         }
         delete pole[i];
     }
@@ -254,7 +280,9 @@ void Rozgrywka::gra() {
     for(int i = 0; i < limit_tur; ++i){
 
         if(!this->czy_koniec_gry()){
+            //printf("check przed tura %d\n", i);
             this->wykonaj_ture();
+            //printf("check po turze  %d\n", i);
         }
         else {
             printf("gra skonczona przed limitem tur w turze %d.\n", i+1);
@@ -276,7 +304,7 @@ void Rozgrywka::wypisz_ture() {
             if(pole[i][j] != nullptr){
                 pole[i][j]->wypisz_status();
             }
-            else printf(" X ");
+            else printf(" XS ");
             printf ("  ");
         }
         printf("\n");
@@ -294,31 +322,42 @@ void Rozgrywka::policz_atak() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
 
-            wsp_celu_x = tab_wsp[i][j]->get_x();
-            wsp_celu_y = tab_wsp[i][j]->get_y();
+            if(pole[i][j] != nullptr){
 
-            moj_atak = pole[i][j]->policz_atak();
-            strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
+                wsp_celu_x = tab_wsp[i][j]->get_x();
+                wsp_celu_y = tab_wsp[i][j]->get_y();
 
-            // pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu); <- to nie moze byc bo morele aktualizuja sie wzgledem jednej liczebnosci w calej turze
+                moj_atak = pole[i][j]->policz_atak();
+                //printf("policzylem atak w policz_ataku()\n");
+                strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
+                //printf("policzylem straty w policz_ataku()\n");
 
-            tab_strat_licz[wsp_celu_x][wsp_celu_y] = tab_strat_licz[wsp_celu_x][wsp_celu_y] + strata_celu;
-            pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
+                // pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu); <- to nie moze byc bo morele aktualizuja sie wzgledem jednej liczebnosci w calej turze
+
+                tab_strat_licz[wsp_celu_x][wsp_celu_y] = tab_strat_licz[wsp_celu_x][wsp_celu_y] + strata_celu;
+                pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
+            }
+
 
         }
     }
 }
 
 void Rozgrywka::policz_modifiery() {
-// TODO: trzeba zrobic porzadek bo teraz policz modifier bezargumentowy może wywolywac sie dwa razy, bo w halab i konnym wywoluje sie dwa razy
+// TODO: TUTAJ SIE WYWALA PROGRAM 8 STYCZNIA 2018
+    //printf("poczatek modifierow\n");
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
 
-            pole[i][j]->policz_modifier(pole, tab_wsp);
-            pole[i][j]->policz_modifier();
+            if(pole[i][j] != nullptr){
+                pole[i][j]->policz_modifier(pole, tab_wsp);
+                pole[i][j]->policz_modifier();
+            }
+
 
         }
     }
+    //printf("koniec modifierow\n");
 }
 
 void Rozgrywka::policz_straty_licz() {
@@ -327,7 +366,18 @@ void Rozgrywka::policz_straty_licz() {
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
+                if(pole[i][j]->aktualna_liczebnosc == 0){
+
+                    pole[i][j] = nullptr;
+                    if (pole[i][j] == nullptr){
+                        //printf(" *pole[%d][%d] jest nullpointerem* ", i, j);
+                    }
+                    // TODO: to jest eksperyment i nie wiem czy zadziala
+                }
                 if(pole[i][j] == nullptr){
+
+                    // TODO: z funkcja aktualizuj_morale_2 cos jest nietak
+                    /*
                     switch(i){
                         case(1):{
                             if(pole[1][j-1] != nullptr) pole[1][j-1]->aktualizuj_morale_2();
@@ -361,6 +411,9 @@ void Rozgrywka::policz_straty_licz() {
                             printf("BLAD: zostal zaatakowany zly oddzial\n");
                         }
                     }
+
+                     */
+
                 }
             }
         }

@@ -67,3 +67,7 @@ Wsparcie::Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int
                                                    rozgrywka) {
 
 }
+
+void Wsparcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}

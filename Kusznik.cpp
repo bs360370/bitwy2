@@ -28,5 +28,9 @@ void Kusznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 
+void Kusznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 
 

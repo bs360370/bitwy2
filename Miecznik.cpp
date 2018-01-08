@@ -26,5 +26,9 @@ void Miecznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 
+void Miecznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 
 

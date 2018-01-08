@@ -30,4 +30,8 @@ int Tarczownik::atakuj() {
     return 0;
 }
 
+void Tarczownik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
 
