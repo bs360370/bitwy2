@@ -42,7 +42,7 @@ public:
     virtual void policz_modifier() = 0;
     virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;
     double policz_atak();
-    int policz_straty(double obrazenia);
+    double policz_straty(double obrazenia);
     void procent_zycia();
     void wypisz_status();
     Wspolrzedne* get_polozenie();

@@ -159,21 +159,21 @@ void Rozgrywka::wykonaj_ture() {
     aktualna_tura++;
 
     this->resetuj_oddzialy();
-    //printf("zrobilem reset\n");
+    printf("zrobilem reset\n");
     this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
-    //printf("policzylem cele\n");
+    printf("policzylem cele\n");
     this->policz_modifiery();
-    //printf("policzylem modifiery\n");
+    printf("policzylem modifiery\n");
     this->policz_wsparcie();
-    //printf("policzylem wsparcie\n");
+    printf("policzylem wsparcie\n");
     this->policz_atak();
-    //printf("policzylem atak\n");
+    printf("policzylem atak\n");
     this->policz_straty_licz();
-    //printf("policzylem straty\n");
+    printf("policzylem straty\n");
     this->poprzesuwaj_1();
-    //printf("check przed przesuwaniem 2\n");
+    printf("check przed przesuwaniem 2\n");
     this->poprzesuwaj_2();
-    //printf("check p0 przesuwaniu 2\n");
+    printf("check p0 przesuwaniu 2\n");
 
 }
 
@@ -328,11 +328,9 @@ void Rozgrywka::policz_atak() {
                 wsp_celu_y = tab_wsp[i][j]->get_y();
 
                 moj_atak = pole[i][j]->policz_atak();
-                //printf("policzylem atak w policz_ataku()\n");
+                printf("policzylem atak w policz_ataku()\n");
                 strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
-                //printf("policzylem straty w policz_ataku()\n");
-
-                // pole[wsp_celu_x][wsp_celu_y]->aktualizuj_liczebnosc(strata_celu); <- to nie moze byc bo morele aktualizuja sie wzgledem jednej liczebnosci w calej turze
+                printf("policzylem straty w policz_ataku()\n");
 
                 tab_strat_licz[wsp_celu_x][wsp_celu_y] = tab_strat_licz[wsp_celu_x][wsp_celu_y] + strata_celu;
                 pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);

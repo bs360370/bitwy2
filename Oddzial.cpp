@@ -171,21 +171,27 @@ void Oddzial::procent_zycia() {
     }
 }
 
-int Oddzial::policz_straty(double obrazenia) {
+double Oddzial::policz_straty(double obrazenia) {
 
     double m;
     if(1-morale*modifier_morale){
         m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
     }
+    else m = 1;
+    // TODO: cos tu niedziala
     double obr = obrazenia;
     double licznik = obr*m;
     double mianownik = wytrzymalosc*(1+obrona*modifier_obrona);
+    double a;
 
-    int a = (int) floor(licznik/mianownik);
-    if(a > 0){
-        return a;
+    if(mianownik){
+        a = floor(licznik/mianownik);
+        if(a > 0){
+            return a;
+        }
+        else return 0;
     }
-    else return 0;
+
 }
 
 void Oddzial::aktualizuj_morale_2() {
