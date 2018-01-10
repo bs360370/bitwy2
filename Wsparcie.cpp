@@ -1,18 +1,27 @@
 
+
 #include <cstdio>
 #include "Wsparcie.h"
 
+Wsparcie::Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y,
+                   Rozgrywka *rozgrywka) : Oddzial(sila_ataku, obrona, wytrzymalosc, zasieg, liczebnosc, morale, x, y,
+                                                   rozgrywka) {
+}
 
 void Wsparcie::policz_modifier() {
+
+}
+
+void Wsparcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 
 Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
-
     int linia = polozenie->get_x();
     int at = -1; // linia atakowana
+
     switch(linia){
         case(0):
         case(1):
@@ -55,19 +64,5 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
 }
 
 void Wsparcie::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {
-
-}
-
-int Wsparcie::atakuj() {
-    return 0;
-}
-
-Wsparcie::Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y,
-                   Rozgrywka *rozgrywka) : Oddzial(sila_ataku, obrona, wytrzymalosc, zasieg, liczebnosc, morale, x, y,
-                                                   rozgrywka) {
-
-}
-
-void Wsparcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }

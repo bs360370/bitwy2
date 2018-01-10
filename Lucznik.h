@@ -17,11 +17,9 @@ public:
 
     char podaj_typ() override;
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
-    Wspolrzedne* szukaj_celu(Oddzial*** p, int ro);
-    int atakuj() override;
+    Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) override;
 
     Lucznik(int x, int y, Rozgrywka* rozgrywka);
-
 };
 
 

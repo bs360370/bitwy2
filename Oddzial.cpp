@@ -1,7 +1,6 @@
 
 
 #include "Oddzial.h"
-#include "Wspolrzedne.h"
 #include "Rozgrywka.h"
 #include <cstdio>
 #include <cmath>
@@ -9,7 +8,6 @@
 using namespace std;
 
 Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgr) {
-
     this->sila_ataku = sila_ataku;
     this->obrona = obrona;
     this->wytrzymalosc = wytrzymalosc;
@@ -19,23 +17,10 @@ Oddzial::Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
     this->morale = morale;
     this->polozenie = new Wspolrzedne(x, y);
     this->wskaznik_na_Rozgrywke = rozgr;
-
 }
 
-void Oddzial::wypisz_wartosci() {
-
-    printf("sila ataku: %d\n obrona: %d\n wytrzymalosc: %d\n zasieg: %d\n liczebnosc: %d\n morale: %lf\n ",
-           this->sila_ataku,
-           this->obrona,
-           this->wytrzymalosc,
-           this->zasieg,
-           this->liczebnosc,
-           this->morale);
-
-}
-
-double Oddzial::policz_atak() {
-    return (1+(sila_ataku*modifier_atak))*(aktualna_liczebnosc);
+Oddzial::~Oddzial() {
+    delete (polozenie);
 }
 
 void Oddzial::resetuj_modifiery() {
@@ -45,48 +30,9 @@ void Oddzial::resetuj_modifiery() {
     modifier_morale_cooldown = 1;
 }
 
-
-void Oddzial::aktualizuj_liczebnosc(double straty) {
-
-    if(straty < aktualna_liczebnosc){
-        aktualna_liczebnosc = aktualna_liczebnosc - straty;
-    }
-    else {
-        aktualna_liczebnosc = 0;
-        // printf("usuwam oddzial!!!\n");
-    }
-
-
-
-}
-
-void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
-    this->polozenie->set_x(x);
-    this->polozenie->set_y(y);
-
-}
-
-void Oddzial::aktualizuj_morale(double strata) {
-
-    if(aktualna_liczebnosc){
-        morale = morale - (strata/aktualna_liczebnosc)*modifier_morale_cooldown;
-    }
-
-
-}
-
-bool Oddzial::czy_martwy() {
-    return aktualna_liczebnosc == 0;
-}
-
-Oddzial::~Oddzial() {
-    delete (polozenie);
-}
-
 Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
 
     int rzad = polozenie->get_y();
-
     int linia = polozenie->get_x();
     int at = -1; // linia atakowana
     switch(linia){
@@ -129,46 +75,8 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
     return nullptr;
 }
 
-Wspolrzedne *Oddzial::get_polozenie() {
-    return polozenie;
-}
-
-void Oddzial::wypisz_status() {
-
-    char typ = this->podaj_typ();
-
-    if(aktualna_liczebnosc){
-        printf("%c: %d", typ, aktualna_liczebnosc);
-    }
-    else {
-        printf("  X  ");
-    }
-
-    // this->procent_zycia();
-    // TODO: rzeczy
-}
-
-void Oddzial::procent_zycia() {
-
-    int procent;
-
-    procent = (int) floor((aktualna_liczebnosc / liczebnosc) * 100);
-    // TODO: nie wiem czy to jest dobrze ten casting
-
-    if(liczebnosc == aktualna_liczebnosc){
-        printf("00");
-    }
-    if(aktualna_liczebnosc < liczebnosc){
-        if(procent >= 10){
-            printf("%d", procent);
-        }
-        if(procent < 10){
-            printf("0%d", procent);
-        }
-    }
-    else if(aktualna_liczebnosc > liczebnosc){
-        printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
-    }
+double Oddzial::policz_atak() {
+    return (1+(sila_ataku*modifier_atak))*(aktualna_liczebnosc);
 }
 
 double Oddzial::policz_straty(double obrazenia) {
@@ -191,14 +99,65 @@ double Oddzial::policz_straty(double obrazenia) {
         }
         else return 0;
     }
+}
 
+void Oddzial::aktualizuj_liczebnosc(double straty) {
+    // TODO: pomyslec co z tym duble i int
+    if(straty < aktualna_liczebnosc){
+        aktualna_liczebnosc = aktualna_liczebnosc - straty;
+    }
+    else {
+        aktualna_liczebnosc = 0;
+        // printf("usuwam oddzial!!!\n");
+    }
+}
+
+void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
+    this->polozenie->set_x(x);
+    this->polozenie->set_y(y);
+}
+
+void Oddzial::aktualizuj_morale(double strata) {
+    if(aktualna_liczebnosc){
+        morale = morale - (strata/aktualna_liczebnosc)*modifier_morale_cooldown;
+    }
 }
 
 void Oddzial::aktualizuj_morale_2() {
-
     double maks = std::fmax(0.25, 0.25*abs(morale));
     morale = morale - maks*modifier_morale_cooldown;
+}
 
+void Oddzial::wypisz_status() {
+    char typ = this->podaj_typ();
+    if(aktualna_liczebnosc){
+        printf("%c: %d", typ, aktualna_liczebnosc);
+    }
+    else {
+        printf("  X  ");
+    }
+    // this->procent_zycia();
+    // TODO: rzeczy z procentem zycia nie dzialaja wiec narazie wypisuje aktualna liczebnosc
+}
+
+void Oddzial::procent_zycia() {
+    int procent;
+    procent = (int) floor((aktualna_liczebnosc / liczebnosc) * 100);
+    // TODO: nie wiem czy to jest dobrze ten casting
+    if(liczebnosc == aktualna_liczebnosc){
+        printf("00");
+    }
+    if(aktualna_liczebnosc < liczebnosc){
+        if(procent >= 10){
+            printf("%d", procent);
+        }
+        if(procent < 10){
+            printf("0%d", procent);
+        }
+    }
+    else if(aktualna_liczebnosc > liczebnosc){
+        printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
+    }
 }
 
 bool Oddzial::czy_konny() {
@@ -209,5 +168,21 @@ bool Oddzial::czy_zasieg() {
     return false;
 }
 
+bool Oddzial::czy_martwy() {
+    return aktualna_liczebnosc == 0;
+}
 
+Wspolrzedne *Oddzial::get_polozenie() {
+    return polozenie;
+}
+
+void Oddzial::wypisz_wartosci() {
+    printf("sila ataku: %d\n obrona: %d\n wytrzymalosc: %d\n zasieg: %d\n liczebnosc: %d\n morale: %lf\n ",
+           this->sila_ataku,
+           this->obrona,
+           this->wytrzymalosc,
+           this->zasieg,
+           this->liczebnosc,
+           this->morale);
+}
 

@@ -7,6 +7,11 @@ Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,
 
 }
 
+void Halabardzista::policz_modifier() {
+    printf("pol_mod() halabardzisty\n");
+    Zwarcie::policz_modifier();
+}
+
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
     printf("pol_mod(* *) halabardzisty\n");
     int a = polozenie->get_x();         // moja wspolrzedna x-owa
@@ -16,29 +21,15 @@ void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
     if(tab1[wsp1][wsp2]->czy_konny()){
         modifier_atak = 1.5;
     }
-
     //TODO: nie wiem czy ten this jest potrzebny
     this->Zwarcie::policz_modifier();
     // printf("tutaj\n");
-
 }
 
 char Halabardzista::podaj_typ() {
     return 'H';
-
-}
-
-
-int Halabardzista::atakuj() {
-    return 0;
 }
 
 void Halabardzista::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
-
-void Halabardzista::policz_modifier() {
-    printf("pol_mod() halabardzisty\n");
-    Zwarcie::policz_modifier();
-}
-

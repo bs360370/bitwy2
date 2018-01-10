@@ -18,40 +18,38 @@ public:
     int rozmiar;                    // 2N
     int limit_tur;                  // T
 
-    int aktualna_tura = 0;          // licznik tur od 0 to T
+    int aktualna_tura = 0;          // licznik tur od 0 to T (na potrzeby wypisywania wyjscia)
 
-    Oddzial*** pole;                // macierz polozenia oddzialow
+    Oddzial*** pole;                // macierz polozenia oddzialow (trzyma wskazniki na oddzialy)
     Wspolrzedne*** tab_wsp;         // macierz do trzymania wspolrzednych celow
     double** tab_strat_licz;        // macierz do trzymania wartosci strat liczebnosci
 
 
-    // TODO: dodaj reset tab_wsp i tab_strat_licz
+    // TODO: dodaj reset tab_wsp i tab_strat_licz ? (chyba jest nie potrzebny o itak w kazdej turze sie nadpisuje - ale pomyslec)
 
 
-public:
-
-    void wypisz_tab_wsp();
+public: // TODO: ustalic co ma byc public a co nie (narazie na potrzeby testowania jest wszystko public)
 
     void resetuj_oddzialy();        // resetuje modifiery z poprzedniej tury
-    void policz_modifiery();
     void policz_cele();             // każe oddziałom znaleźć cele
+    void policz_modifiery();
     void policz_wsparcie();         // każe oddziałom wykonać akcję wsparcia
     void policz_atak();             // liczy obrazenia oddzialu, strate celu do tab_strat_licz, pojedyncze straty morale
     void policz_straty_licz();      // zmniejsza liczebnosci oddzialow, zmiensza morale sasiadujacych oddzialow jesli cos umarlo
     void poprzesuwaj_1();           // przesuwa oddzialy do linii pomiedzy armiami
     void poprzesuwaj_2();           // przesuwa kolumny do N-tej az nie bedzie dziur
 
+    void wypisz_tab_wsp();          // funkcja pomocnicza - wypisuje tab_wsp
 
 public:
 
-    void gra();            // wykonuje limit_tur tur
-    void wypisz();                  // NARAZIE WYPISUJE STATY - MA WYPISYWAC TO CO MA BYC NA WYJSCIU
-    void wykonaj_ture();            // wykonanie wszystkich zadań jednej tury
     bool czy_koniec_gry();          // sprawdza, czy któraś armia przegrała
-    void wypisz_ture();
 
-// poza tym metody wywoływane przez Oddział
-// jeszcze nie ustalone
+    void gra();                     // wykonuje limit_tur tur
+    void wykonaj_ture();            // wykonanie wszystkich zadań jednej tury
+    void wypisz_ture();             // wypisuje stan pola w danej turze // TODO: poprawić, bo nie wypisuje ostatniej tury
+
+    void wypisz();                  // funkcja pomocznicza - wypisuje poctkowe staty danego typu jenostki
 
 // konstruktory, destruktory
 
@@ -59,6 +57,5 @@ public:
     ~Rozgrywka();
 
 };
-
 
 #endif //BITWY2_ROZGRYWKA_H

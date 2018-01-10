@@ -9,19 +9,17 @@
 class Konny : public Zwarcie{
 
 protected:
+
     void policz_modifier() override;
     void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) override;
 
 public:
 
     char podaj_typ() override;
-    int atakuj() override;
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
-
     bool czy_konny() override;
 
     Konny(int x, int y, Rozgrywka* rozgrywka);
-
 };
 
 

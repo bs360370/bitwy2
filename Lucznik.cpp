@@ -1,4 +1,5 @@
 
+
 #include <cstdio>
 #include "Lucznik.h"
 
@@ -12,6 +13,9 @@ void Lucznik::policz_modifier() {
         modifier_obrona = 0.5;
         modifier_atak = 0.5;
     }
+}
+
+void Lucznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 
@@ -19,13 +23,16 @@ char Lucznik::podaj_typ() {
     return 'L';
 }
 
+void Lucznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
 
 Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
-
     int linia = polozenie->get_x();
     int at = -1; // linia atakowana
+
     switch(linia){
         case(0):
         case(1):
@@ -86,18 +93,3 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
     printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
-
-int Lucznik::atakuj() {
-    return 0;
-}
-
-void Lucznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
-
-}
-
-void Lucznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-
-}
-
-
-

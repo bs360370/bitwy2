@@ -6,6 +6,18 @@ Bebniarz::Bebniarz(int x, int y, Rozgrywka* rozgrywka): Wsparcie(0,1,50,4,40,0, 
 
 }
 
+void Bebniarz::policz_modifier() {
+
+}
+
+void Bebniarz::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
+
+char Bebniarz::podaj_typ() {
+    return 'B';
+}
+
 void Bebniarz::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {
 
     int a = polozenie->get_x();         // moja wspolrzedna x-owa
@@ -17,23 +29,3 @@ void Bebniarz::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {
     tab1[wsp1][wsp2]->modifier_morale_cooldown = 0.5;
 
 }
-
-char Bebniarz::podaj_typ() {
-    return 'B';
-}
-
-void Bebniarz::policz_modifier() {
-
-}
-
-
-int Bebniarz::atakuj() {
-    return 0;
-}
-
-void Bebniarz::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-
-}
-
-
-

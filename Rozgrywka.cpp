@@ -10,189 +10,6 @@
 #include "Lucznik.h"
 #include "Miecznik.h"
 
-
-void Rozgrywka::resetuj_oddzialy() {
-
-    for(int i = 0; i < 6; ++i){
-        for(int j = 0; j < rozmiar; ++j){
-            if(pole[i][j] != nullptr) {
-                pole[i][j]->resetuj_modifiery();
-                // TODO: reset tab_wsp i tab_strat_licz
-            }
-        }
-    }
-}
-
-void Rozgrywka::policz_cele() {
-
-    for(int j = 0; j < rozmiar; ++j){
-        for(int i = 0; i < 6; ++i){
-            if(pole[i][j] != nullptr){
-                tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
-            }
-            else {
-                tab_wsp[i][j]->set_x(-1);
-                tab_wsp[i][j]->set_y(-1);
-            }
-
-        }
-    }
-}
-
-void Rozgrywka::policz_wsparcie() {
-
-    for(int i = 0; i < 6; ++i){
-        for(int j = 0; j < rozmiar; ++j){
-
-            if(pole[i][j] != nullptr){
-                pole[i][j]->wspieraj(pole, tab_wsp);
-            }
-
-
-        }
-    }
-
-}
-
-
-void Rozgrywka::poprzesuwaj_1() {
-
-    // I faza: przesuwanie do przodu jesli cos umarlo
-
-
-    for (int j = 0; j < rozmiar; ++j){
-        for(int i = 1; i < 3; ++i){
-            if (pole[i][j] == nullptr){
-                pole[i][j] =  pole[i-1][j];
-                pole[i-1][j] = nullptr;
-            }
-        }
-        if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
-            pole[1][j] = pole[0][j];
-            pole[0][j] = nullptr;
-        }
-        for(int i = 4; i > 2; --i){
-            if (pole[i][j] == nullptr){
-                pole[i][j] = pole[i+j][j];
-                pole[i+1][j] = nullptr;
-            }
-        }
-        if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
-            pole[4][j] = pole[5][j];
-            pole[5][j] = nullptr;
-        }
-    }
-
-}
-
-void Rozgrywka::poprzesuwaj_2() {
-
-    // II faza: przesuwanie kolumn do srodka
-
-    //printf("*jestemw fazie 0\n");
-
-    int polowa = rozmiar/2;
-    int licznik = 0;
-    int tab[10000];
-
-    //printf("*jestem w fazie 1*\n");
-
-    for(int j = 0; j < rozmiar + 1; ++j){
-        tab[j] = 0;
-    }
-
-    for(int j = polowa; j >= 0; --j){
-        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
-            licznik++;
-            tab[j] = licznik;
-        }
-    }
-
-    licznik = 0;
-
-    for(int j = polowa + 1; j < rozmiar; ++j){
-        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
-            licznik--;
-            tab[j] = licznik;
-        }
-    }
-    for(int j = 0; j < rozmiar; ++j){
-
-            printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
-
-    }
-
-
-    for(int j = polowa; j >= 0; --j){
-        if(tab[j] != 0){
-            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
-                for(int i = 0; i < 6; ++i){
-                    pole[i][j + tab[j]] = pole[i][j];
-                    pole[i][j] = nullptr;
-                    printf("*pole na nullptr 1!");
-                }
-            }
-        }
-    }
-
-    for(int j = polowa + 1; j < rozmiar; ++j){
-        if(tab[j] != 0){
-            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
-                for(int i = 0; i < 6; ++i){
-                    pole[i][j + tab[j]] = pole[i][j];
-                    pole[i][j] = nullptr;
-                    //printf("*pole na nullptr 2!");
-                }
-            }
-        }
-    }
-
-}
-
-void Rozgrywka::wypisz() {
-    for(int i = 0; i < 6; ++i) {
-        printf("Rzad %d\n", i);
-        for (int j = 0; j < rozmiar; ++j) {
-            pole[i][j]->wypisz_wartosci();
-            printf("\n\n");
-        }
-
-    }
-}
-
-void Rozgrywka::wykonaj_ture() {
-
-    // TODO: uzupelnic ta funkcje i nie wiem czy reseyuj oddzialy w dobrym miejscy
-
-    this->wypisz_ture();
-    aktualna_tura++;
-
-    this->resetuj_oddzialy();
-    printf("zrobilem reset\n");
-    this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
-    printf("policzylem cele\n");
-    this->wypisz_tab_wsp();
-    this->policz_modifiery();
-    printf("policzylem modifiery\n");
-    this->policz_wsparcie();
-    printf("policzylem wsparcie\n");
-    this->policz_atak();
-    printf("policzylem atak\n");
-    this->policz_straty_licz();
-    printf("policzylem straty\n");
-    this->poprzesuwaj_1();
-    printf("check przed przesuwaniem 2\n");
-    this->poprzesuwaj_2();
-    printf("check p0 przesuwaniu 2\n");
-
-}
-
-bool Rozgrywka::czy_koniec_gry() {
-
-    int pol = rozmiar/2;
-    return pole[2][pol] == nullptr && pole[2][pol + 1] == nullptr && pole[3][pol] == nullptr && pole[3][pol + 1] == nullptr;
-}
-
 Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
 
     this->rozmiar = rozmiar;
@@ -233,7 +50,7 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
                 default:
                     printf("NIEPOPRAWNE WEJSCIE  pole[%d][%d]= %c !\n", j, i, tab[j][i]);
                     printf("RODZAJ JEDNOSTKI NIEZNANY \nROZGRYWKE USUNIETO \n");
-                    delete (this);
+                    delete (this); // TODO: zmienic to bo jest zdecydowanie zle !!!!!!!!!
             }
         }
     }
@@ -264,7 +81,7 @@ Rozgrywka::~Rozgrywka() {
     for(int i = 0; i<6; i++) {
         for (int j = 0; j < rozmiar; j++) {
 
-                delete pole[i][j];
+            delete pole[i][j];
 
         }
         delete pole[i];
@@ -285,10 +102,13 @@ Rozgrywka::~Rozgrywka() {
     delete tab_strat_licz;
 }
 
+bool Rozgrywka::czy_koniec_gry() {
+    int pol = rozmiar/2;
+    return pole[2][pol] == nullptr && pole[2][pol + 1] == nullptr && pole[3][pol] == nullptr && pole[3][pol + 1] == nullptr;
+}
+
 void Rozgrywka::gra() {
-
     for(int i = 0; i < limit_tur; ++i){
-
         if(!this->czy_koniec_gry()){
             //printf("check przed tura %d\n", i);
             this->wykonaj_ture();
@@ -299,6 +119,32 @@ void Rozgrywka::gra() {
             i = limit_tur;
         }
     }
+}
+
+void Rozgrywka::wykonaj_ture() {
+
+    // TODO: uzupelnic ta funkcje i nie wiem czy reseyuj oddzialy w dobrym miejscy
+
+    this->wypisz_ture();
+    aktualna_tura++;
+
+    this->resetuj_oddzialy();
+    printf("zrobilem reset\n");
+    this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
+    printf("policzylem cele\n");
+    this->wypisz_tab_wsp();
+    this->policz_modifiery();
+    printf("policzylem modifiery\n");
+    this->policz_wsparcie();
+    printf("policzylem wsparcie\n");
+    this->policz_atak();
+    printf("policzylem atak\n");
+    this->policz_straty_licz();
+    printf("policzylem straty\n");
+    this->poprzesuwaj_1();
+    printf("check przed przesuwaniem 2\n");
+    this->poprzesuwaj_2();
+    printf("check p0 przesuwaniu 2\n");
 }
 
 void Rozgrywka::wypisz_ture() {
@@ -319,6 +165,56 @@ void Rozgrywka::wypisz_ture() {
         }
         printf("\n");
         if(i == 2) printf("--------------------------------------------------\n");
+    }
+}
+
+void Rozgrywka::resetuj_oddzialy() {
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            if(pole[i][j] != nullptr) {
+                pole[i][j]->resetuj_modifiery();
+                // TODO: reset tab_wsp i tab_strat_licz
+            }
+        }
+    }
+}
+
+void Rozgrywka::policz_cele() {
+    for(int j = 0; j < rozmiar; ++j){
+        for(int i = 0; i < 6; ++i){
+            if(pole[i][j] != nullptr){
+                tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
+            }
+            else {
+                tab_wsp[i][j]->set_x(-1);
+                tab_wsp[i][j]->set_y(-1);
+            }
+        }
+    }
+}
+
+void Rozgrywka::policz_modifiery() {
+// TODO: TUTAJ SIE WYWALA PROGRAM 8 STYCZNIA 2018
+    printf("poczatek modifierow\n");
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            if(pole[i][j] != nullptr){
+                pole[i][j]->policz_modifier(pole, tab_wsp);
+                pole[i][j]->policz_modifier();
+            }
+        }
+    }
+    printf("koniec modifierow\n");
+}
+
+void Rozgrywka::policz_wsparcie() {
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+
+            if(pole[i][j] != nullptr){
+                pole[i][j]->wspieraj(pole, tab_wsp);
+            }
+        }
     }
 }
 
@@ -349,23 +245,6 @@ void Rozgrywka::policz_atak() {
 
         }
     }
-}
-
-void Rozgrywka::policz_modifiery() {
-// TODO: TUTAJ SIE WYWALA PROGRAM 8 STYCZNIA 2018
-    printf("poczatek modifierow\n");
-    for(int i = 0; i < 6; ++i){
-        for(int j = 0; j < rozmiar; ++j){
-
-            if(pole[i][j] != nullptr){
-                pole[i][j]->policz_modifier(pole, tab_wsp);
-                pole[i][j]->policz_modifier();
-            }
-
-
-        }
-    }
-    printf("koniec modifierow\n");
 }
 
 void Rozgrywka::policz_straty_licz() {
@@ -428,12 +307,108 @@ void Rozgrywka::policz_straty_licz() {
     }
 }
 
+void Rozgrywka::poprzesuwaj_1() {
+
+    // I faza: przesuwanie do przodu jesli cos umarlo
+
+    for (int j = 0; j < rozmiar; ++j){
+        for(int i = 1; i < 3; ++i){
+            if (pole[i][j] == nullptr){
+                pole[i][j] =  pole[i-1][j];
+                pole[i-1][j] = nullptr;
+            }
+        }
+        if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
+            pole[1][j] = pole[0][j];
+            pole[0][j] = nullptr;
+        }
+        for(int i = 4; i > 2; --i){
+            if (pole[i][j] == nullptr){
+                pole[i][j] = pole[i+j][j];
+                pole[i+1][j] = nullptr;
+            }
+        }
+        if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
+            pole[4][j] = pole[5][j];
+            pole[5][j] = nullptr;
+        }
+    }
+}
+
+void Rozgrywka::poprzesuwaj_2() {
+
+    // II faza: przesuwanie kolumn do srodka
+
+    //printf("*jestemw fazie 0\n");
+
+    int polowa = rozmiar/2;
+    int licznik = 0;
+    int tab[10000];
+
+    //printf("*jestem w fazie 1*\n");
+
+    for(int j = 0; j < rozmiar + 1; ++j){
+        tab[j] = 0;
+    }
+
+    for(int j = polowa; j >= 0; --j){
+        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
+            licznik++;
+            tab[j] = licznik;
+        }
+    }
+
+    licznik = 0;
+
+    for(int j = polowa + 1; j < rozmiar; ++j){
+        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
+            licznik--;
+            tab[j] = licznik;
+        }
+    }
+    for(int j = 0; j < rozmiar; ++j){
+            printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
+    }
+
+    for(int j = polowa; j >= 0; --j){
+        if(tab[j] != 0){
+            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
+                for(int i = 0; i < 6; ++i){
+                    pole[i][j + tab[j]] = pole[i][j];
+                    pole[i][j] = nullptr;
+                    printf("*pole na nullptr 1!");
+                }
+            }
+        }
+    }
+
+    for(int j = polowa + 1; j < rozmiar; ++j){
+        if(tab[j] != 0){
+            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
+                for(int i = 0; i < 6; ++i){
+                    pole[i][j + tab[j]] = pole[i][j];
+                    pole[i][j] = nullptr;
+                    //printf("*pole na nullptr 2!");
+                }
+            }
+        }
+    }
+}
+
+void Rozgrywka::wypisz() {
+    for(int i = 0; i < 6; ++i) {
+        printf("Rzad %d\n", i);
+        for (int j = 0; j < rozmiar; ++j) {
+            pole[i][j]->wypisz_wartosci();
+            printf("\n\n");
+        }
+    }
+}
+
 void Rozgrywka::wypisz_tab_wsp() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-
             printf("tab_wsp[%d][%d] = (%d, %d).\n", i, j, tab_wsp[i][j]->get_x(), tab_wsp[i][j]->get_y());
-
         }
     }
 }

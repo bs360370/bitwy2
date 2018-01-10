@@ -15,23 +15,13 @@ void Kusznik::policz_modifier() {
 
 }
 
+void Kusznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
+
+}
 char Kusznik::podaj_typ() {
     return 'k';
-}
-
-
-
-int Kusznik::atakuj() {
-    return 0;
 }
 
 void Kusznik::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
-
-void Kusznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-
-}
-
-
-

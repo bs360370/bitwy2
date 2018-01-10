@@ -17,10 +17,8 @@ public:
 
     char podaj_typ() override;
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
-    int atakuj() override;
 
     Miecznik(int x, int y, Rozgrywka* rozgrywka);
-
 };
 
 

@@ -16,12 +16,9 @@ protected:
 public:
 
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
-    int atakuj() override;
-
-    virtual bool czy_zasieg() override;
+    bool czy_zasieg() override;
 
     Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgrywka);
-
 };
 
 
