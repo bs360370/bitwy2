@@ -22,3 +22,7 @@ void Zasieg::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 bool Zasieg::czy_zasieg() {
     return true;
 }
+
+Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
+    return Oddzial::szukaj_celu(p, ro);
+}

@@ -26,3 +26,7 @@ void Zwarcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 void Zwarcie::wspieraj(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
+
+Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
+    return Oddzial::szukaj_celu(p, ro);
+}

@@ -21,6 +21,10 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 
 // TODO: zrobic wczytywanie zpliku
 
+// TODO: w przesuwaniu zrobic aktualizacje wspolrzednych !!!!!!!!!!!!!!!!!!
+
+// TODO: sprawdzic czy wyrazenia algerbraiczne dobrze licza rzeczy
+
 nieuzywane funkcja z maina:
 
 

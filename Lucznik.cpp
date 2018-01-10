@@ -31,6 +31,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
+    printf(" x = %d, y = %d \n", linia, rzad);
     int at = -1; // linia atakowana
 
     switch(linia){

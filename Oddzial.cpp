@@ -32,8 +32,9 @@ void Oddzial::resetuj_modifiery() {
 
 Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
 
-    int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
+    int rzad = polozenie->get_y();
+    printf(" x = %d, y = %d \n", linia, rzad);
     int at = -1; // linia atakowana
     switch(linia){
         case(0):
@@ -108,18 +109,20 @@ void Oddzial::aktualizuj_liczebnosc(double straty) {
     }
     else {
         aktualna_liczebnosc = 0;
-        // printf("usuwam oddzial!!!\n");
     }
 }
 
 void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
-    this->polozenie->set_x(x);
-    this->polozenie->set_y(y);
+    printf("jestem a akt_wsp\n");
+    polozenie->set_x(x);
+    printf("jestem a akt_wsp x\n");
+    polozenie->set_y(y);
+    printf("jestem a akt_wsp y\n");
 }
 
 void Oddzial::aktualizuj_morale(double strata) {
     if(aktualna_liczebnosc){
-        morale = morale - (strata/aktualna_liczebnosc)*modifier_morale_cooldown;
+        morale = morale - modifier_morale_cooldown*(strata/aktualna_liczebnosc);
     }
 }
 
@@ -134,35 +137,29 @@ void Oddzial::wypisz_status() {
     if(aktualna_liczebnosc){
         printf("%c:", typ);
         this->procent_zycia();
+        printf(" (%d,%d) ", polozenie->get_x(), polozenie->get_y());
     }
     else {
         printf("  X  ");
     }
-    // this->procent_zycia();
-    // TODO: rzeczy z procentem zycia nie dzialaja wiec narazie wypisuje aktualna liczebnosc
+
 }
 
 void Oddzial::procent_zycia() {
     int procent;
-    double pro = 100*aktualna_liczebnosc/liczebnosc;
-    //printf("pro = %fl ",pro);
+    double pro = 100*aktualna_liczebnosc/liczebnosc ;
     procent = (int) floor(pro);
-    //printf("procent = %d ", procent);
     // TODO: nie wiem czy to jest dobrze ten casting
 
     if(liczebnosc == aktualna_liczebnosc){
         printf("00");
-        //printf("if 1 ");
     }
     if(aktualna_liczebnosc < liczebnosc){
-        //printf("if 2 ");
         if(procent >= 10){
             printf("%d", procent);
-            //printf("if 3 ");
         }
         if(procent < 10){
             printf("0%d", procent);
-            //printf("if 4 ");
         }
     }
     else if(aktualna_liczebnosc > liczebnosc){

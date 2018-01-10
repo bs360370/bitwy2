@@ -103,8 +103,8 @@ Rozgrywka::~Rozgrywka() {
 }
 
 bool Rozgrywka::czy_koniec_gry() {
-    int pol = rozmiar/2;
-    return pole[2][pol] == nullptr && pole[2][pol + 1] == nullptr && pole[3][pol] == nullptr && pole[3][pol + 1] == nullptr;
+    int pol = rozmiar/2-1;
+    return (pole[2][pol] == nullptr && pole[2][pol + 1] == nullptr) || (pole[3][pol] == nullptr && pole[3][pol + 1] == nullptr);
 }
 
 void Rozgrywka::gra() {
@@ -142,9 +142,9 @@ void Rozgrywka::wykonaj_ture() {
     this->policz_straty_licz();
     printf("policzylem straty\n");
     this->poprzesuwaj_1();
-    printf("check przed przesuwaniem 2\n");
+    printf("jest po przesuwaniu 1\n");
     this->poprzesuwaj_2();
-    printf("check p0 przesuwaniu 2\n");
+    printf("jest po przesuwaniu 2\n");
 }
 
 void Rozgrywka::wypisz_ture() {
@@ -182,12 +182,12 @@ void Rozgrywka::resetuj_oddzialy() {
 void Rozgrywka::policz_cele() {
     for(int j = 0; j < rozmiar; ++j){
         for(int i = 0; i < 6; ++i){
+            printf("policz cele[%d][%d]\n", i, j);
             if(pole[i][j] != nullptr){
                 tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
             }
             else {
-                tab_wsp[i][j]->set_x(-1);
-                tab_wsp[i][j]->set_y(-1);
+                tab_wsp[i][j] = nullptr;
             }
         }
     }
@@ -228,7 +228,7 @@ void Rozgrywka::policz_atak() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
 
-            if(pole[i][j] != nullptr){
+            if(pole[i][j] != nullptr && tab_wsp[i][j] != nullptr){
 
                 wsp_celu_x = tab_wsp[i][j]->get_x();
                 wsp_celu_y = tab_wsp[i][j]->get_y();
@@ -251,7 +251,7 @@ void Rozgrywka::policz_straty_licz() {
 
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            if(pole[i][j] != nullptr){
+            if(pole[i][j] != nullptr && tab_wsp[i][j] != nullptr){
                 pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[tab_wsp[i][j]->get_x()][tab_wsp[i][j]->get_y()]);
                 if(pole[i][j]->aktualna_liczebnosc == 0){
 
@@ -311,32 +311,48 @@ void Rozgrywka::poprzesuwaj_1() {
 
     // I faza: przesuwanie do przodu jesli cos umarlo
 
-    //printf("*jestemw fazie 0 W P1\n");
+    printf("*jestemw fazie 0 W P1\n");
 
     for (int j = 0; j < rozmiar; ++j){
         //printf("*J = %d*\n", j);
         for(int i = 1; i < 3; ++i){
             if (pole[i][j] == nullptr){
-                //printf("*if check FOR1*\n");
                 pole[i][j] =  pole[i-1][j];
+                // TODO: wrzucic te wszystkie ify  z poprzesuwaj1 i poprzesuwaj2 do aktualizuj_wspolrzedne
+                if(pole[i][j] != nullptr){
+                    printf("pole[%d][%d] nie jest pustym wsk\n", i, j);
+                    pole[i][j]->aktualizuj_wspolrzedne(i,j);
+                }
                 pole[i-1][j] = nullptr;
             }
         }
         if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
             //printf("*if check*\n");
             pole[1][j] = pole[0][j];
+            if(pole[1][j] != nullptr){
+                printf("pole[1][%d] nie jest pustym wsk",  j);
+                pole[1][j]->aktualizuj_wspolrzedne(1,j);
+            }
             pole[0][j] = nullptr;
         }
         for(int i = 4; i > 2; --i){
             if (pole[i][j] == nullptr){
                 //printf("*if check FOR2*\n");
                 pole[i][j] = pole[i+1][j];
+                if(pole[i][j] != nullptr){
+                    printf("pole[%d][%d] nie jest pustym wsk", i, j);
+                    pole[i][j]->aktualizuj_wspolrzedne(i,j);
+                }
                 pole[i+1][j] = nullptr;
             }
         }
         if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
             //printf("*if check*\n");
             pole[4][j] = pole[5][j];
+            if(pole[4][j] != nullptr){
+                printf("pole[4][%d] nie jest pustym wsk",  j);
+                pole[4][j]->aktualizuj_wspolrzedne(4,j);
+            }
             pole[5][j] = nullptr;
         }
 
@@ -348,7 +364,7 @@ void Rozgrywka::poprzesuwaj_2() {
 
     // II faza: przesuwanie kolumn do srodka
 
-    //printf("*jestemw fazie 0\n");
+    printf("*jestemw fazie 0 Z P2\n");
 
     int polowa = (rozmiar/2)-1;
     int licznik = 0;
@@ -387,6 +403,10 @@ void Rozgrywka::poprzesuwaj_2() {
                 //printf("*JESTEM W IFIE*\n");
                 for(int i = 0; i < 6; ++i){
                     pole[i][j + tab[j]] = pole[i][j];
+                    if(pole[i][j + tab[j]] != nullptr){
+                        printf("pole[%d][%d] nie jest pustym wsk", i, j);
+                        pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i,j + tab[j]);
+                    }
                     pole[i][j] = nullptr;
                     //printf("*pole na nullptr 1!");
                 }
@@ -399,6 +419,10 @@ void Rozgrywka::poprzesuwaj_2() {
             if(pole[2][j] != nullptr || pole[3][j] != nullptr){
                 for(int i = 0; i < 6; ++i){
                     pole[i][j + tab[j]] = pole[i][j];
+                    if(pole[i][j + tab[j]] != nullptr){
+                        printf("pole[%d][%d] nie jest pustym wsk", i, j);
+                        pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i,j + tab[j]);
+                    }
                     pole[i][j] = nullptr;
                     //printf("*pole na nullptr 2!");
                 }
@@ -418,9 +442,15 @@ void Rozgrywka::wypisz() {
 }
 
 void Rozgrywka::wypisz_tab_wsp() {
+    printf("jestem w wypisz_tab_wsp 1\n");
     for(int i = 0; i < 6; ++i){
+        printf("jestem w wypisz_tab_wsp 2\n");
         for(int j = 0; j < rozmiar; ++j){
-            printf("tab_wsp[%d][%d] = (%d, %d).\n", i, j, tab_wsp[i][j]->get_x(), tab_wsp[i][j]->get_y());
+            printf("jestem w wypisz_tab_wsp 3\n");
+            if(tab_wsp[i][j] != nullptr){
+                printf("tab_wsp[%d][%d] = (%d, %d).\n", i, j, tab_wsp[i][j]->get_x(), tab_wsp[i][j]->get_y());
+            }
+
         }
     }
 }

@@ -19,9 +19,11 @@ protected:
     int zasieg;
 
     Rozgrywka* wskaznik_na_Rozgrywke;   // TODO: zobaczyć, czy jest potrzebny
-    Wspolrzedne* polozenie;
+
 
 public:
+
+    Wspolrzedne* polozenie;
 
     int liczebnosc;
     double morale;

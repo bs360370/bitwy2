@@ -15,6 +15,7 @@ protected:
 
 public:
 
+    Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) override;
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
     bool czy_zasieg() override;
 
