@@ -311,28 +311,37 @@ void Rozgrywka::poprzesuwaj_1() {
 
     // I faza: przesuwanie do przodu jesli cos umarlo
 
+    //printf("*jestemw fazie 0 W P1\n");
+
     for (int j = 0; j < rozmiar; ++j){
+        //printf("*J = %d*\n", j);
         for(int i = 1; i < 3; ++i){
             if (pole[i][j] == nullptr){
+                //printf("*if check FOR1*\n");
                 pole[i][j] =  pole[i-1][j];
                 pole[i-1][j] = nullptr;
             }
         }
         if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
+            //printf("*if check*\n");
             pole[1][j] = pole[0][j];
             pole[0][j] = nullptr;
         }
         for(int i = 4; i > 2; --i){
             if (pole[i][j] == nullptr){
-                pole[i][j] = pole[i+j][j];
+                //printf("*if check FOR2*\n");
+                pole[i][j] = pole[i+1][j];
                 pole[i+1][j] = nullptr;
             }
         }
         if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
+            //printf("*if check*\n");
             pole[4][j] = pole[5][j];
             pole[5][j] = nullptr;
         }
+
     }
+    //printf("*jestemw fazie KNC W P1\n");
 }
 
 void Rozgrywka::poprzesuwaj_2() {
@@ -341,7 +350,7 @@ void Rozgrywka::poprzesuwaj_2() {
 
     //printf("*jestemw fazie 0\n");
 
-    int polowa = rozmiar/2;
+    int polowa = (rozmiar/2)-1;
     int licznik = 0;
     int tab[10000];
 
@@ -354,8 +363,8 @@ void Rozgrywka::poprzesuwaj_2() {
     for(int j = polowa; j >= 0; --j){
         if(pole[2][j] == nullptr && pole[3][j] == nullptr){
             licznik++;
-            tab[j] = licznik;
         }
+        tab[j] = licznik;
     }
 
     licznik = 0;
@@ -363,20 +372,23 @@ void Rozgrywka::poprzesuwaj_2() {
     for(int j = polowa + 1; j < rozmiar; ++j){
         if(pole[2][j] == nullptr && pole[3][j] == nullptr){
             licznik--;
-            tab[j] = licznik;
         }
+        tab[j] = licznik;
     }
+
     for(int j = 0; j < rozmiar; ++j){
-            printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
+            //printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
     }
 
     for(int j = polowa; j >= 0; --j){
         if(tab[j] != 0){
+            //printf("*POLE[2][%d] = nullptr (1 lub 0): %d*\n", j, (pole[2][j]==nullptr));
             if(pole[2][j] != nullptr || pole[3][j] != nullptr){
+                //printf("*JESTEM W IFIE*\n");
                 for(int i = 0; i < 6; ++i){
                     pole[i][j + tab[j]] = pole[i][j];
                     pole[i][j] = nullptr;
-                    printf("*pole na nullptr 1!");
+                    //printf("*pole na nullptr 1!");
                 }
             }
         }
@@ -412,12 +424,3 @@ void Rozgrywka::wypisz_tab_wsp() {
         }
     }
 }
-
-
-
-
-
-
-
-
-

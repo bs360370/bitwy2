@@ -2,6 +2,10 @@
 
 #include "Wspolrzedne.h"
 
+Wspolrzedne::Wspolrzedne(int x, int y): x(x), y(y){
+
+}
+
 int Wspolrzedne::get_x() {
     return x;
 }
@@ -16,8 +20,4 @@ void Wspolrzedne::set_x(int x) {
 
 void Wspolrzedne::set_y(int y) {
     this->y = y;
-}
-
-Wspolrzedne::Wspolrzedne(int x, int y): x(x), y(y){
-
 }

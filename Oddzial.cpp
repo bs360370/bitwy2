@@ -130,8 +130,10 @@ void Oddzial::aktualizuj_morale_2() {
 
 void Oddzial::wypisz_status() {
     char typ = this->podaj_typ();
+    // TODO: w rozgrywce jest drugi raz sprawdzne czy pusty oddzial
     if(aktualna_liczebnosc){
-        printf("%c: %d", typ, aktualna_liczebnosc);
+        printf("%c:", typ);
+        this->procent_zycia();
     }
     else {
         printf("  X  ");
@@ -142,22 +144,31 @@ void Oddzial::wypisz_status() {
 
 void Oddzial::procent_zycia() {
     int procent;
-    procent = (int) floor((aktualna_liczebnosc / liczebnosc) * 100);
+    double pro = 100*aktualna_liczebnosc/liczebnosc;
+    //printf("pro = %fl ",pro);
+    procent = (int) floor(pro);
+    //printf("procent = %d ", procent);
     // TODO: nie wiem czy to jest dobrze ten casting
+
     if(liczebnosc == aktualna_liczebnosc){
         printf("00");
+        //printf("if 1 ");
     }
     if(aktualna_liczebnosc < liczebnosc){
+        //printf("if 2 ");
         if(procent >= 10){
             printf("%d", procent);
+            //printf("if 3 ");
         }
         if(procent < 10){
             printf("0%d", procent);
+            //printf("if 4 ");
         }
     }
     else if(aktualna_liczebnosc > liczebnosc){
         printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
     }
+
 }
 
 bool Oddzial::czy_konny() {
@@ -185,4 +196,3 @@ void Oddzial::wypisz_wartosci() {
            this->liczebnosc,
            this->morale);
 }
-
