@@ -34,7 +34,7 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
 
     int linia = polozenie->get_x();
     int rzad = polozenie->get_y();
-    printf(" x = %d, y = %d \n", linia, rzad);
+    //printf(" x = %d, y = %d \n", linia, rzad);
     int at = -1; // linia atakowana
     switch(linia){
         case(0):
@@ -71,7 +71,7 @@ Wspolrzedne *Oddzial::szukaj_celu(Oddzial ***p, int ro) {
             }
         }
     }
-// TODO: moze powinien returnowac jakies (-1,-1), zeby rozgrywka wiedziala, że ma nie wywolywac ataku dla oddzalu ktory nic nie znajdzie
+
     printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
@@ -113,11 +113,11 @@ void Oddzial::aktualizuj_liczebnosc(double straty) {
 }
 
 void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
-    printf("jestem a akt_wsp\n");
+    //printf("jestem a akt_wsp\n");
     polozenie->set_x(x);
-    printf("jestem a akt_wsp x\n");
+    //printf("jestem a akt_wsp x\n");
     polozenie->set_y(y);
-    printf("jestem a akt_wsp y\n");
+    //printf("jestem a akt_wsp y\n");
 }
 
 void Oddzial::aktualizuj_morale(double strata) {
@@ -137,7 +137,7 @@ void Oddzial::wypisz_status() {
     if(aktualna_liczebnosc){
         printf("%c:", typ);
         this->procent_zycia();
-        printf(" (%d,%d) ", polozenie->get_x(), polozenie->get_y());
+        //printf(" (%d,%d) ", polozenie->get_x(), polozenie->get_y());
     }
     else {
         printf("  X  ");

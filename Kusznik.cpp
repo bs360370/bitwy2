@@ -8,7 +8,7 @@ Kusznik::Kusznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(50,8,30,3,150,0, x,
 }
 
 void Kusznik::policz_modifier() {
-    printf("pol_mod() kusznika\n");
+    //printf("pol_mod() kusznika\n");
     if(polozenie->get_x() == 2 || polozenie->get_x() == 3){
         modifier_obrona = 0.7;
     }

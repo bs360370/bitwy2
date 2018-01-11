@@ -8,12 +8,12 @@ Konny::Konny(int x, int y, Rozgrywka* rozgrywka): Zwarcie(50,10,70,2,100,0, x, y
 }
 
 void Konny::policz_modifier() {
-    printf("pol_mod() konnego\n");
+    //printf("pol_mod() konnego\n");
     Zwarcie::policz_modifier();
 }
 
 void Konny::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-    printf("pol_mod(* *) konnego\n");
+    //printf("pol_mod(* *) konnego\n");
     int a = polozenie->get_x();
     int b = polozenie->get_y();
     if(tab2[a][b] != nullptr){

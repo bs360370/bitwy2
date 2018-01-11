@@ -9,24 +9,21 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
 [zrobione] trzeba zmienic kolejnosc sprawdzanych rzedow w [rzecz].szukaj_celu tak, zeby odleglosc byla minimalna
-
-// TODO: !!! obsluzyć puste oddzialy na wejsciu (chyba obsluzone although nadal niedziala)
-
-// TODO: USTALIC GDZIE MA BYC MODIFIER_MORALE_COOLDOWN (juz ustalone)
-
-// TODO: POPRZESUWAJ_2 WYWAJA PROGRAM (CHYBA JUZNIE)
 
 // TODO: zrobic wczytywanie zpliku
 
-// TODO: w przesuwaniu zrobic aktualizacje wspolrzednych !!!!!!!!!!!!!!!!!!
-
 // TODO: sprawdzic czy wyrazenia algerbraiczne dobrze licza rzeczy
 
-nieuzywane funkcja z maina:
+// TODO: z Damianem popaczeć jak połączyć dwie funkcje policz_modifiery()
 
+// TODO: przejrzeć gdzie jest double i gdzie int i gdzie powinno
+
+// TODO: spradzic czemu dany typ jednostki w danym rzedzie traci po tyle samo
+
+// TODO: koncenie gry wczesniejsze wywala gre
+
+nieuzywane funkcja z maina:
 
 /*
 void test() {

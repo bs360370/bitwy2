@@ -35,7 +35,9 @@ int main() {
 
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
     r->gra();
+    //printf("po grze\n");
     delete(r);
+    //printf("po delete\n");
 
     return 0;
 }

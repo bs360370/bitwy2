@@ -24,9 +24,7 @@ public:
     Wspolrzedne*** tab_wsp;         // macierz do trzymania wspolrzednych celow
     double** tab_strat_licz;        // macierz do trzymania wartosci strat liczebnosci
 
-
     // TODO: dodaj reset tab_wsp i tab_strat_licz ? (chyba jest nie potrzebny o itak w kazdej turze sie nadpisuje - ale pomyslec)
-
 
 public: // TODO: ustalic co ma byc public a co nie (narazie na potrzeby testowania jest wszystko public)
 

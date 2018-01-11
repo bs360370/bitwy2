@@ -8,7 +8,7 @@ Lucznik::Lucznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(30,5,20,5,200,0, x,
 }
 
 void Lucznik::policz_modifier() {
-    printf("pol_mod() lucznika\n");
+    //printf("pol_mod() lucznika\n");
     if(polozenie->get_x() == 2 || polozenie->get_x() == 3){
         modifier_obrona = 0.5;
         modifier_atak = 0.5;
@@ -31,7 +31,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
-    printf(" x = %d, y = %d \n", linia, rzad);
+    //printf(" x = %d, y = %d \n", linia, rzad);
     int at = -1; // linia atakowana
 
     switch(linia){
@@ -90,7 +90,6 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
             }
         }
     }
-
     printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }

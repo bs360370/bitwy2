@@ -8,12 +8,12 @@ Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,
 }
 
 void Halabardzista::policz_modifier() {
-    printf("pol_mod() halabardzisty\n");
+    //printf("pol_mod() halabardzisty\n");
     Zwarcie::policz_modifier();
 }
 
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
-    printf("pol_mod(* *) halabardzisty\n");
+    //printf("pol_mod(* *) halabardzisty\n");
     int a = polozenie->get_x();         // moja wspolrzedna x-owa
     int b = polozenie->get_y();         // moja wspolrzedna y-owa
     if(tab2[a][b] != nullptr){
