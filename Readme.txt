@@ -19,12 +19,7 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 
 // TODO: przejrzeć gdzie jest double i gdzie int i gdzie powinno
 
-// TODO: spradzic czemu dany typ jednostki w danym rzedzie traci po tyle samo
-
-// TODO: koncenie gry wczesniejsze wywala gre
-
-// TODO: przesuwanie tarczownika do przodu
-
+// TODO: zapytać na forum o zmniejszanie morale przy pojedynczych atakach
 
 nieuzywane funkcja z maina:
 

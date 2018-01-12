@@ -96,8 +96,28 @@ Rozgrywka::~Rozgrywka() {
 }
 
 bool Rozgrywka::czy_koniec_gry() {
-    int pol = rozmiar/2-1;
-    return (pole[2][pol] == nullptr && pole[2][pol + 1] == nullptr) || (pole[3][pol] == nullptr && pole[3][pol + 1] == nullptr);
+    bool gorne = false;
+    bool dolne = false;
+    for(int i = 0; i < rozmiar; ++i) {
+        if (!gorne) {
+            for (int j = 0; j <= 2; ++j) {
+                if (pole[j][i] != nullptr) {
+                    gorne = true;
+                }
+            }
+        }
+        if (!dolne){
+            for (int j = 3; j <= 5; ++j) {
+                if (pole[j][i] != nullptr) {
+                    dolne = true;
+                }
+            }
+        }
+        if (dolne && gorne) {
+            break;
+        }
+    }
+    return !(dolne && gorne);
 }
 
 void Rozgrywka::gra() {
@@ -126,7 +146,6 @@ void Rozgrywka::wykonaj_ture() {
     //printf("zrobilem reset\n");
     this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
     //printf("policzylem cele\n");
-    //this->wypisz_tab_wsp();
     this->policz_modifiery();
     //printf("policzylem modifiery\n");
     this->policz_wsparcie();
@@ -135,6 +154,7 @@ void Rozgrywka::wykonaj_ture() {
     //printf("policzylem atak\n");
     this->policz_straty_licz();
     //printf("policzylem straty\n");
+    //this->wypisz_tab_wsp();
     this->poprzesuwaj_1();
     //printf("jest po przesuwaniu 1\n");
     this->poprzesuwaj_2();
@@ -228,6 +248,12 @@ void Rozgrywka::policz_atak() {
     double moj_atak = 0;
     double strata_celu = 0;
 
+    for(int i = 0; i < 6; ++i) {
+        for (int j = 0; j < rozmiar; ++j) {
+            tab_strat_licz[i][j] = 0;
+        }
+    }
+
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
 
@@ -241,7 +267,7 @@ void Rozgrywka::policz_atak() {
                 strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
                 //printf("policzylem straty w policz_ataku()\n");
 
-                tab_strat_licz[wsp_celu_x][wsp_celu_y] = tab_strat_licz[wsp_celu_x][wsp_celu_y] + strata_celu;
+                tab_strat_licz[wsp_celu_x][wsp_celu_y] += strata_celu;
                 pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
 
             }
@@ -253,14 +279,15 @@ void Rozgrywka::policz_straty_licz() {
 
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            if(pole[i][j] != nullptr && tab_wsp[i][j] != nullptr){
-                pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[tab_wsp[i][j]->get_x()][tab_wsp[i][j]->get_y()]);
+            if(pole[i][j] != nullptr){
+                pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
                 if(pole[i][j]->aktualna_liczebnosc == 0){
+                    delete(pole[i][j]);
                     pole[i][j] = nullptr;
                     //printf(" *pole[%d][%d] chce byc nullpointerem* \n", i, j);
-                    if (pole[i][j] == nullptr){
-                        //printf(" *pole[%d][%d] jest nullpointerem* \n", i, j);
-                    }
+                    /*if (pole[i][j] == nullptr){
+                        printf(" *pole[%d][%d] jest nullpointerem* \n", i, j);
+                    }*/
                     // TODO: to jest eksperyment i nie wiem czy zadziala
                 }
 
@@ -317,47 +344,71 @@ void Rozgrywka::poprzesuwaj_1() {
 
     for (int j = 0; j < rozmiar; ++j){
         //printf("*J = %d*\n", j);
-        for(int i = 1; i < 3; ++i){
-            if (pole[i][j] == nullptr){
-                pole[i][j] =  pole[i-1][j];
-                // TODO: wrzucic te wszystkie ify  z poprzesuwaj1 i poprzesuwaj2 do aktualizuj_wspolrzedne
-                if(pole[i][j] != nullptr){
-                    //printf("pole[%d][%d] nie jest pustym wsk\n", i, j);
-                    pole[i][j]->aktualizuj_wspolrzedne(i,j);
-                }
-                pole[i-1][j] = nullptr;
+        if (pole[0][j] != nullptr && pole[0][j]->podaj_typ() == 'T' && (pole[1][j] == nullptr || pole[2][j] == nullptr)) {
+            // w posilkach jest tarczownik i istnieje jakies wolne pole przed nim
+            if (pole[2][j] != nullptr) {
+                // jesli na [2][j] nie jest nullptr, to na [1][j] musial byc
+                pole[1][j] = pole[2][j];
+                pole[1][j]->aktualizuj_wspolrzedne(1, j);
             }
-        }
-        if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
-            //printf("*if check*\n");
-            pole[1][j] = pole[0][j];
-            if(pole[1][j] != nullptr){
-                //printf("pole[1][%d] nie jest pustym wsk",  j);
-                pole[1][j]->aktualizuj_wspolrzedne(1,j);
-            }
+            pole[2][j] = pole[0][j];
+            pole[2][j]->aktualizuj_wspolrzedne(2, j);
             pole[0][j] = nullptr;
-        }
-        for(int i = 4; i > 2; --i){
-            if (pole[i][j] == nullptr){
-                //printf("*if check FOR2*\n");
-                pole[i][j] = pole[i+1][j];
-                if(pole[i][j] != nullptr){
-                    //printf("pole[%d][%d] nie jest pustym wsk", i, j);
-                    pole[i][j]->aktualizuj_wspolrzedne(i,j);
+        } else {
+            for (int i = 1; i < 3; ++i) {
+                if (pole[i][j] == nullptr) {
+                    pole[i][j] = pole[i - 1][j];
+                    // TODO: wrzucic te wszystkie ify  z poprzesuwaj1 i poprzesuwaj2 do aktualizuj_wspolrzedne
+                    if (pole[i][j] != nullptr) {
+                        //printf("pole[%d][%d] nie jest pustym wsk\n", i, j);
+                        pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    }
+                    pole[i - 1][j] = nullptr;
                 }
-                pole[i+1][j] = nullptr;
             }
-        }
-        if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
-            //printf("*if check*\n");
-            pole[4][j] = pole[5][j];
-            if(pole[4][j] != nullptr){
-                //printf("pole[4][%d] nie jest pustym wsk",  j);
-                pole[4][j]->aktualizuj_wspolrzedne(4,j);
+            if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
+                //printf("*if check*\n");
+                pole[1][j] = pole[0][j];
+                if (pole[1][j] != nullptr) {
+                    //printf("pole[1][%d] nie jest pustym wsk",  j);
+                    pole[1][j]->aktualizuj_wspolrzedne(1, j);
+                }
+                pole[0][j] = nullptr;
             }
-            pole[5][j] = nullptr;
         }
 
+        if(pole[5][j] != nullptr && pole[5][j]->podaj_typ() == 'T' && (pole[4][j] == nullptr || pole[3][j] == nullptr)) {
+            // w posilkach jest tarczownik i istnieje jakies wolne pole przed nim
+            if (pole[3][j] != nullptr) {
+                // jesli na [3][j] nie jest nullptr, to na [4][j] musial byc
+                pole[4][j] = pole[3][j];
+                pole[4][j]->aktualizuj_wspolrzedne(4, j);
+            }
+            pole[3][j] = pole[5][j];
+            pole[3][j]->aktualizuj_wspolrzedne(3, j);
+            pole[5][j] = nullptr;
+        } else {
+            for (int i = 4; i > 2; --i) {
+                if (pole[i][j] == nullptr) {
+                    //printf("*if check FOR2*\n");
+                    pole[i][j] = pole[i + 1][j];
+                    if (pole[i][j] != nullptr) {
+                        //printf("pole[%d][%d] nie jest pustym wsk", i, j);
+                        pole[i][j]->aktualizuj_wspolrzedne(i, j);
+                    }
+                    pole[i + 1][j] = nullptr;
+                }
+            }
+            if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
+                //printf("*if check*\n");
+                pole[4][j] = pole[5][j];
+                if (pole[4][j] != nullptr) {
+                    //printf("pole[4][%d] nie jest pustym wsk",  j);
+                    pole[4][j]->aktualizuj_wspolrzedne(4, j);
+                }
+                pole[5][j] = nullptr;
+            }
+        }
     }
     //printf("*jestemw fazie KNC W P1\n");
 }
@@ -374,59 +425,78 @@ void Rozgrywka::poprzesuwaj_2() {
 
     //printf("*jestem w fazie 1*\n");
 
-    for(int j = 0; j < rozmiar + 1; ++j){
-        tab[j] = 0;
-    }
-
-    for(int j = polowa; j >= 0; --j){
-        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
-            licznik++;
+    for(int armia = 2; armia <= 3; ++armia) {
+        for (int j = 0; j < rozmiar + 1; ++j) {
+            tab[j] = 0;
         }
-        tab[j] = licznik;
-    }
-
-    licznik = 0;
-
-    for(int j = polowa + 1; j < rozmiar; ++j){
-        if(pole[2][j] == nullptr && pole[3][j] == nullptr){
-            licznik--;
+        licznik = 0;
+        for (int j = polowa; j >= 0; --j) {
+            if (pole[armia][j] == nullptr) {
+                licznik++;
+            }
+            tab[j] = licznik;
         }
-        tab[j] = licznik;
-    }
 
-    for(int j = 0; j < rozmiar; ++j){
-            //printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
-    }
+        licznik = 0;
 
-    for(int j = polowa; j >= 0; --j){
-        if(tab[j] != 0){
-            //printf("*POLE[2][%d] = nullptr (1 lub 0): %d*\n", j, (pole[2][j]==nullptr));
-            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
-                //printf("*JESTEM W IFIE*\n");
-                for(int i = 0; i < 6; ++i){
-                    pole[i][j + tab[j]] = pole[i][j];
-                    if(pole[i][j + tab[j]] != nullptr){
-                        //printf("pole[%d][%d] nie jest pustym wsk", i, j);
-                        pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i,j + tab[j]);
+        for (int j = polowa + 1; j < rozmiar; ++j) {
+            if (pole[armia][j] == nullptr) {
+                licznik--;
+            }
+            tab[j] = licznik;
+        }
+
+        /*for (int j = 0; j < rozmiar; ++j) {
+            printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
+        }*/
+
+        for (int j = polowa; j >= 0; --j) {
+            if (tab[j] != 0) {
+                //printf("*POLE[2][%d] = nullptr (1 lub 0): %d*\n", j, (pole[2][j]==nullptr));
+                if (pole[armia][j] != nullptr) {
+                    //printf("*JESTEM W IFIE*\n");
+                    int start, koniec;
+                    if (armia == 2) {
+                        start = 0;
+                        koniec = 2;
+                    } else {
+                        start = 3;
+                        koniec = 5;
                     }
-                    pole[i][j] = nullptr;
-                    //printf("*pole na nullptr 1!");
+                    for (int i = start; i <= koniec; ++i) {
+                        pole[i][j + tab[j]] = pole[i][j];
+                        if (pole[i][j + tab[j]] != nullptr) {
+                            //printf("pole[%d][%d] nie jest pustym wsk", i, j);
+                            pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i, j + tab[j]);
+                        }
+                        pole[i][j] = nullptr;
+                        //printf("*pole na nullptr 1!");
+                    }
+
                 }
             }
         }
-    }
 
-    for(int j = polowa + 1; j < rozmiar; ++j){
-        if(tab[j] != 0){
-            if(pole[2][j] != nullptr || pole[3][j] != nullptr){
-                for(int i = 0; i < 6; ++i){
-                    pole[i][j + tab[j]] = pole[i][j];
-                    if(pole[i][j + tab[j]] != nullptr){
-                        //printf("pole[%d][%d] nie jest pustym wsk", i, j);
-                        pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i,j + tab[j]);
+        for (int j = polowa + 1; j < rozmiar; ++j) {
+            if (tab[j] != 0) {
+                if (pole[armia][j] != nullptr) {
+                    int start, koniec;
+                    if (armia == 2) {
+                        start = 0;
+                        koniec = 2;
+                    } else {
+                        start = 3;
+                        koniec = 5;
                     }
-                    pole[i][j] = nullptr;
-                    //printf("*pole na nullptr 2!");
+                    for (int i = start; i <= koniec; ++i) {
+                        pole[i][j + tab[j]] = pole[i][j];
+                        if (pole[i][j + tab[j]] != nullptr) {
+                            //printf("pole[%d][%d] nie jest pustym wsk", i, j);
+                            pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i, j + tab[j]);
+                        }
+                        pole[i][j] = nullptr;
+                        //printf("*pole na nullptr 2!");
+                    }
                 }
             }
         }
@@ -449,10 +519,9 @@ void Rozgrywka::wypisz_tab_wsp() {
         //printf("jestem w wypisz_tab_wsp 2\n");
         for(int j = 0; j < rozmiar; ++j){
             //printf("jestem w wypisz_tab_wsp 3\n");
-            if(tab_wsp[i][j] != nullptr){
-                printf("tab_wsp[%d][%d] = (%d, %d).\n", i, j, tab_wsp[i][j]->get_x(), tab_wsp[i][j]->get_y());
-            }
-
+            //printf("tab_strat_licz[%d][%d] = (%f, %f).\n", i, j, tab_strat_licz[i][j], tab_strat_licz[i][j]);
+            printf("(%d,%d):(%.1f, %.1f)  ", i, j, tab_strat_licz[i][j], tab_strat_licz[i][j]);
         }
+        printf("\n");
     }
 }

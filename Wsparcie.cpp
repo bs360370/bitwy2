@@ -42,22 +42,20 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
     }
 
     for(int j = 0; j < zasieg; ++j){
-        if(rzad-j >= 0 && rzad+j < ro){
-            if(j==0){
-                if(linia != at){
-                    if(p[at][rzad] != nullptr){
-                        return p[at][rzad]->get_polozenie();
-                        // TODO: TUTAJ COS SIE PSUJE
-                    }
+        if(j==0){
+            if(linia != at){
+                if(p[at][rzad] != nullptr){
+                    return p[at][rzad]->get_polozenie();
+                    // TODO: TUTAJ COS SIE PSUJE
                 }
             }
-            else {
-                if(p[at][rzad-j] != nullptr){
-                    return p[at][rzad-j]->get_polozenie();
-                }
-                if(p[at][rzad+j] != nullptr){
-                    return p[at][rzad+j]->get_polozenie();
-                }
+        }
+        else {
+            if(rzad-j >= 0 && p[at][rzad-j] != nullptr){
+                return p[at][rzad-j]->get_polozenie();
+            }
+            if(rzad+j < ro && p[at][rzad+j] != nullptr){
+                return p[at][rzad+j]->get_polozenie();
             }
         }
     }

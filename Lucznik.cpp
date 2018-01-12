@@ -35,37 +35,34 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
     int at = -1; // linia atakowana
 
     switch(linia){
-        case(0):
         case(1):
         case(2): {
             at = 4;
             break;
         }
         case(3):
-        case(4):
-        case(5): {
+        case(4): {
             at = 1;
             break;
         }
         default: {
-            printf("blad przy szukaniu celu! \n");
+            //printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+            return nullptr; // lucznik nie moze atakowac z linii rezerw
         }
     }
 
     for(int j = 0; j < zasieg; ++j){
-        if(rzad-j >= 0 && rzad+j < ro){
-            if(j==0){
-                if(p[at][rzad] != nullptr){
-                    return p[at][rzad]->get_polozenie();
-                }
+        if(j==0){
+            if(p[at][rzad] != nullptr){
+                return p[at][rzad]->get_polozenie();
             }
-            else {
-                if(p[at][rzad-j] != nullptr){
-                    return p[at][rzad-j]->get_polozenie();
-                }
-                if(p[at][rzad+j] != nullptr){
-                    return p[at][rzad+j]->get_polozenie();
-                }
+        }
+        else {
+            if(rzad-j >= 0 && p[at][rzad-j] != nullptr){
+                return p[at][rzad-j]->get_polozenie();
+            }
+            if(rzad+j < ro && p[at][rzad+j] != nullptr){
+                return p[at][rzad+j]->get_polozenie();
             }
         }
     }
@@ -74,22 +71,20 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
     if(at==4) at = 3;
 
     for(int j = 0; j < zasieg; ++j){
-        if(rzad-j >= 0 && rzad+j < ro){
-            if(j==0){
-                if(p[at][rzad] != nullptr){
-                    return p[at][rzad]->get_polozenie();
-                }
+        if(j==0){
+            if(p[at][rzad] != nullptr){
+                return p[at][rzad]->get_polozenie();
             }
-            else {
-                if(p[at][rzad-j] != nullptr){
-                    return p[at][rzad-j]->get_polozenie();
-                }
-                if(p[at][rzad+j] != nullptr){
-                    return p[at][rzad+j]->get_polozenie();
-                }
+        }
+        else {
+            if(rzad-j >= 0 && p[at][rzad-j] != nullptr){
+                return p[at][rzad-j]->get_polozenie();
+            }
+            if(rzad+j < ro && p[at][rzad+j] != nullptr){
+                return p[at][rzad+j]->get_polozenie();
             }
         }
     }
-    printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+    //printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
