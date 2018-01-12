@@ -137,6 +137,7 @@ void Oddzial::wypisz_status() {
     if(aktualna_liczebnosc){
         printf("%c:", typ);
         this->procent_zycia();
+        // TODO: tymczasowo liczebnosc
         //printf(" (%d,%d) ", polozenie->get_x(), polozenie->get_y());
     }
     else {

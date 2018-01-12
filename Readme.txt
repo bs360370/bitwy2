@@ -23,6 +23,9 @@ PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
 
 // TODO: koncenie gry wczesniejsze wywala gre
 
+// TODO: przesuwanie tarczownika do przodu
+
+
 nieuzywane funkcja z maina:
 
 /*

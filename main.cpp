@@ -74,7 +74,7 @@ int main() {
     int dlugosc;                // dlugosc linii
     int tury;                   // liczba tur
 
-    scanf("%d %d\n", &dlugosc, &tury);
+    scanf("%d %d", &dlugosc, &tury);
 
     // printf ("\ndane zebrano\ndlugosc=%d, tury=%d \n", dlugosc, tury);
 

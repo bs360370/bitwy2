@@ -101,21 +101,18 @@ bool Rozgrywka::czy_koniec_gry() {
 }
 
 void Rozgrywka::gra() {
-    for(int i = 0; i < limit_tur+1; ++i){
+    for(int i = 0; i < limit_tur; ++i){
         if(!this->czy_koniec_gry()){
             //printf("check przed tura %d\n", i);
             this->wykonaj_ture();
             //printf("check po turze  %d\n", i);
         }
-
         else {
             printf("gra skonczona przed limitem tur w turze %d.\n", i);
-            this->wypisz_ture();
-            //i = limit_tur+1;
             break;
         }
-
     }
+    this->wypisz_ture();
 }
 
 void Rozgrywka::wykonaj_ture() {
