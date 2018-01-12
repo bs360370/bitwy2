@@ -90,6 +90,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
             }
         }
     }
+
     printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
     return nullptr;
 }
