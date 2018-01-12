@@ -103,9 +103,9 @@ bool Rozgrywka::czy_koniec_gry() {
 void Rozgrywka::gra() {
     for(int i = 0; i < limit_tur+1; ++i){
         if(!this->czy_koniec_gry()){
-            printf("check przed tura %d\n", i);
+            //printf("check przed tura %d\n", i);
             this->wykonaj_ture();
-            printf("check po turze  %d\n", i);
+            //printf("check po turze  %d\n", i);
         }
 
         else {
@@ -148,8 +148,11 @@ void Rozgrywka::wypisz_ture() {
 
     // TODO: poprawić alignment
 
-    printf("==================================================\n");
-
+    printf("============");
+    for(int k = 0; k< rozmiar; ++k){
+        printf("======");
+    }
+    printf("\n");
     printf("Tura %d z %d \n", aktualna_tura, limit_tur);
     for(int i = 0; i < 6; ++i){
         printf("            ");
@@ -161,7 +164,14 @@ void Rozgrywka::wypisz_ture() {
             printf ("  ");
         }
         printf("\n");
-        if(i == 2) printf("--------------------------------------------------\n");
+        if(i == 2){
+            printf("------------");
+            for(int k = 0; k< rozmiar; ++k){
+                printf("------");
+            }
+            printf("\n");
+        }
+
     }
 }
 
@@ -257,8 +267,8 @@ void Rozgrywka::policz_straty_licz() {
                     // TODO: to jest eksperyment i nie wiem czy zadziala
                 }
 
-                if(pole[i][j] == nullptr){
-                    // TODO: z funkcja aktualizuj_morale_2 cos jest nietak
+                if(pole[i][j] == nullptr && i != 0 && i != 5){
+                    // TODO: ten if powyzej dos sprawdzenia 12.01.18
                     switch(i){
                         case(1):{
                             if(j > 0 && pole[1][j-1] != nullptr) pole[1][j-1]->aktualizuj_morale_2();
@@ -293,7 +303,7 @@ void Rozgrywka::policz_straty_licz() {
                             break;
                         }
                         default:{
-                            printf("BLAD: zostal zaatakowany zly oddzial\n");
+                            printf("aktualizacja morale: blad: [i][j] = [%d][%d]\n", i, j);
                         }
                     }
                 }
