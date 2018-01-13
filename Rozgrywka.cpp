@@ -282,7 +282,7 @@ void Rozgrywka::policz_straty_licz() {
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
-                if(pole[i][j]->aktualna_liczebnosc == 0){
+                if(pole[i][j]->czy_martwy()){
                     delete(pole[i][j]);
                     pole[i][j] = nullptr;
                     //printf(" *pole[%d][%d] chce byc nullpointerem* \n", i, j);
@@ -532,12 +532,7 @@ void Rozgrywka::wypisz_modifiery() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr) {
-                printf("(%d,%d) mod_ata = %.2f, ", i, j, pole[i][j]->modifier_atak);
-                printf("(%d,%d) mod_mor = %.2f, ", i, j, pole[i][j]->modifier_morale);
-                printf("(%d,%d) mod_obr = %.2f, ", i, j, pole[i][j]->modifier_obrona);
-                printf("(%d,%d) mod_m_c = %.2f, ", i, j, pole[i][j]->modifier_morale_cooldown);
-                printf("(%d,%d) akt_lic = %d, ", i, j, pole[i][j]->aktualna_liczebnosc);
-                printf("(%d,%d) moralee = %.2f\n", i, j, pole[i][j]->morale);
+                pole[i][j]->wypisz_modifiery();
             }
         }
     }

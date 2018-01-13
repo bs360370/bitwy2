@@ -20,9 +20,6 @@ protected:
 
     Rozgrywka* wskaznik_na_Rozgrywke;   // TODO: zobaczyć, czy jest potrzebny
 
-
-public:
-
     Wspolrzedne* polozenie;
 
     int liczebnosc;
@@ -37,6 +34,8 @@ public:
     double modifier_obrona;
     double modifier_morale_cooldown;
 
+public:
+
     void resetuj_modifiery();                                                   // ustawia modifiery danego odzialu na 1 (modifiery są domnazane)
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) = 0;                     // szukanie celu [override w Luczniku i Wsparciu]
     virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;     // liczenie modifierow dla ... // TODO: dopisac reszte komentarza
@@ -50,13 +49,15 @@ public:
     void aktualizuj_morale(double strata);                                      // strata morale przy pojedynczym ataku na oddzial
     void aktualizuj_morale_2();                                                 // strata morale po smierci oddzialu // TODO: cos nie dziala
 
+    void otrzymaj_wsparcie(double atak, double obrona, double morale, double morale_cooldown);
+
     void procent_zycia();                                                       // wypisuje procent zycia na wyjsciu
     void wypisz_status();                                                       // wypsiuje np: K:43 na wyjsciu dla danego typu oddzialu typ i procent zycia
-
+    void wypisz_modifiery(); // POMOCNICZE
     virtual char podaj_typ() = 0;                                               // w zaleznosci od typu jednostki zwraca literke typu (char)
     Wspolrzedne* get_polozenie();                                               // geter polozenia
 
-    bool czy_martwy(); // TODO: nie wiem czy to jest gdzies uzyte
+    bool czy_martwy();
 
     // konstruktory, destruktory
 

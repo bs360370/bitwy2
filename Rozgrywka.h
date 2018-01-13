@@ -13,7 +13,7 @@ class Rozgrywka {
 // klasa Rozgrywka zarządza przebiegiem rozgrywki
 // i wypisywaniem wyniku
 
-public:
+private:
 
     int rozmiar;                    // 2N
     int limit_tur;                  // T
@@ -26,7 +26,7 @@ public:
 
     // TODO: dodaj reset tab_wsp i tab_strat_licz ? (chyba jest nie potrzebny o itak w kazdej turze sie nadpisuje - ale pomyslec)
 
-public: // TODO: ustalic co ma byc public a co nie (narazie na potrzeby testowania jest wszystko public)
+ // TODO: ustalic co ma byc public a co nie (narazie na potrzeby testowania jest wszystko public)
 
     void resetuj_oddzialy();        // resetuje modifiery z poprzedniej tury
     void policz_cele();             // każe oddziałom znaleźć cele
@@ -39,17 +39,17 @@ public: // TODO: ustalic co ma byc public a co nie (narazie na potrzeby testowan
 
     void wypisz_tab_wsp();          // funkcja pomocnicza - wypisuje tab_wsp
 
-public:
-
     bool czy_koniec_gry();          // sprawdza, czy któraś armia przegrała
 
-    void gra();                     // wykonuje limit_tur tur
     void wykonaj_ture();            // wykonanie wszystkich zadań jednej tury
     void wypisz_ture();             // wypisuje stan pola w danej turze // TODO: poprawić, bo nie wypisuje ostatniej tury
 
     void wypisz();                  // funkcja pomocznicza - wypisuje poctkowe staty danego typu jenostki
 
     void wypisz_modifiery();        // funkcja pomocnicza
+
+public:
+    void gra();                     // wykonuje limit_tur tur\
 
 // konstruktory, destruktory
 

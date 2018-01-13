@@ -1,21 +1,7 @@
 
-SPYTAC NA FORUM JAK DZIALA KONSOLIDACJA SZEREGOW - CZY
-PRZESUWAC KOLUMNY JAK JEST PUSTA W OBU ARMIACH CZY W JEDNEJ
-
-                !!!!!!!!!!!!
-
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!PODOMNAŻAJ MODIFIERY TAM GDZIE POWINNY BYC !!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-[zrobione] trzeba zmienic kolejnosc sprawdzanych rzedow w [rzecz].szukaj_celu tak, zeby odleglosc byla minimalna
-
 // TODO: zrobic wczytywanie zpliku
 
 // TODO: sprawdzic czy wyrazenia algerbraiczne dobrze licza rzeczy
-
-// TODO: z Damianem popaczeć jak połączyć dwie funkcje policz_modifiery()
 
 // TODO: przejrzeć gdzie jest double i gdzie int i gdzie powinno
 

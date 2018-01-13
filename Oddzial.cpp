@@ -148,3 +148,19 @@ void Oddzial::wypisz_wartosci() {
            this->liczebnosc,
            this->morale);
 }
+
+void Oddzial::otrzymaj_wsparcie(double atak, double obrona, double morale, double morale_cooldown) {
+    modifier_atak *= atak;
+    modifier_obrona *= obrona;
+    modifier_morale *= morale;
+    modifier_morale_cooldown *= morale_cooldown;
+}
+
+void Oddzial::wypisz_modifiery() {
+    printf("(%d,%d) mod_ata = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_atak);
+    printf("(%d,%d) mod_mor = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_morale);
+    printf("(%d,%d) mod_obr = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_obrona);
+    printf("(%d,%d) mod_m_c = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_morale_cooldown);
+    printf("(%d,%d) akt_lic = %d, ", polozenie->get_x(), polozenie->get_y(), aktualna_liczebnosc);
+    printf("(%d,%d) moralee = %.2f\n", polozenie->get_x(), polozenie->get_y(), morale);
+}
