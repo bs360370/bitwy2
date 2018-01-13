@@ -69,6 +69,11 @@ void generuj_wejscie(int n, char tab[][6]){
 }
 
 
+void test2(){
+
+}
+
+
 int main() {
 
     int dlugosc;                // dlugosc linii

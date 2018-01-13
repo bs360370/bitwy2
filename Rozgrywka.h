@@ -49,6 +49,8 @@ public:
 
     void wypisz();                  // funkcja pomocznicza - wypisuje poctkowe staty danego typu jenostki
 
+    void wypisz_modifiery();        // funkcja pomocnicza
+
 // konstruktory, destruktory
 
     Rozgrywka(int rozmiar, int limit_tur, char tab[][6]);

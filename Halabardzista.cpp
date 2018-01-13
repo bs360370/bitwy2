@@ -9,7 +9,7 @@ Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,
 
 void Halabardzista::policz_modifier() {
     //printf("pol_mod() halabardzisty\n");
-    Zwarcie::policz_modifier();
+    //Zwarcie::policz_modifier();
 }
 
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
@@ -20,7 +20,7 @@ void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
         int wsp1 = tab2[a][b]->get_x();     // x-owa wspolrzedna celu (tab2 wywoluje sie w Rozgrywce jako tab_wsp)
         int wsp2 = tab2[a][b]->get_y();     // y-owa wspolrzenda celu (-||-)
         if(tab1[wsp1][wsp2]->czy_konny()){
-            modifier_atak = 1.5;
+            modifier_atak *= 1.5;
         }
     }
     //TODO: nie wiem czy ten this jest potrzebny

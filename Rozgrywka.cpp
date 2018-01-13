@@ -150,11 +150,13 @@ void Rozgrywka::wykonaj_ture() {
     //printf("policzylem modifiery\n");
     this->policz_wsparcie();
     //printf("policzylem wsparcie\n");
+    this->wypisz_modifiery();
+    //printf("wypisalem modifiery\n");
     this->policz_atak();
     //printf("policzylem atak\n");
     this->policz_straty_licz();
     //printf("policzylem straty\n");
-    //this->wypisz_tab_wsp();
+    this->wypisz_tab_wsp();
     this->poprzesuwaj_1();
     //printf("jest po przesuwaniu 1\n");
     this->poprzesuwaj_2();
@@ -520,8 +522,24 @@ void Rozgrywka::wypisz_tab_wsp() {
         for(int j = 0; j < rozmiar; ++j){
             //printf("jestem w wypisz_tab_wsp 3\n");
             //printf("tab_strat_licz[%d][%d] = (%f, %f).\n", i, j, tab_strat_licz[i][j], tab_strat_licz[i][j]);
-            printf("(%d,%d):(%.1f, %.1f)  ", i, j, tab_strat_licz[i][j], tab_strat_licz[i][j]);
+            printf("(%d,%d):(%.1f)  ", i, j, tab_strat_licz[i][j]);
+            // TODO: roboczo wypisuje tab_strat_licz
         }
         printf("\n");
+    }
+}
+
+void Rozgrywka::wypisz_modifiery() {
+    for(int i = 0; i < 6; ++i){
+        for(int j = 0; j < rozmiar; ++j){
+            if(pole[i][j] != nullptr) {
+                printf("(%d,%d) mod_ata = %.2f, ", i, j, pole[i][j]->modifier_atak);
+                printf("(%d,%d) mod_mor = %.2f, ", i, j, pole[i][j]->modifier_morale);
+                printf("(%d,%d) mod_obr = %.2f, ", i, j, pole[i][j]->modifier_obrona);
+                printf("(%d,%d) mod_m_c = %.2f, ", i, j, pole[i][j]->modifier_morale_cooldown);
+                printf("(%d,%d) akt_lic = %d, ", i, j, pole[i][j]->aktualna_liczebnosc);
+                printf("(%d,%d) moralee = %.2f\n", i, j, pole[i][j]->morale);
+            }
+        }
     }
 }

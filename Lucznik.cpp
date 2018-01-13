@@ -10,8 +10,8 @@ Lucznik::Lucznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(30,5,20,5,200,0, x,
 void Lucznik::policz_modifier() {
     //printf("pol_mod() lucznika\n");
     if(polozenie->get_x() == 2 || polozenie->get_x() == 3){
-        modifier_obrona = 0.5;
-        modifier_atak = 0.5;
+        modifier_obrona *= 0.5;
+        modifier_atak *= 0.5;
     }
 }
 
