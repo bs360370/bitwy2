@@ -7,6 +7,8 @@
 
 // TODO: zapytać na forum o zmniejszanie morale przy pojedynczych atakach
 
+// TODO: konstruktory i operatory przypisania
+
 nieuzywane funkcja z maina:
 
 /*
