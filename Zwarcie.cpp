@@ -10,16 +10,12 @@ Zwarcie::Zwarcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
 
 }
 
-void Zwarcie::policz_modifier() {
 
+void Zwarcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
     //printf("pol_mod() zwarcia\n");
     if(polozenie->get_x() == 1 || polozenie->get_x() == 4){
         modifier_atak = 0;
     }
-
-}
-
-void Zwarcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
 

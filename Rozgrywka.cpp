@@ -226,7 +226,6 @@ void Rozgrywka::policz_modifiery() {
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->policz_modifier(pole, tab_wsp);
-                pole[i][j]->policz_modifier();
             }
         }
     }

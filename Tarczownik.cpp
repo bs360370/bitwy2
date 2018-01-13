@@ -18,10 +18,6 @@ void Tarczownik::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {
 
 }
 
-void Tarczownik::policz_modifier() {
-
-}
-
 char Tarczownik::podaj_typ() {
     return 'T';
 }

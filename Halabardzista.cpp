@@ -7,10 +7,6 @@ Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,
 
 }
 
-void Halabardzista::policz_modifier() {
-    //printf("pol_mod() halabardzisty\n");
-    //Zwarcie::policz_modifier();
-}
 
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
     //printf("pol_mod(* *) halabardzisty\n");
@@ -24,7 +20,7 @@ void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
         }
     }
     //TODO: nie wiem czy ten this jest potrzebny
-    this->Zwarcie::policz_modifier();
+    Zwarcie::policz_modifier(tab1, tab2);
     // printf("tutaj\n");
 
 }

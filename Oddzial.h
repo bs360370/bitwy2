@@ -39,7 +39,6 @@ public:
 
     void resetuj_modifiery();                                                   // ustawia modifiery danego odzialu na 1 (modifiery są domnazane)
     virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) = 0;                     // szukanie celu [override w Luczniku i Wsparciu]
-    virtual void policz_modifier() = 0;                                         // liczenie podifierow dla ... // TODO: dopisac reszte komentarza
     virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;     // liczenie modifierow dla ... // TODO: dopisac reszte komentarza
     virtual bool czy_konny();                                                   // dla Konnego zwraca true, w reszice false - potrzebne do liczenia bonusów
     virtual bool czy_zasieg();                                                  // dla Zwarcia zwraca true, dla reszty false - potrzebne do liczenia bonusów

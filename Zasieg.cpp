@@ -8,9 +8,6 @@ Zasieg::Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int lic
                                                rozgrywka) {
 }
 
-void Zasieg::policz_modifier() {
-
-}
 
 void Zasieg::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
