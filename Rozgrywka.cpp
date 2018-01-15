@@ -256,9 +256,7 @@ void Rozgrywka::policz_atak() {
 
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-
             if(pole[i][j] != nullptr && tab_wsp[i][j] != nullptr){
-
                 wsp_celu_x = tab_wsp[i][j]->get_x();
                 wsp_celu_y = tab_wsp[i][j]->get_y();
 
@@ -266,8 +264,6 @@ void Rozgrywka::policz_atak() {
                 strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
 
                 tab_strat_licz[wsp_celu_x][wsp_celu_y] += strata_celu;
-                pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
-
             }
         }
     }
@@ -278,6 +274,7 @@ void Rozgrywka::policz_straty_licz() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
+                pole[i][j]->aktualizuj_morale(tab_strat_licz[i][j]);
                 pole[i][j]->aktualizuj_liczebnosc(tab_strat_licz[i][j]);
                 if(pole[i][j]->czy_martwy()){
                     delete(pole[i][j]);
@@ -349,7 +346,6 @@ void Rozgrywka::poprzesuwaj_1() {
             for (int i = 1; i < 3; ++i) {
                 if (pole[i][j] == nullptr) {
                     pole[i][j] = pole[i - 1][j];
-                    // TODO: wrzucic te wszystkie ify  z poprzesuwaj1 i poprzesuwaj2 do aktualizuj_wspolrzedne
                     if (pole[i][j] != nullptr) {
                         pole[i][j]->aktualizuj_wspolrzedne(i, j);
                     }

@@ -67,3 +67,5 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
     cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }
+
+

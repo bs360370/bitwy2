@@ -5,9 +5,11 @@
 
 // TODO: przejrzeć gdzie jest double i gdzie int i gdzie powinno
 
-// TODO: zapytać na forum o zmniejszanie morale przy pojedynczych atakach
-
 // TODO: konstruktory i operatory przypisania
+
+// TODO: sprawdzicna foru odpowiedz odnosnie addytywnosci modifierow
+
+// TODO: czym jest virtual destructor
 
 nieuzywane funkcja z maina:
 

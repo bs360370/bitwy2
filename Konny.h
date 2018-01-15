@@ -19,6 +19,7 @@ public:
     bool czy_konny() override;
 
     Konny(int x, int y, Rozgrywka* rozgrywka);
+    ~Konny() override = default;
 };
 
 

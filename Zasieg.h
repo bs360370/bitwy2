@@ -19,6 +19,7 @@ public:
     bool czy_zasieg() override;
 
     Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgrywka);
+    ~Zasieg() override = default;
 };
 
 

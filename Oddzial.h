@@ -37,7 +37,7 @@ protected:
 public:
 
     void resetuj_modifiery();                                                   // ustawia modifiery danego odzialu na 1 (modifiery są domnazane)
-    virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) = 0;                     // szukanie celu [override w Luczniku i Wsparciu]
+    virtual Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) = 0;                 // szukanie celu [override w Luczniku i Wsparciu]
     virtual void policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) = 0;     // liczenie modifierow dla ... // TODO: dopisac reszte komentarza
     virtual bool czy_konny();                                                   // dla Konnego zwraca true, w reszice false - potrzebne do liczenia bonusów
     virtual bool czy_zasieg();                                                  // dla Zwarcia zwraca true, dla reszty false - potrzebne do liczenia bonusów
@@ -59,10 +59,12 @@ public:
 
     bool czy_martwy();
 
-    // konstruktory, destruktory
+    // techniczne
 
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgr);
-    ~Oddzial();
+    virtual ~Oddzial();
+    Oddzial(const Oddzial&) = delete;
+    Oddzial& operator=(const Oddzial&) = delete;
 
     void wypisz_wartosci();                                                     // funkcja pomocnicza - wypisuje staty
 };

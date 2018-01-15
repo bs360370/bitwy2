@@ -19,6 +19,7 @@ public:
     Wspolrzedne* szukaj_celu(Oddzial*** p, int ro) override;
 
     Lucznik(int x, int y, Rozgrywka* rozgrywka);
+    ~Lucznik() override = default;
 };
 
 

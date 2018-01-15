@@ -18,6 +18,7 @@ public:
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
 
     Miecznik(int x, int y, Rozgrywka* rozgrywka);
+    ~Miecznik() override = default;
 };
 
 

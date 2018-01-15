@@ -6,7 +6,6 @@ Bebniarz::Bebniarz(int x, int y, Rozgrywka* rozgrywka): Wsparcie(0,1,50,4,40,0, 
 
 }
 
-
 void Bebniarz::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }

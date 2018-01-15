@@ -15,6 +15,7 @@ public:
     void set_y(int y);
 
     Wspolrzedne(int x, int y);
+    ~Wspolrzedne() = default;
 };
 
 

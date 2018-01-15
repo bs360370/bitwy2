@@ -18,6 +18,7 @@ public:
     void wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) override;
 
     Kusznik(int x, int y, Rozgrywka* rozgrywka);
+    ~Kusznik() override = default;
 };
 
 
