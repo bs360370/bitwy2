@@ -10,6 +10,7 @@ using namespace std;
 void generuj_wejscie(int n, char tab[][6]){
     srand(time(NULL));
     int x;
+
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < n; ++j){
             x = rand() % 9;
