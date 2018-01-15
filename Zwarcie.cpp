@@ -4,6 +4,8 @@
 #include "Zwarcie.h"
 #include "Rozgrywka.h"
 
+using namespace std;
+
 Zwarcie::Zwarcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y,
                  Rozgrywka *rozgrywka) : Oddzial(sila_ataku, obrona, wytrzymalosc, zasieg, liczebnosc, morale, x, y,
                                                  rozgrywka) {
@@ -12,7 +14,6 @@ Zwarcie::Zwarcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
 
 
 void Zwarcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-    //printf("pol_mod() zwarcia\n");
     if(polozenie->get_x() == 1 || polozenie->get_x() == 4){
         modifier_atak = 0;
     }
@@ -27,8 +28,9 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
 
     int linia = polozenie->get_x();
     int rzad = polozenie->get_y();
-    //printf(" x = %d, y = %d \n", linia, rzad);
+
     int at = -1; // linia atakowana
+
     switch(linia){
         case(2): {
             at = 3;
@@ -39,7 +41,8 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
             break;
         }
         default: {
-            //printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+
+            cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
             return nullptr; // nie moze atakowac, bo niejest w pierwszym rzedzie swojej armii
         }
     }
@@ -60,6 +63,7 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
         }
     }
 
-    //printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+
+    cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }

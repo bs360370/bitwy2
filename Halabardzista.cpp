@@ -7,9 +7,7 @@ Halabardzista::Halabardzista(int x, int y, Rozgrywka* rozgrywka): Zwarcie(40,20,
 
 }
 
-
 void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
-    //printf("pol_mod(* *) halabardzisty\n");
     int a = polozenie->get_x();         // moja wspolrzedna x-owa
     int b = polozenie->get_y();         // moja wspolrzedna y-owa
     if(tab2[a][b] != nullptr){
@@ -19,10 +17,7 @@ void Halabardzista::policz_modifier(Oddzial*** tab1, Wspolrzedne*** tab2) {
             modifier_atak *= 1.5;
         }
     }
-    //TODO: nie wiem czy ten this jest potrzebny
     Zwarcie::policz_modifier(tab1, tab2);
-    // printf("tutaj\n");
-
 }
 
 char Halabardzista::podaj_typ() {

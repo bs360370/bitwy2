@@ -3,7 +3,9 @@
 #include "Oddzial.h"
 #include "Rozgrywka.h"
 #include <cstdio>
+#include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -40,8 +42,8 @@ double Oddzial::policz_straty(double obrazenia) {
     if(1-morale*modifier_morale){
         m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
     }
-    else m = 1; // TODO: roboczo
-    // TODO: cos tu niedziala
+    else m = 1; // TODO: roboczo - dodac wyjatek
+
     double obr = obrazenia;
     double licznik = obr*m;
     double mianownik = wytrzymalosc*(1+obrona*modifier_obrona);
@@ -67,11 +69,8 @@ void Oddzial::aktualizuj_liczebnosc(double straty) {
 }
 
 void Oddzial::aktualizuj_wspolrzedne(int x, int y) {
-    //printf("jestem a akt_wsp\n");
     polozenie->set_x(x);
-    //printf("jestem a akt_wsp x\n");
     polozenie->set_y(y);
-    //printf("jestem a akt_wsp y\n");
 }
 
 void Oddzial::aktualizuj_morale(double strata) {
@@ -89,13 +88,11 @@ void Oddzial::wypisz_status() {
     char typ = this->podaj_typ();
     // TODO: w rozgrywce jest drugi raz sprawdzne czy pusty oddzial
     if(aktualna_liczebnosc){
-        printf("%c:", typ);
+        cout << typ << ":";
         this->procent_zycia();
-        // TODO: tymczasowo liczebnosc
-        //printf(" (%d,%d) ", polozenie->get_x(), polozenie->get_y());
     }
     else {
-        printf("  X  ");
+        cout << "  X  ";
     }
 
 }
@@ -107,18 +104,18 @@ void Oddzial::procent_zycia() {
     // TODO: nie wiem czy to jest dobrze ten casting
 
     if(liczebnosc == aktualna_liczebnosc){
-        printf("00");
+        cout << "00";
     }
     if(aktualna_liczebnosc < liczebnosc){
         if(procent >= 10){
-            printf("%d", procent);
+            cout << procent;
         }
         if(procent < 10){
-            printf("0%d", procent);
+            cout << "0" << procent;
         }
     }
     else if(aktualna_liczebnosc > liczebnosc){
-        printf("BLAD! liczebnosc wieksza niz nominalna! \n\n");
+        cout << "BLAD! liczebnosc wieksza niz nominalna!" << endl;
     }
 
 }
@@ -140,13 +137,12 @@ Wspolrzedne *Oddzial::get_polozenie() {
 }
 
 void Oddzial::wypisz_wartosci() {
-    printf("sila ataku: %d\n obrona: %d\n wytrzymalosc: %d\n zasieg: %d\n liczebnosc: %d\n morale: %lf\n ",
-           this->sila_ataku,
-           this->obrona,
-           this->wytrzymalosc,
-           this->zasieg,
-           this->liczebnosc,
-           this->morale);
+    cout << "sila ataku: " << this->sila_ataku << endl;
+    cout << "obrona: " << this->obrona << endl;
+    cout << "wytrzymalosc: " << this->wytrzymalosc << endl;
+    cout << "zasieg: " << this->zasieg << endl;
+    cout << "liczebnosc: " << this->liczebnosc << endl;
+    cout << "morale: " << this->morale << endl;
 }
 
 void Oddzial::otrzymaj_wsparcie(double atak, double obrona, double morale, double morale_cooldown) {
@@ -157,10 +153,16 @@ void Oddzial::otrzymaj_wsparcie(double atak, double obrona, double morale, doubl
 }
 
 void Oddzial::wypisz_modifiery() {
-    printf("(%d,%d) mod_ata = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_atak);
-    printf("(%d,%d) mod_mor = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_morale);
-    printf("(%d,%d) mod_obr = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_obrona);
-    printf("(%d,%d) mod_m_c = %.2f, ", polozenie->get_x(), polozenie->get_y(), modifier_morale_cooldown);
-    printf("(%d,%d) akt_lic = %d, ", polozenie->get_x(), polozenie->get_y(), aktualna_liczebnosc);
-    printf("(%d,%d) moralee = %.2f\n", polozenie->get_x(), polozenie->get_y(), morale);
+    cout << "(" << polozenie->get_x() << ", " << polozenie->get_y() << ") mod_ata = ";
+    cout << setprecision(2) << modifier_atak << ", ";
+    cout << "mod_mor = ";
+    cout << setprecision(2) << modifier_morale << ", ";
+    cout << "mod_obr = ";
+    cout << setprecision(2) << modifier_obrona << ", ";
+    cout << "mod_m_c = ";
+    cout << setprecision(2) << modifier_morale_cooldown << ", ";
+    cout << "akt_lic = ";
+    cout  << aktualna_liczebnosc << ", ";
+    cout << "morale = ";
+    cout << setprecision(2) << morale << endl;
 }

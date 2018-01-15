@@ -1,6 +1,8 @@
 
 
 #include <cstdio>
+#include <iostream>
+#include <iomanip>
 #include "Rozgrywka.h"
 #include "Tarczownik.h"
 #include "Bebniarz.h"
@@ -9,6 +11,8 @@
 #include "Kusznik.h"
 #include "Lucznik.h"
 #include "Miecznik.h"
+
+using namespace std;
 
 Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
 
@@ -47,7 +51,7 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
                     pole[i][j] = nullptr;
                     break;
                 default:
-                    printf("NIEPOPRAWNE WEJSCIE  pole[%d][%d]= %c !\n", j, i, tab[j][i]);
+                    cout << "NIEPOPRAWNE WEJSCIE  pole[" << j << "][" << i << "]= " << tab[j][i] << endl;
                     pole[i][j] = nullptr;
             }
         }
@@ -123,12 +127,10 @@ bool Rozgrywka::czy_koniec_gry() {
 void Rozgrywka::gra() {
     for(int i = 0; i < limit_tur; ++i){
         if(!this->czy_koniec_gry()){
-            //printf("check przed tura %d\n", i);
             this->wykonaj_ture();
-            //printf("check po turze  %d\n", i);
         }
         else {
-            printf("gra skonczona przed limitem tur w turze %d.\n", i);
+            cout << "gra skonczona przed limitem tur w turze " << i << "." << endl;
             break;
         }
     }
@@ -137,58 +139,58 @@ void Rozgrywka::gra() {
 
 void Rozgrywka::wykonaj_ture() {
 
-    // TODO: uzupelnic ta funkcje i nie wiem czy reseyuj oddzialy w dobrym miejscy
+    // TODO: uzupelnic ta funkcje i nie wiem czy resetuj oddzialy w dobrym miejscy
 
     this->wypisz_ture();
     aktualna_tura++;
 
     this->resetuj_oddzialy();
-    //printf("zrobilem reset\n");
-    this->policz_cele();            // wpisanie wspolrzednych celu do tab_wsp
-    //printf("policzylem cele\n");
+    // cout << "zrobilem reset" << endl;
+    this->policz_cele();
+    // cout << "policzylem cele" << endl;
     this->policz_modifiery();
-    //printf("policzylem modifiery\n");
+    // cout << "policzylem modifiery" << endl;
     this->policz_wsparcie();
-    //printf("policzylem wsparcie\n");
-    this->wypisz_modifiery();
-    //printf("wypisalem modifiery\n");
+    // cout << "policzylem wsparcie" << endl;
+    //this->wypisz_modifiery();
+    // cout << "wypisalem modifiery" << endl;
     this->policz_atak();
-    //printf("policzylem atak\n");
+    // cout << "policzylem atak" << endl;
     this->policz_straty_licz();
-    //printf("policzylem straty\n");
-    this->wypisz_tab_wsp();
+    // cout << "policzylem straty" << endl;
+    //this->wypisz_tab_wsp();
     this->poprzesuwaj_1();
-    //printf("jest po przesuwaniu 1\n");
+    // cout << "jest po przesuwaniu 1" << endl;
     this->poprzesuwaj_2();
-    //printf("jest po przesuwaniu 2\n");
+    // cout << "jest po przesuwaniu 2" << endl;
 }
 
 void Rozgrywka::wypisz_ture() {
 
     // TODO: poprawić alignment
 
-    printf("============");
+    cout << "============";
     for(int k = 0; k< rozmiar; ++k){
-        printf("======");
+        cout << "======";
     }
-    printf("\n");
-    printf("Tura %d z %d \n", aktualna_tura, limit_tur);
+    cout << endl;
+    cout << "Tura " << aktualna_tura << " z " << limit_tur << endl;
     for(int i = 0; i < 6; ++i){
-        printf("            ");
+        cout << "            ";
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
                 pole[i][j]->wypisz_status();
             }
-            else printf("  X ");
-            printf ("  ");
+            else cout << "  X ";
+            cout << "  ";
         }
-        printf("\n");
+        cout << endl;
         if(i == 2){
-            printf("------------");
+            cout << "------------";
             for(int k = 0; k< rozmiar; ++k){
-                printf("------");
+                cout << "------";
             }
-            printf("\n");
+            cout << endl;
         }
 
     }
@@ -208,7 +210,7 @@ void Rozgrywka::resetuj_oddzialy() {
 void Rozgrywka::policz_cele() {
     for(int j = 0; j < rozmiar; ++j){
         for(int i = 0; i < 6; ++i){
-            //printf("policz cele[%d][%d]\n", i, j);
+            // cout << "policz cele[" << i << "][" << j << "]" << endl;
             if(pole[i][j] != nullptr){
                 tab_wsp[i][j] = pole[i][j]->szukaj_celu(pole, rozmiar);
             }
@@ -220,8 +222,6 @@ void Rozgrywka::policz_cele() {
 }
 
 void Rozgrywka::policz_modifiery() {
-// TODO: TUTAJ SIE WYWALA PROGRAM 8 STYCZNIA 2018
-    //printf("poczatek modifierow\n");
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr){
@@ -229,7 +229,6 @@ void Rozgrywka::policz_modifiery() {
             }
         }
     }
-    //printf("koniec modifierow\n");
 }
 
 void Rozgrywka::policz_wsparcie() {
@@ -264,9 +263,7 @@ void Rozgrywka::policz_atak() {
                 wsp_celu_y = tab_wsp[i][j]->get_y();
 
                 moj_atak = pole[i][j]->policz_atak();
-                //printf("policzylem atak w policz_ataku()\n");
                 strata_celu = pole[wsp_celu_x][wsp_celu_y]->policz_straty(moj_atak);
-                //printf("policzylem straty w policz_ataku()\n");
 
                 tab_strat_licz[wsp_celu_x][wsp_celu_y] += strata_celu;
                 pole[wsp_celu_x][wsp_celu_y]->aktualizuj_morale(strata_celu);
@@ -285,11 +282,6 @@ void Rozgrywka::policz_straty_licz() {
                 if(pole[i][j]->czy_martwy()){
                     delete(pole[i][j]);
                     pole[i][j] = nullptr;
-                    //printf(" *pole[%d][%d] chce byc nullpointerem* \n", i, j);
-                    /*if (pole[i][j] == nullptr){
-                        printf(" *pole[%d][%d] jest nullpointerem* \n", i, j);
-                    }*/
-                    // TODO: to jest eksperyment i nie wiem czy zadziala
                 }
 
                 if(pole[i][j] == nullptr && i != 0 && i != 5){
@@ -328,7 +320,7 @@ void Rozgrywka::policz_straty_licz() {
                             break;
                         }
                         default:{
-                            printf("aktualizacja morale: blad: [i][j] = [%d][%d]\n", i, j);
+                            cout << "aktualizacja morale: blad: [i][j] = [" << i << "][" << j << "]" << endl;
                         }
                     }
                 }
@@ -341,10 +333,8 @@ void Rozgrywka::poprzesuwaj_1() {
 
     // I faza: przesuwanie do przodu jesli cos umarlo
 
-    //printf("*jestemw fazie 0 W P1\n");
 
     for (int j = 0; j < rozmiar; ++j){
-        //printf("*J = %d*\n", j);
         if (pole[0][j] != nullptr && pole[0][j]->podaj_typ() == 'T' && (pole[1][j] == nullptr || pole[2][j] == nullptr)) {
             // w posilkach jest tarczownik i istnieje jakies wolne pole przed nim
             if (pole[2][j] != nullptr) {
@@ -361,17 +351,14 @@ void Rozgrywka::poprzesuwaj_1() {
                     pole[i][j] = pole[i - 1][j];
                     // TODO: wrzucic te wszystkie ify  z poprzesuwaj1 i poprzesuwaj2 do aktualizuj_wspolrzedne
                     if (pole[i][j] != nullptr) {
-                        //printf("pole[%d][%d] nie jest pustym wsk\n", i, j);
                         pole[i][j]->aktualizuj_wspolrzedne(i, j);
                     }
                     pole[i - 1][j] = nullptr;
                 }
             }
             if (pole[1][j] == nullptr && pole[0][j] != nullptr) {
-                //printf("*if check*\n");
                 pole[1][j] = pole[0][j];
                 if (pole[1][j] != nullptr) {
-                    //printf("pole[1][%d] nie jest pustym wsk",  j);
                     pole[1][j]->aktualizuj_wspolrzedne(1, j);
                 }
                 pole[0][j] = nullptr;
@@ -391,40 +378,31 @@ void Rozgrywka::poprzesuwaj_1() {
         } else {
             for (int i = 4; i > 2; --i) {
                 if (pole[i][j] == nullptr) {
-                    //printf("*if check FOR2*\n");
                     pole[i][j] = pole[i + 1][j];
                     if (pole[i][j] != nullptr) {
-                        //printf("pole[%d][%d] nie jest pustym wsk", i, j);
                         pole[i][j]->aktualizuj_wspolrzedne(i, j);
                     }
                     pole[i + 1][j] = nullptr;
                 }
             }
             if (pole[4][j] == nullptr && pole[5][j] != nullptr) {
-                //printf("*if check*\n");
                 pole[4][j] = pole[5][j];
                 if (pole[4][j] != nullptr) {
-                    //printf("pole[4][%d] nie jest pustym wsk",  j);
                     pole[4][j]->aktualizuj_wspolrzedne(4, j);
                 }
                 pole[5][j] = nullptr;
             }
         }
     }
-    //printf("*jestemw fazie KNC W P1\n");
 }
 
 void Rozgrywka::poprzesuwaj_2() {
 
     // II faza: przesuwanie kolumn do srodka
 
-    //printf("*jestemw fazie 0 Z P2\n");
-
     int polowa = (rozmiar/2)-1;
     int licznik = 0;
     int tab[10000];
-
-    //printf("*jestem w fazie 1*\n");
 
     for(int armia = 2; armia <= 3; ++armia) {
         for (int j = 0; j < rozmiar + 1; ++j) {
@@ -447,15 +425,10 @@ void Rozgrywka::poprzesuwaj_2() {
             tab[j] = licznik;
         }
 
-        /*for (int j = 0; j < rozmiar; ++j) {
-            printf("tab_licznikow_porz_2[%d] = %d\n", j, tab[j]);
-        }*/
-
         for (int j = polowa; j >= 0; --j) {
             if (tab[j] != 0) {
-                //printf("*POLE[2][%d] = nullptr (1 lub 0): %d*\n", j, (pole[2][j]==nullptr));
+                // cout <<"*POLE[2][" << j << "] = nullptr (1 lub 0): " << (pole[2][j]==nullptr) << endl;
                 if (pole[armia][j] != nullptr) {
-                    //printf("*JESTEM W IFIE*\n");
                     int start, koniec;
                     if (armia == 2) {
                         start = 0;
@@ -467,13 +440,10 @@ void Rozgrywka::poprzesuwaj_2() {
                     for (int i = start; i <= koniec; ++i) {
                         pole[i][j + tab[j]] = pole[i][j];
                         if (pole[i][j + tab[j]] != nullptr) {
-                            //printf("pole[%d][%d] nie jest pustym wsk", i, j);
                             pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i, j + tab[j]);
                         }
                         pole[i][j] = nullptr;
-                        //printf("*pole na nullptr 1!");
                     }
-
                 }
             }
         }
@@ -492,11 +462,9 @@ void Rozgrywka::poprzesuwaj_2() {
                     for (int i = start; i <= koniec; ++i) {
                         pole[i][j + tab[j]] = pole[i][j];
                         if (pole[i][j + tab[j]] != nullptr) {
-                            //printf("pole[%d][%d] nie jest pustym wsk", i, j);
                             pole[i][j + tab[j]]->aktualizuj_wspolrzedne(i, j + tab[j]);
                         }
                         pole[i][j] = nullptr;
-                        //printf("*pole na nullptr 2!");
                     }
                 }
             }
@@ -506,25 +474,22 @@ void Rozgrywka::poprzesuwaj_2() {
 
 void Rozgrywka::wypisz() {
     for(int i = 0; i < 6; ++i) {
-        printf("Rzad %d\n", i);
+       cout << "Rzad  " << i << ": ";
         for (int j = 0; j < rozmiar; ++j) {
             pole[i][j]->wypisz_wartosci();
-            printf("\n\n");
+            cout << endl;
         }
     }
 }
 
 void Rozgrywka::wypisz_tab_wsp() {
-    //printf("jestem w wypisz_tab_wsp 1\n");
     for(int i = 0; i < 6; ++i){
-        //printf("jestem w wypisz_tab_wsp 2\n");
         for(int j = 0; j < rozmiar; ++j){
-            //printf("jestem w wypisz_tab_wsp 3\n");
-            //printf("tab_strat_licz[%d][%d] = (%f, %f).\n", i, j, tab_strat_licz[i][j], tab_strat_licz[i][j]);
-            printf("(%d,%d):(%.1f)  ", i, j, tab_strat_licz[i][j]);
+            cout << "(" << i << ", " << j << "):(";
+            cout << setprecision(2) << tab_strat_licz[i][j];
             // TODO: roboczo wypisuje tab_strat_licz
         }
-        printf("\n");
+        cout << endl;
     }
 }
 

@@ -1,7 +1,9 @@
 
 
-#include <cstdio>
+#include <iostream>
 #include "Lucznik.h"
+
+using namespace std;
 
 Lucznik::Lucznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(30,5,20,5,200,0, x, y, rozgrywka) {
 
@@ -9,7 +11,6 @@ Lucznik::Lucznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(30,5,20,5,200,0, x,
 
 
 void Lucznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
-    //printf("pol_mod() lucznika\n");
     if(polozenie->get_x() == 2 || polozenie->get_x() == 3){
         modifier_obrona *= 0.5;
         modifier_atak *= 0.5;
@@ -28,7 +29,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
-    //printf(" x = %d, y = %d \n", linia, rzad);
+
     int at = -1; // linia atakowana
 
     switch(linia){
@@ -43,7 +44,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
             break;
         }
         default: {
-            //printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+            cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
             return nullptr; // lucznik nie moze atakowac z linii rezerw
         }
     }
@@ -82,6 +83,6 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
             }
         }
     }
-    //printf("Nie znaleziono celu dla lucznika z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+    cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }

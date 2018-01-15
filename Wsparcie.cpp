@@ -1,7 +1,10 @@
 
 
 #include <cstdio>
+#include <iostream>
 #include "Wsparcie.h"
+
+using namespace std;
 
 Wsparcie::Wsparcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y,
                    Rozgrywka *rozgrywka) : Oddzial(sila_ataku, obrona, wytrzymalosc, zasieg, liczebnosc, morale, x, y,
@@ -17,7 +20,7 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
 
     int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
-    //printf(" x = %d, y = %d \n", linia, rzad);
+
     int at = -1; // linia atakowana
 
     switch(linia){
@@ -34,7 +37,7 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
             break;
         }
         default: {
-            printf("blad przy szukaniu celu! \n");
+            cout << "blad przy szukaniu celu!" << endl;
         }
     }
 

@@ -1,7 +1,10 @@
 
 
 #include <cstdio>
+#include <iostream>
 #include "Zasieg.h"
+
+using namespace std;
 
 Zasieg::Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y,
                Rozgrywka *rozgrywka) : Oddzial(sila_ataku, obrona, wytrzymalosc, zasieg, liczebnosc, morale, x, y,
@@ -22,10 +25,12 @@ bool Zasieg::czy_zasieg() {
 }
 
 Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
+
     int linia = polozenie->get_x();
     int rzad = polozenie->get_y();
-    //printf(" x = %d, y = %d \n", linia, rzad);
+
     int at = -1; // linia atakowana
+
     switch(linia){
         case(1):
         case(2): {
@@ -38,7 +43,7 @@ Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
             break;
         }
         default: {
-            //printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+            cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
             return nullptr; // nie moze atakowac z linii posilkow
         }
     }
@@ -58,7 +63,6 @@ Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
             }
         }
     }
-
-    //printf("Nie znaleziono celu dla oddzialu z pozycji %d, %d\n", polozenie->get_x(), polozenie->get_y());
+    cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }
