@@ -1,7 +1,6 @@
 
 
 #include "Kusznik.h"
-#include <cstdio>
 
 Kusznik::Kusznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(50,8,30,3,150,0, x, y, rozgrywka) {
 

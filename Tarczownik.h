@@ -3,7 +3,6 @@
 #ifndef BITWY2_TARCZOWNIK_H
 #define BITWY2_TARCZOWNIK_H
 
-
 #include "Wsparcie.h"
 
 class Tarczownik : public Wsparcie{
