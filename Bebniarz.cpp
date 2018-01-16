@@ -22,7 +22,7 @@ void Bebniarz::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {
         int wsp1 = tab2[a][b]->get_x();     // x-owa wspolrzedna celu (tab2 wywoluje sie w Rozgrywce jako tab_wsp)
         int wsp2 = tab2[a][b]->get_y();     // y-owa wspolrzenda celu (-||-)
         // tab1[wsp1][wsp2] to wskaznik na cel, bo tab1 wywoluje sie w Rozgrywce jako pole
-        tab1[wsp1][wsp2]->otrzymaj_wsparcie(1.0, 1.0, 1.5, 0.5);
+        tab1[wsp1][wsp2]->otrzymaj_wsparcie(0.0, 0.0, 0.5, -0.5);
     }
 
 }

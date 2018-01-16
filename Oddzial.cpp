@@ -146,10 +146,12 @@ void Oddzial::wypisz_wartosci() {
 }
 
 void Oddzial::otrzymaj_wsparcie(double atak, double obrona, double morale, double morale_cooldown) {
-    modifier_atak *= atak;
-    modifier_obrona *= obrona;
-    modifier_morale *= morale;
-    modifier_morale_cooldown *= morale_cooldown;
+    modifier_atak += atak;
+    modifier_obrona += obrona;
+    modifier_morale += morale;
+    if(modifier_morale_cooldown > 0){
+        modifier_morale_cooldown += morale_cooldown;
+    }
 }
 
 void Oddzial::wypisz_modifiery() {

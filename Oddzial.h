@@ -64,9 +64,13 @@ public:
     Oddzial(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int liczebnosc, double morale, int x, int y, Rozgrywka* rozgr);
     virtual ~Oddzial();
     Oddzial(const Oddzial&) = delete;
-    Oddzial& operator=(const Oddzial&) = delete;
 
     void wypisz_wartosci();                                                     // funkcja pomocnicza - wypisuje staty
+
+private:
+
+    Oddzial& operator=(const Oddzial&) = delete;
+
 };
 
 

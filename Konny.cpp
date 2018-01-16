@@ -15,7 +15,7 @@ void Konny::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
         int wsp1 = tab2[a][b]->get_x();
         int wsp2 = tab2[a][b]->get_y();
         if(tab1[wsp1][wsp2]->czy_zasieg() ){
-            modifier_atak *= 1.25;
+            modifier_atak += 0.25;
         }
     }
     Zwarcie::policz_modifier(tab1, tab2);
