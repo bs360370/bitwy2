@@ -21,7 +21,7 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
     int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
 
-    int at = -1; // linia atakowana
+    int at = -1;        // linia atakowana
 
     switch(linia){
         case(0):
@@ -59,7 +59,7 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
             }
         }
     }
-    return polozenie; // nie mamy kogo wspierac -> wspieramy sami siebie
+    return polozenie;   // nie mamy kogo wspierac -> wspieramy sami siebie
 }
 
 void Wsparcie::wspieraj(Oddzial*** tab1, Wspolrzedne*** tab2) {

@@ -11,6 +11,8 @@
 
 // TODO: czym jest virtual destructor
 
+// TODO: zastanowic sie co zrobic z fmaxem
+
 nieuzywane funkcja z maina:
 
 /*

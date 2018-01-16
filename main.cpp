@@ -77,14 +77,13 @@ int main() {
 
     char tab[10000][6];
 
-    generuj_wejscie(dlugosc, tab);
-/*
+   // generuj_wejscie(dlugosc, tab);
+
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < dlugosc; j++) {
             cin >> tab[j][i];
         }
     }
-*/
 
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
     r->gra();

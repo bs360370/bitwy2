@@ -29,7 +29,7 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
     int linia = polozenie->get_x();
     int rzad = polozenie->get_y();
 
-    int at = -1; // linia atakowana
+    int at = -1;                 // linia atakowana
 
     switch(linia){
         case(2): {
@@ -43,7 +43,7 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
         default: {
 
             cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
-            return nullptr; // nie moze atakowac, bo niejest w pierwszym rzedzie swojej armii
+            return nullptr;     // nie moze atakowac, bo niejest w pierwszym rzedzie swojej armii
         }
     }
 
@@ -62,8 +62,6 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
             }
         }
     }
-
-
     cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }

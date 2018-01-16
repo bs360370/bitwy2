@@ -30,7 +30,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
     int rzad = polozenie->get_y();
     int linia = polozenie->get_x();
 
-    int at = -1; // linia atakowana
+    int at = -1;                    // linia atakowana
 
     switch(linia){
         case(1):
@@ -45,7 +45,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
         }
         default: {
             cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
-            return nullptr; // lucznik nie moze atakowac z linii rezerw
+            return nullptr;         // lucznik nie moze atakowac z linii rezerw
         }
     }
 

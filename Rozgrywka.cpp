@@ -330,7 +330,6 @@ void Rozgrywka::poprzesuwaj_1() {
 
     // I faza: przesuwanie do przodu jesli cos umarlo
 
-
     for (int j = 0; j < rozmiar; ++j){
         if (pole[0][j] != nullptr && pole[0][j]->podaj_typ() == 'T' && (pole[1][j] == nullptr || pole[2][j] == nullptr)) {
             // w posilkach jest tarczownik i istnieje jakies wolne pole przed nim
