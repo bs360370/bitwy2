@@ -77,7 +77,7 @@ int main() {
 
     char tab[10000][6];
 
-   // generuj_wejscie(dlugosc, tab);
+    // generuj_wejscie(dlugosc, tab);   // alternatywne wejście
 
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < dlugosc; j++) {
@@ -88,6 +88,8 @@ int main() {
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
     r->gra();
     delete(r);
+
+    // komentarz
 
     return 0;
 }

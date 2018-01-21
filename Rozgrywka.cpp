@@ -51,7 +51,7 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
                     pole[i][j] = nullptr;
                     break;
                 default:
-                    cout << "NIEPOPRAWNE WEJSCIE  pole[" << j << "][" << i << "]= " << tab[j][i] << endl;
+                    cout << "NIEPOPRAWNE WEJSCIE  pole[" << j << "][" << i << "]= " << tab[j][i] << ", WSTAWIONO X." << endl;
                     pole[i][j] = nullptr;
             }
         }
