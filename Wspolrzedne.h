@@ -16,6 +16,8 @@ public:
 
     Wspolrzedne(int x, int y);
     ~Wspolrzedne() = default;
+    Wspolrzedne (const Wspolrzedne&) = delete;
+    Wspolrzedne& operator=(const Wspolrzedne&) = delete;
 };
 
 

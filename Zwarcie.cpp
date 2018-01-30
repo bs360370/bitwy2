@@ -12,7 +12,6 @@ Zwarcie::Zwarcie(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int l
 
 }
 
-
 void Zwarcie::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
     if(polozenie->get_x() == 1 || polozenie->get_x() == 4){
         modifier_atak = 0;
@@ -42,8 +41,8 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
         }
         default: {
 
-            cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
-            return nullptr;     // nie moze atakowac, bo niejest w pierwszym rzedzie swojej armii
+            // cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
+            return nullptr;     // nie moze atakowac, bo nie jest w pierwszym rzedzie swojej armii
         }
     }
 
@@ -62,7 +61,7 @@ Wspolrzedne *Zwarcie::szukaj_celu(Oddzial ***p, int ro) {
             }
         }
     }
-    cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
+    // cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }
 

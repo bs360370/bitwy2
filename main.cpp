@@ -70,26 +70,26 @@ void generuj_wejscie(int n, char tab[][6]){
 
 int main() {
 
-    int dlugosc;                // dlugosc linii
-    int tury;                   // liczba tur
+    int dlugosc;                        // dlugosc linii
+    int tury;                           // liczba tur
 
     cin >> dlugosc >> tury;
 
     char tab[10000][6];
 
-    // generuj_wejscie(dlugosc, tab);   // alternatywne wejście
+    generuj_wejscie(dlugosc, tab);      // alternatywne wejście
 
+    /*
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < dlugosc; j++) {
             cin >> tab[j][i];
         }
     }
+    */
 
     Rozgrywka* r = new Rozgrywka(dlugosc, tury, tab);
     r->gra();
     delete(r);
-
-    // komentarz
 
     return 0;
 }

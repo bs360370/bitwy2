@@ -11,7 +11,6 @@ Zasieg::Zasieg(int sila_ataku, int obrona, int wytrzymalosc, int zasieg, int lic
                                                rozgrywka) {
 }
 
-
 void Zasieg::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
 
 }
@@ -29,7 +28,7 @@ Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
     int linia = polozenie->get_x();
     int rzad = polozenie->get_y();
 
-    int at = -1; // linia atakowana
+    int at = -1;    // linia atakowana
 
     switch(linia){
         case(1):
@@ -43,8 +42,8 @@ Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
             break;
         }
         default: {
-            cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
-            return nullptr; // nie moze atakowac z linii posilkow
+            // cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
+            return nullptr;     // nie moze atakowac z linii posilkow
         }
     }
 
@@ -63,6 +62,6 @@ Wspolrzedne *Zasieg::szukaj_celu(Oddzial ***p, int ro) {
             }
         }
     }
-    cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
+    // cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }

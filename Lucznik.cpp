@@ -9,7 +9,6 @@ Lucznik::Lucznik(int x, int y, Rozgrywka* rozgrywka): Zasieg(30,5,20,5,200,0, x,
 
 }
 
-
 void Lucznik::policz_modifier(Oddzial ***tab1, Wspolrzedne ***tab2) {
     if(polozenie->get_x() == 2 || polozenie->get_x() == 3){
         modifier_obrona += -0.5;
@@ -44,7 +43,7 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
             break;
         }
         default: {
-            cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
+            // cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
             return nullptr;         // lucznik nie moze atakowac z linii rezerw
         }
     }
@@ -83,6 +82,6 @@ Wspolrzedne* Lucznik::szukaj_celu(Oddzial*** p, int ro) {
             }
         }
     }
-    cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
+    // cout << "Nie znaleziono celu dla oddzialu z pozycji (" << polozenie->get_x() << ", " << polozenie->get_y() << ")" << endl;
     return nullptr;
 }

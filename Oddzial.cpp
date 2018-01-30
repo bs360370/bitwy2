@@ -42,7 +42,7 @@ double Oddzial::policz_straty(double obrazenia) {
     if(1-morale*modifier_morale){
         m = 1 - (morale*modifier_morale/(1-morale*modifier_morale));
     }
-    else m = 1; // TODO: roboczo - dodac wyjatek
+    else m = 1; // TODO: roboczo - dodac wyjatek?
 
     double obr = obrazenia;
     double licznik = obr*m;
@@ -86,7 +86,6 @@ void Oddzial::aktualizuj_morale_2() {
 
 void Oddzial::wypisz_status() {
     char typ = this->podaj_typ();
-    // TODO: w rozgrywce jest drugi raz sprawdzne czy pusty oddzial
     if(aktualna_liczebnosc){
         cout << typ << ":";
         this->procent_zycia();
@@ -101,7 +100,6 @@ void Oddzial::procent_zycia() {
     int procent;
     double pro = 100*aktualna_liczebnosc/liczebnosc ;
     procent = (int) floor(pro);
-    // TODO: nie wiem czy to jest dobrze ten casting
 
     if(liczebnosc == aktualna_liczebnosc){
         cout << "00";

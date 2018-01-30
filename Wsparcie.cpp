@@ -46,7 +46,6 @@ Wspolrzedne* Wsparcie::szukaj_celu(Oddzial*** p, int ro) {
             if(linia != at){
                 if(p[at][rzad] != nullptr){
                     return p[at][rzad]->get_polozenie();
-                    // TODO: TUTAJ COS SIE PSUJE
                 }
             }
         }

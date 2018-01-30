@@ -63,7 +63,7 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
     }
     for (int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
-            tab_wsp[i][j] = new Wspolrzedne(0,0);
+            tab_wsp[i][j] = nullptr;
         }
     }
 
@@ -79,24 +79,23 @@ Rozgrywka::Rozgrywka(int rozmiar, int limit_tur, char tab[][6]) {
 }
 
 Rozgrywka::~Rozgrywka() {
-
     for(int i = 0; i<6; i++) {
         for (int j = 0; j < rozmiar; j++) {
             delete pole[i][j];
         }
-        delete pole[i];
+        delete[] pole[i];
     }
-    delete pole;
+    delete[] pole;
 
     for(int i = 0; i<6; i++) {
-        delete tab_wsp[i];
+        delete[] tab_wsp[i];
     }
-    delete tab_wsp;
+    delete[] tab_wsp;
 
     for(int i = 0; i<6; i++) {
-        delete tab_strat_licz[i];
+        delete[] tab_strat_licz[i];
     }
-    delete tab_strat_licz;
+    delete[] tab_strat_licz;
 }
 
 bool Rozgrywka::czy_koniec_gry() {
@@ -139,8 +138,6 @@ void Rozgrywka::gra() {
 
 void Rozgrywka::wykonaj_ture() {
 
-    // TODO: uzupelnic ta funkcje i nie wiem czy resetuj oddzialy w dobrym miejscy
-
     this->wypisz_ture();
     aktualna_tura++;
 
@@ -166,8 +163,6 @@ void Rozgrywka::wykonaj_ture() {
 }
 
 void Rozgrywka::wypisz_ture() {
-
-    // TODO: poprawić alignment
 
     cout << "============";
     for(int k = 0; k< rozmiar; ++k){
@@ -201,7 +196,6 @@ void Rozgrywka::resetuj_oddzialy() {
         for(int j = 0; j < rozmiar; ++j){
             if(pole[i][j] != nullptr) {
                 pole[i][j]->resetuj_modifiery();
-                // TODO: reset tab_wsp i tab_strat_licz
             }
         }
     }
@@ -282,7 +276,6 @@ void Rozgrywka::policz_straty_licz() {
                 }
 
                 if(pole[i][j] == nullptr && i != 0 && i != 5){
-                    // TODO: ten if powyzej dos sprawdzenia 12.01.18
                     switch(i){
                         case(1):{
                             if(j > 0 && pole[1][j-1] != nullptr) pole[1][j-1]->aktualizuj_morale_2();
@@ -481,8 +474,7 @@ void Rozgrywka::wypisz_tab_wsp() {
     for(int i = 0; i < 6; ++i){
         for(int j = 0; j < rozmiar; ++j){
             cout << "(" << i << ", " << j << "):(";
-            cout << setprecision(2) << tab_strat_licz[i][j];
-            // TODO: roboczo wypisuje tab_strat_licz
+            cout << setprecision(2) << tab_wsp[i][j];
         }
         cout << endl;
     }
